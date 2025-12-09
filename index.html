@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pranjal Panta | Networking & Cybersecurity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Pranjal Panta - Aspiring Networking & Cybersecurity Enthusiast from Kathmandu, Nepal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #000000;           /* main background now pure black */
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.18);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      position: relative;
+      font-family: "Poppins", sans-serif;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.25), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.22), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(129, 140, 248, 0.18), transparent 60%);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      animation: bgDrift 30s linear infinite alternate;
+    }
+
+    /* subtle background movement */
+    @keyframes bgDrift {
+      0%   { background-position: 0 0, 100% 0, 50% 100%; }
+      100% { background-position: -40px -40px, 120% -20px, 40% 120%; }
+    }
+
+    /* Network grid overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(15, 23, 42, 0.8) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.8) 1px, transparent 1px);
+      background-size: 70px 70px;
+      opacity: 0.28;
+      mix-blend-mode: screen;
+      z-index: -1;
+      animation: gridMove 24s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-40px, -40px, 0); }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* fade animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.96),
+        rgba(0, 0, 0, 0.9)
+      );
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-logo span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #22d3ee, #0ea5e9, #0369a1);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.95);
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.75; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 0.15rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #22d3ee, #38bdf8, #a855f7);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    #home {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(120deg, #22d3ee, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+      background-size: 220% 220%;
+      animation: gradientShift 7s ease-in-out infinite alternate;
+    }
+
+    /* animated gradient in your name */
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-location {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-location span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 20% 0, #38bdf8, #0ea5e9);
+      box-shadow: 0 0 22px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 0 32px rgba(56, 189, 248, 0.8);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+    }
+
+    .hero-summary {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .hero-summary span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    .avatar-circle {
+      width: 190px;
+      height: 190px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.9);
+      background:
+        radial-gradient(circle at 30% 10%, #38bdf8, transparent 55%),
+        radial-gradient(circle at 50% 100%, #1d4ed8, #020617 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 40px rgba(56, 189, 248, 0.5),
+        0 0 90px rgba(30, 64, 175, 0.8);
+      position: relative;
+      overflow: hidden;
+      animation: avatarGlow 10s ease-in-out infinite alternate;
+    }
+
+    .avatar-circle::before {
+      content: "";
+      position: absolute;
+      inset: 16%;
+      border-radius: inherit;
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      box-shadow: 0 0 20px rgba(15, 23, 42, 0.8);
+      opacity: 0.7;
+    }
+
+    @keyframes avatarGlow {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        box-shadow:
+          0 0 40px rgba(56, 189, 248, 0.5),
+          0 0 90px rgba(30, 64, 175, 0.8);
+      }
+      100% {
+        transform: translateY(-4px) rotate(1.5deg);
+        box-shadow:
+          0 0 55px rgba(56, 189, 248, 0.8),
+          0 0 110px rgba(30, 64, 175, 1);
+      }
+    }
+
+    .avatar-initials {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #e0f2fe;
+    }
+
+    /* network node status card under avatar */
+    .node-card {
+      font-size: 0.78rem;
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 0.9rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 0.55rem 0.8rem;
+      color: var(--muted);
+      box-shadow: 0 0 18px rgba(15, 23, 42, 0.9);
+      text-align: left;
+      min-width: 230px;
+    }
+
+    .node-card-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .node-card-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+
+    .node-card-line span {
+      color: #e5e7eb;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+
+    .chip {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.95);
+      transition: all 0.15s ease;
+    }
+
+    .chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+    }
+
+    /* Sections */
+    section {
+      padding: 2.8rem 0 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-top: 0.25rem;
+    }
+
+    .about-card {
+      background: radial-gradient(circle at top left, var(--accent-soft), #020617 65%);
+      border-radius: 1.1rem;
+      border: 1px solid rgba(30, 64, 175, 0.7);
+      padding: 1.4rem 1.4rem 1.5rem;
+      font-size: 0.93rem;
+      color: #e5e7eb;
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.95);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .about-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
+    }
+
+    .about-card p + p {
+      margin-top: 0.7rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), #020617 65%);
+      border-radius: 1rem;
+      border: 1px solid rgba(15, 23, 42, 0.95);
+      padding: 1.2rem 1.2rem 1.3rem;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 0 32px rgba(56, 189, 248, 0.35);
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .badge {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .badge-strong {
+      border-color: var(--accent);
+      color: #e0f2fe;
+      background: rgba(8, 47, 73, 0.9);
+    }
+
+    .badge:hover {
+      background: rgba(15, 118, 110, 0.7);
+      border-color: #22d3ee;
+      color: #e0f2fe;
+      transform: translateY(-1px);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.3rem;
+    }
+
+    .project-card {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), #020617 65%);
+      border-radius: 1rem;
+      border: 1px solid rgba(15, 23, 42, 0.95);
+      padding: 1rem 1.1rem 1.1rem;
+      font-size: 0.9rem;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.16), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 0 32px rgba(56, 189, 248, 0.4);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-tagline {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .project-footer {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
+    /* Certifications */
+    .cert-list {
+      list-style: none;
+      margin-top: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .cert-list li + li {
+      margin-top: 0.7rem;
+    }
+
+    .cert-title {
+      font-weight: 600;
+    }
+
+    .cert-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Contact */
+    .contact-card {
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), #000 80%);
+      border-radius: 1.1rem;
+      border: 1px solid rgba(30, 64, 175, 0.8);
+      padding: 1.4rem 1.5rem 1.5rem;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      align-items: center;
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.95);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
+    }
+
+    .contact-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-text strong {
+      color: var(--text);
+    }
+
+    .contact-list {
+      font-size: 0.88rem;
+      list-style: none;
+      margin-top: 0.6rem;
+    }
+
+    .contact-list li + li {
+      margin-top: 0.25rem;
+    }
+
+    .pill-small {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 1);
+      color: var(--muted);
+      display: inline-block;
+      margin-top: 0.4rem;
+    }
+
+    /* Footer */
+    .cta-line {
+      text-align: center;
+      margin-top: 2.4rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #e0f2fe;
+      text-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+      letter-spacing: 0.02em;
+    }
+
+    footer {
+      padding: 1rem 0 2.2rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 0.8rem;
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right {
+        order: -1;
+      }
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #home {
+        padding-top: 2.5rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-logo">
+          <span></span>
+          PRANJAL PANTA
+        </div>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#certs">Certifications</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home">
+      <div class="container hero">
+        <div class="fade-up">
+          <div class="hero-kicker">NETWORKING • CYBERSECURITY</div>
+          <h1>Hi, I'm <span>Pranjal Panta</span></h1>
+          <p class="hero-tagline">
+            Aspiring Networking &amp; Cybersecurity Enthusiast
+          </p>
+          <p class="hero-location">
+            Based in <span>Kathmandu, Nepal</span>
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:pranjalpantalazarus2@gmail.com">
+              💬 Email Me
+            </a>
+            <a class="btn btn-ghost" href="tel:+9779861490158">
+              📞 Call / WhatsApp
+            </a>
+            <a class="btn btn-ghost" href="https://github.com/pranjalpanta" target="_blank" rel="noopener">
+              GitHub
+            </a>
+          </div>
+
+          <p class="hero-summary">
+            Focused on <span>network engineering</span> and
+            <span>cybersecurity</span>, building a strong foundation in
+            networking fundamentals, routing &amp; switching, security concepts,
+            and hands-on lab work.
+          </p>
+        </div>
+
+        <div class="hero-right fade-up delay-1">
+          <div class="avatar-circle">
+            <!-- Replace with a real image if you want -->
+            <!-- <img src="images/your-photo.jpg" alt="Pranjal Panta" /> -->
+            <div class="avatar-initials">PP</div>
+          </div>
+
+          <!-- Network node style info card -->
+          <div class="node-card">
+            <div class="node-card-title">NODE STATUS</div>
+            <div class="node-card-line">
+              <span>Role:</span>
+              <span>Network Engineering</span>
+            </div>
+            <div class="node-card-line">
+              <span>Focus:</span>
+              <span>Routing &amp; Security</span>
+            </div>
+            <div class="node-card-line">
+              <span>Location:</span>
+              <span>Kathmandu, NP</span>
+            </div>
+          </div>
+
+          <div class="social-row">
+            <a class="chip" href="https://github.com/pranjalpanta" target="_blank" rel="noopener">GitHub</a>
+            <a class="chip" href="https://www.linkedin.com/in/pranjal-p-49ab59293/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="chip" href="https://medium.com/@pranjalpanta2.0" target="_blank" rel="noopener">Medium Blogs</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container fade-up delay-1">
+        <div class="section-header">
+          <div class="section-kicker">About</div>
+          <h2 class="section-title">Who I Am</h2>
+        </div>
+
+        <div class="about-card">
+          <p>
+            I’m a passionate and dedicated Networking and Cybersecurity student with a strong interest in how modern networks operate, communicate, and stay secure. My learning journey focuses on designing and managing reliable network infrastructures while gaining a deep understanding of network protocols system security, and performance optimization.
+          </p>
+          <p>
+            I have hands-on experience configuring and troubleshooting LANs, WANs, VLANs, and routing protocols, and I enjoy exploring how networking and security work together to protect digital environments. Alongside my technical learning, I’m always improving my problem-solving skills analyzing testing and refining systems to ensure both efficiency and security.
+          </p>
+          <p>
+            I’m highly motivated to grow in the field of Network Engineering and Cybersecurity, with a strong commitment to continuous learning and professional development. My goal is to contribute to building secure, scalable, and high-performance networks that power innovation and connectivity in today’s digital world.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container fade-up delay-1">
+        <div class="section-header">
+          <div class="section-kicker">Skills</div>
+          <h2 class="section-title">Core Skills &amp; Tools</h2>
+          <p class="section-sub">
+            A focused blend of networking, routing, redundancy, security, and tools built through labs,
+            certifications, and continuous learning.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <!-- Networking & Routing -->
+          <div class="card">
+            <h3 class="card-title">Networking &amp; Routing</h3>
+
+            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
+              🌐 <strong>Networking Fundamentals</strong>
+            </p>
+            <div class="badge-row" style="margin-bottom:0.7rem;">
+              <span class="badge badge-strong">OSI Model</span>
+              <span class="badge badge-strong">TCP/IP</span>
+              <span class="badge">Cable Types</span>
+              <span class="badge">Network Protocols</span>
+              <span class="badge">Subnetting</span>
+              <span class="badge">VLSM</span>
+              <span class="badge">Supernetting</span>
+            </div>
+
+            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
+              🌐 <strong>Switching Protocols</strong>
+            </p>
+            <div class="badge-row" style="margin-bottom:0.7rem;">
+              <span class="badge badge-strong">VLANs</span>
+              <span class="badge">STP</span>
+              <span class="badge">SVI</span>
+              <span class="badge">DHCP Snooping</span>
+              <span class="badge">Port Security</span>
+              <span class="badge">EtherChannel</span>
+              <span class="badge">MPLS (concepts)</span>
+            </div>
+
+            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
+              ↔️ <strong>Routing Protocols</strong>
+            </p>
+            <div class="badge-row" style="margin-bottom:0.7rem;">
+              <span class="badge badge-strong">RIP</span>
+              <span class="badge badge-strong">OSPF</span>
+              <span class="badge">EIGRP</span>
+              <span class="badge">BGP</span>
+              <span class="badge">IS-IS</span>
+            </div>
+
+            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
+              🔁 <strong>Redundancy Protocols</strong>
+            </p>
+            <div class="badge-row">
+              <span class="badge">HSRP</span>
+              <span class="badge">VRRP</span>
+              <span class="badge">GLBP</span>
+            </div>
+          </div>
+
+          <!-- Security & Tools -->
+          <div class="card">
+            <h3 class="card-title">Security, Firewalls &amp; Tools</h3>
+
+            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
+              🔐 <strong>Security &amp; Firewalls</strong>
+            </p>
+            <div class="badge-row" style="margin-bottom:0.7rem;">
+              <span class="badge badge-strong">Cisco ASA Firewall</span>
+              <span class="badge">ACLs</span>
+              <span class="badge">VPN Concepts</span>
+              <span class="badge">NAT / PAT</span>
+            </div>
+
+            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
+              💻 <strong>OS &amp; Security Skills</strong>
+            </p>
+            <div class="badge-row" style="margin-bottom:0.7rem;">
+              <span class="badge">OS Security</span>
+              <span class="badge">Network Forensics (basics)</span>
+              <span class="badge">Linux Fundamentals</span>
+              <span class="badge">Basic Web Security</span>
+            </div>
+
+            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
+              🧰 <strong>Tools &amp; Simulation</strong>
+            </p>
+            <div class="badge-row">
+              <span class="badge badge-strong">Cisco Packet Tracer</span>
+              <span class="badge badge-strong">GNS3</span>
+              <span class="badge">Wireshark</span>
+              <span class="badge">PyCharm</span>
+              <span class="badge">FTK Imager</span>
+              <span class="badge">Autopsy</span>
+              <span class="badge">Hack The Box</span>
+              <span class="badge">PortSwigger</span>
+              <span class="badge">Kali Linux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container fade-up delay-2">
+        <div class="section-header">
+          <div class="section-kicker">Projects</div>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-sub">
+            A mix of networking and security labs that reflect my interests in
+            enterprise networks, firewalls, and security tooling.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-title">🔹 Three-Tier Enterprise Network Design</div>
+            <p class="project-tagline">
+              Hands-on project demonstrating a scalable and secure enterprise-style network
+              architecture with proper segmentation and hierarchical design.
+            </p>
+            <div class="project-footer">
+              Designed in Cisco Packet Tracer using routing, VLANs and best practices.
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">🔹 Cisco ASA Firewall Configuration</div>
+            <p class="project-tagline">
+              Implemented security policies on Cisco ASA, using ACLs, NAT and VPN concepts
+              to control and protect traffic between internal and external networks.
+            </p>
+            <div class="project-footer">
+              Focused on perimeter security and rule-based access control.
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">🔹 Secure File Encryption Tool (Python)</div>
+            <p class="project-tagline">
+              Python-based tool to encrypt and decrypt files securely, focusing on basic
+              cryptography concepts and following security best practices.
+            </p>
+            <div class="project-footer">
+              Built to understand confidentiality and secure data handling.
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">🔹 Web Enumeration Tool (Python)</div>
+            <p class="project-tagline">
+              Script that gathers important information about web applications (headers,
+              technologies, endpoints, etc.) to support security testing and reconnaissance.
+            </p>
+            <div class="project-footer">
+              Helps build a structured approach to information gathering.
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">🔹 Enterprise Networking Mini Project (Cisco Packet Tracer)</div>
+            <p class="project-tagline">
+              Designed a multi-department enterprise network with VLANs, inter-VLAN routing,
+              DHCP, and secure wireless using /26 subnetting.
+            </p>
+            <div class="project-footer">
+              This is one of my key labs – combining addressing, segmentation and services.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs">
+      <div class="container fade-up delay-2">
+        <div class="section-header">
+          <div class="section-kicker">Certifications</div>
+          <h2 class="section-title">Learning &amp; Credentials</h2>
+          <p class="section-sub">
+            Formal learning that supports my networking and security journey.
+          </p>
+        </div>
+
+        <div class="card">
+          <ul class="cert-list">
+            <li>
+              <div class="cert-title">ISO/IEC 27001:2022 Lead Auditor – Mastermind</div>
+              <div class="cert-meta">Issued Nov 2025 · Expires Nov 2028</div>
+            </li>
+            <li>
+              <div class="cert-title">Cisco Networking Foundations: IP Addressing – LinkedIn Learning</div>
+              <div class="cert-meta">Issued Nov 2025 · Expires Mar 2028 · Focus: Subnetting, IP Addressing</div>
+            </li>
+            <li>
+              <div class="cert-title">Fundamentals of Cisco Networking – LinkedIn Learning</div>
+              <div class="cert-meta">Issued Sep 2025 · Expires Mar 2029 · Focus: Cables, core networking concepts</div>
+            </li>
+            <li>
+              <div class="cert-title">Diploma in Interconnecting Cisco Networking Devices Part 1 (ICND1) v3 CCNA – Alison</div>
+              <div class="cert-meta">Issued May 2025 · Expires Aug 2029 · Focus: Routing protocols, LAN switching</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container fade-up delay-3">
+        <div class="section-header">
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Let’s Connect</h2>
+        </div>
+
+        <div class="contact-card">
+          <div>
+            <p class="contact-text">
+              I’m always open to opportunities to learn, work on networking or cybersecurity labs,
+              and connect with people in the tech community. If you’d like to discuss projects,
+              ideas, or collaboration, feel free to reach out.
+            </p>
+            <span class="pill-small">
+              Prefer: networking, security &amp; learning-focused conversations
+            </span>
+          </div>
+
+          <div>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a href="mailto:pranjalpantalazarus2@gmail.com">pranjalpantalazarus2@gmail.com</a></li>
+              <li><strong>Mobile:</strong> <a href="tel:+9779861490158">+977 9861490158</a></li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/pranjalpanta" target="_blank" rel="noopener">github.com/pranjalpanta</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/pranjal-p-49ab59293/" target="_blank" rel="noopener">Pranjal P on LinkedIn</a></li>
+              <li><strong>Medium:</strong> <a href="https://medium.com/@pranjalpanta2.0" target="_blank" rel="noopener">@pranjalpanta2.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CTA + FOOTER -->
+  <div class="container">
+    <p class="cta-line">
+      ⚡ Thank you for visiting! Let's connect and build secure networks together ⚡
+    </p>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Pranjal Panta · Built with passion for networking &amp; cybersecurity.
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
