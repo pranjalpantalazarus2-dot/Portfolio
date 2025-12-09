@@ -11,10 +11,10 @@
 
   <style>
     :root {
-      --bg: #000000;           /* main background now pure black */
+      --bg: #020617;
       --card: #020617;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.18);
+      --accent: #22c55e;         /* neon green */
+      --accent-soft: rgba(34, 197, 94, 0.18);
       --text: #e5e7eb;
       --muted: #9ca3af;
       --border: #1f2937;
@@ -29,40 +29,44 @@
     body {
       position: relative;
       font-family: "Poppins", sans-serif;
-      background-color: var(--bg);
-      background-image:
-        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.25), transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.22), transparent 55%),
-        radial-gradient(circle at 50% 100%, rgba(129, 140, 248, 0.18), transparent 60%);
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.2), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.12), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(22, 163, 74, 0.18), transparent 60%),
+        #020617;
       color: var(--text);
       line-height: 1.6;
       scroll-behavior: smooth;
       overflow-x: hidden;
-      animation: bgDrift 30s linear infinite alternate;
     }
 
-    /* subtle background movement */
-    @keyframes bgDrift {
-      0%   { background-position: 0 0, 100% 0, 50% 100%; }
-      100% { background-position: -40px -40px, 120% -20px, 40% 120%; }
-    }
-
-    /* Network grid overlay */
+    /* Network grid overlay – now greenish/hacking */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(15, 23, 42, 0.8) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.8) 1px, transparent 1px);
+        linear-gradient(rgba(15, 23, 42, 0.9) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.9) 1px, transparent 1px);
       background-size: 70px 70px;
-      opacity: 0.28;
+      opacity: 0.45;
       mix-blend-mode: screen;
+      z-index: -2;
+      animation: gridMove 32s linear infinite;
+    }
+
+    /* subtle scanline overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(15, 23, 42, 0.25) 1px, transparent 1px);
+      background-size: 100% 3px;
+      opacity: 0.25;
+      mix-blend-mode: soft-light;
       z-index: -1;
-      animation: gridMove 24s linear infinite;
     }
 
     @keyframes gridMove {
@@ -87,7 +91,7 @@
       padding: 0 1.5rem;
     }
 
-    /* fade animation */
+    /* simple fade animation */
     .fade-up {
       opacity: 0;
       transform: translateY(18px);
@@ -112,11 +116,12 @@
       backdrop-filter: blur(18px);
       background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.96),
-        rgba(0, 0, 0, 0.9)
+        rgba(0, 0, 0, 0.98),
+        rgba(15, 23, 42, 0.95),
+        rgba(2, 6, 23, 0.9)
       );
       border-bottom: 1px solid rgba(15, 23, 42, 0.9);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     }
 
     .nav {
@@ -140,8 +145,8 @@
       width: 10px;
       height: 10px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #22d3ee, #0ea5e9, #0369a1);
-      box-shadow: 0 0 18px rgba(56, 189, 248, 0.95);
+      background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a, #166534);
+      box-shadow: 0 0 18px rgba(34, 197, 94, 0.95);
       animation: pulseDot 1.8s ease-in-out infinite;
     }
 
@@ -174,7 +179,7 @@
       bottom: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(90deg, #22d3ee, #38bdf8, #a855f7);
+      background: linear-gradient(90deg, #22c55e, #a3e635);
       transition: width 0.2s ease;
     }
 
@@ -209,17 +214,9 @@
     }
 
     .hero h1 span {
-      background: linear-gradient(120deg, #22d3ee, #38bdf8, #a855f7);
+      background: linear-gradient(120deg, #22c55e, #a3e635);
       -webkit-background-clip: text;
       color: transparent;
-      background-size: 220% 220%;
-      animation: gradientShift 7s ease-in-out infinite alternate;
-    }
-
-    /* animated gradient in your name */
-    @keyframes gradientShift {
-      0%   { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
     }
 
     .hero-tagline {
@@ -261,25 +258,25 @@
     }
 
     .btn-primary {
-      background: radial-gradient(circle at 20% 0, #38bdf8, #0ea5e9);
-      box-shadow: 0 0 22px rgba(56, 189, 248, 0.4);
+      background: radial-gradient(circle at 20% 0, #22c55e, #16a34a);
+      box-shadow: 0 0 22px rgba(34, 197, 94, 0.45);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px) scale(1.02);
-      box-shadow: 0 0 32px rgba(56, 189, 248, 0.8);
+      box-shadow: 0 0 28px rgba(34, 197, 94, 0.8);
     }
 
     .btn-ghost {
       border-color: rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(0, 0, 0, 0.9);
     }
 
     .btn-ghost:hover {
       border-color: var(--accent);
       color: var(--accent);
       transform: translateY(-1px);
-      box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
     }
 
     .hero-summary {
@@ -297,23 +294,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.1rem;
+      gap: 1.3rem;
     }
 
     .avatar-circle {
       width: 190px;
       height: 190px;
       border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.9);
+      border: 1px solid rgba(34, 197, 94, 0.9);
       background:
-        radial-gradient(circle at 30% 10%, #38bdf8, transparent 55%),
-        radial-gradient(circle at 50% 100%, #1d4ed8, #020617 70%);
+        radial-gradient(circle at 30% 10%, #22c55e, transparent 55%),
+        radial-gradient(circle at 50% 100%, #0f172a, #020617 70%);
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow:
-        0 0 40px rgba(56, 189, 248, 0.5),
-        0 0 90px rgba(30, 64, 175, 0.8);
+        0 0 40px rgba(34, 197, 94, 0.6),
+        0 0 90px rgba(21, 128, 61, 0.9);
       position: relative;
       overflow: hidden;
       animation: avatarGlow 10s ease-in-out infinite alternate;
@@ -324,8 +321,8 @@
       position: absolute;
       inset: 16%;
       border-radius: inherit;
-      border: 1px dashed rgba(148, 163, 184, 0.5);
-      box-shadow: 0 0 20px rgba(15, 23, 42, 0.8);
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
       opacity: 0.7;
     }
 
@@ -333,14 +330,14 @@
       0% {
         transform: translateY(0) rotate(0deg);
         box-shadow:
-          0 0 40px rgba(56, 189, 248, 0.5),
-          0 0 90px rgba(30, 64, 175, 0.8);
+          0 0 40px rgba(34, 197, 94, 0.6),
+          0 0 90px rgba(21, 128, 61, 0.9);
       }
       100% {
         transform: translateY(-4px) rotate(1.5deg);
         box-shadow:
-          0 0 55px rgba(56, 189, 248, 0.8),
-          0 0 110px rgba(30, 64, 175, 1);
+          0 0 55px rgba(34, 197, 94, 0.9),
+          0 0 110px rgba(21, 128, 61, 1);
       }
     }
 
@@ -348,38 +345,7 @@
       font-size: 2.4rem;
       font-weight: 700;
       letter-spacing: 0.12em;
-      color: #e0f2fe;
-    }
-
-    /* network node status card under avatar */
-    .node-card {
-      font-size: 0.78rem;
-      background: rgba(15, 23, 42, 0.96);
-      border-radius: 0.9rem;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 0.55rem 0.8rem;
-      color: var(--muted);
-      box-shadow: 0 0 18px rgba(15, 23, 42, 0.9);
-      text-align: left;
-      min-width: 230px;
-    }
-
-    .node-card-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      margin-bottom: 0.2rem;
-    }
-
-    .node-card-line {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.4rem;
-    }
-
-    .node-card-line span {
-      color: #e5e7eb;
+      color: #ecfdf5;
     }
 
     .social-row {
@@ -395,7 +361,7 @@
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.5);
       color: var(--muted);
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(0, 0, 0, 0.95);
       transition: all 0.15s ease;
     }
 
@@ -403,7 +369,7 @@
       border-color: var(--accent);
       color: var(--accent);
       transform: translateY(-1px);
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
     }
 
     /* Sections */
@@ -438,7 +404,7 @@
     .about-card {
       background: radial-gradient(circle at top left, var(--accent-soft), #020617 65%);
       border-radius: 1.1rem;
-      border: 1px solid rgba(30, 64, 175, 0.7);
+      border: 1px solid rgba(22, 163, 74, 0.8);
       padding: 1.4rem 1.4rem 1.5rem;
       font-size: 0.93rem;
       color: #e5e7eb;
@@ -449,7 +415,7 @@
     .about-card:hover {
       transform: translateY(-4px);
       border-color: var(--accent);
-      box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 0 40px rgba(34, 197, 94, 0.35);
     }
 
     .about-card p + p {
@@ -475,7 +441,7 @@
     .card:hover {
       transform: translateY(-4px);
       border-color: var(--accent);
-      box-shadow: 0 0 32px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 0 32px rgba(34, 197, 94, 0.35);
     }
 
     .card-title {
@@ -494,7 +460,7 @@
       font-size: 0.78rem;
       padding: 0.25rem 0.65rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(0, 0, 0, 0.95);
       border: 1px solid rgba(55, 65, 81, 0.9);
       color: var(--muted);
       transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
@@ -502,14 +468,14 @@
 
     .badge-strong {
       border-color: var(--accent);
-      color: #e0f2fe;
-      background: rgba(8, 47, 73, 0.9);
+      color: #ecfdf5;
+      background: rgba(5, 46, 22, 0.9);
     }
 
     .badge:hover {
-      background: rgba(15, 118, 110, 0.7);
-      border-color: #22d3ee;
-      color: #e0f2fe;
+      background: rgba(22, 163, 74, 0.55);
+      border-color: #22c55e;
+      color: #ecfdf5;
       transform: translateY(-1px);
     }
 
@@ -536,7 +502,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.16), transparent 55%);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.18), transparent 55%);
       opacity: 0;
       transition: opacity 0.2s ease;
       pointer-events: none;
@@ -545,7 +511,7 @@
     .project-card:hover {
       transform: translateY(-4px);
       border-color: var(--accent);
-      box-shadow: 0 0 32px rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 32px rgba(34, 197, 94, 0.4);
     }
 
     .project-card:hover::before {
@@ -591,9 +557,9 @@
 
     /* Contact */
     .contact-card {
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), #000 80%);
+      background: linear-gradient(135deg, #000000, #020617 40%, #020617 100%);
       border-radius: 1.1rem;
-      border: 1px solid rgba(30, 64, 175, 0.8);
+      border: 1px solid rgba(22, 163, 74, 0.8);
       padding: 1.4rem 1.5rem 1.5rem;
       display: grid;
       gap: 1rem;
@@ -606,7 +572,7 @@
     .contact-card:hover {
       transform: translateY(-4px);
       border-color: var(--accent);
-      box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 0 40px rgba(34, 197, 94, 0.35);
     }
 
     .contact-text {
@@ -632,7 +598,7 @@
       font-size: 0.75rem;
       padding: 0.25rem 0.6rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(0, 0, 0, 0.9);
       border: 1px solid rgba(55, 65, 81, 1);
       color: var(--muted);
       display: inline-block;
@@ -645,8 +611,8 @@
       margin-top: 2.4rem;
       font-size: 0.95rem;
       font-weight: 500;
-      color: #e0f2fe;
-      text-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+      color: #bbf7d0;
+      text-shadow: 0 0 18px rgba(34, 197, 94, 0.7);
       letter-spacing: 0.02em;
     }
 
@@ -717,10 +683,10 @@
     <section id="home">
       <div class="container hero">
         <div class="fade-up">
-          <div class="hero-kicker">NETWORKING • CYBERSECURITY</div>
+          <div class="hero-kicker">NETWORKING • CYBERSECURITY • ETHICAL HACKING</div>
           <h1>Hi, I'm <span>Pranjal Panta</span></h1>
           <p class="hero-tagline">
-            Aspiring Networking &amp; Cybersecurity Enthusiast
+            Aspiring Networking &amp; Cybersecurity Enthusiast with a growing interest in ethical hacking.
           </p>
           <p class="hero-location">
             Based in <span>Kathmandu, Nepal</span>
@@ -739,8 +705,8 @@
           </div>
 
           <p class="hero-summary">
-            Focused on <span>network engineering</span> and
-            <span>cybersecurity</span>, building a strong foundation in
+            Focused on <span>network engineering</span>, <span>cybersecurity</span> and
+            <span>ethical hacking</span>, building a strong foundation in
             networking fundamentals, routing &amp; switching, security concepts,
             and hands-on lab work.
           </p>
@@ -751,23 +717,6 @@
             <!-- Replace with a real image if you want -->
             <!-- <img src="images/your-photo.jpg" alt="Pranjal Panta" /> -->
             <div class="avatar-initials">PP</div>
-          </div>
-
-          <!-- Network node style info card -->
-          <div class="node-card">
-            <div class="node-card-title">NODE STATUS</div>
-            <div class="node-card-line">
-              <span>Role:</span>
-              <span>Network Engineering</span>
-            </div>
-            <div class="node-card-line">
-              <span>Focus:</span>
-              <span>Routing &amp; Security</span>
-            </div>
-            <div class="node-card-line">
-              <span>Location:</span>
-              <span>Kathmandu, NP</span>
-            </div>
           </div>
 
           <div class="social-row">
@@ -916,7 +865,7 @@
           <h2 class="section-title">Featured Projects</h2>
           <p class="section-sub">
             A mix of networking and security labs that reflect my interests in
-            enterprise networks, firewalls, and security tooling.
+            enterprise networks, firewalls, ethical hacking, and security tooling.
           </p>
         </div>
 
@@ -1025,11 +974,11 @@
           <div>
             <p class="contact-text">
               I’m always open to opportunities to learn, work on networking or cybersecurity labs,
-              and connect with people in the tech community. If you’d like to discuss projects,
-              ideas, or collaboration, feel free to reach out.
+              explore ethical hacking, and connect with people in the tech community.
+              If you’d like to discuss projects, ideas, or collaboration, feel free to reach out.
             </p>
             <span class="pill-small">
-              Prefer: networking, security &amp; learning-focused conversations
+              Prefer: networking, security, ethical hacking &amp; learning-focused conversations
             </span>
           </div>
 
@@ -1050,12 +999,12 @@
   <!-- CTA + FOOTER -->
   <div class="container">
     <p class="cta-line">
-      ⚡ Thank you for visiting! Let's connect and build secure networks together ⚡
+      ⚡ Thank you for visiting! Let's connect and build secure, resilient & ethical networks together ⚡
     </p>
   </div>
 
   <footer>
-    © <span id="year"></span> Pranjal Panta · Built with passion for networking &amp; cybersecurity.
+    © <span id="year"></span> Pranjal Panta · Built with passion for networking, cybersecurity & ethical hacking.
   </footer>
 
   <script>
