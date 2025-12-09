@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Pranjal Panta | Networking & Cybersecurity</title>
+  <title>Pranjal Panta | Network Engineering & Cybersecurity</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Pranjal Panta - Aspiring Networking & Cybersecurity Enthusiast from Kathmandu, Nepal." />
+  <meta name="description" content="Portfolio of Pranjal Panta - Network Engineering & Cybersecurity student from Kathmandu, Nepal." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,11 +13,12 @@
     :root {
       --bg: #020617;
       --card: #020617;
-      --accent: #22c55e;         /* neon green */
-      --accent-soft: rgba(34, 197, 94, 0.18);
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.14);
       --text: #e5e7eb;
       --muted: #9ca3af;
-      --border: #1f2937;
+      --border: #111827;
+      --accent-blue: #38bdf8;
     }
 
     * {
@@ -26,52 +27,40 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      height: 100%;
+    }
+
     body {
       position: relative;
       font-family: "Poppins", sans-serif;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.2), transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.12), transparent 55%),
-        radial-gradient(circle at 50% 100%, rgba(22, 163, 74, 0.18), transparent 60%),
-        #020617;
+      background: radial-gradient(circle at 0% 0%, rgba(34,197,94,0.12), transparent 55%), #020617;
       color: var(--text);
       line-height: 1.6;
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
 
-    /* Network grid overlay – now greenish/hacking */
+    /* CANVAS BACKGROUND */
+    #networkCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: radial-gradient(circle at 10% 0%, #020617, #020617 60%);
+    }
+
+    /* soft gradient overlay */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background-image:
-        linear-gradient(rgba(15, 23, 42, 0.9) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.9) 1px, transparent 1px);
-      background-size: 70px 70px;
-      opacity: 0.45;
+      background:
+        radial-gradient(circle at 0 0, rgba(34,197,94,0.10), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(56,189,248,0.22), transparent 60%);
       mix-blend-mode: screen;
-      z-index: -2;
-      animation: gridMove 32s linear infinite;
-    }
-
-    /* subtle scanline overlay */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image: linear-gradient(rgba(15, 23, 42, 0.25) 1px, transparent 1px);
-      background-size: 100% 3px;
-      opacity: 0.25;
-      mix-blend-mode: soft-light;
+      opacity: 0.75;
       z-index: -1;
-    }
-
-    @keyframes gridMove {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-40px, -40px, 0); }
     }
 
     a {
@@ -91,7 +80,7 @@
       padding: 0 1.5rem;
     }
 
-    /* simple fade animation */
+    /* fade animation */
     .fade-up {
       opacity: 0;
       transform: translateY(18px);
@@ -108,20 +97,115 @@
       }
     }
 
+    /* ===== LOADER ===== */
+    body.loading {
+      overflow: hidden;
+    }
+
+    body.loading header,
+    body.loading main,
+    body.loading .cta-line,
+    body.loading footer {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    body.page-visible header,
+    body.page-visible main,
+    body.page-visible .cta-line,
+    body.page-visible footer {
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #020617;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      color: #e5e7eb;
+    }
+
+    /* LOADING text */
+    .loader-text {
+      font-size: 0.8rem;
+      letter-spacing: 0.9em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 1.8rem;
+      text-indent: 0.45em;
+    }
+
+    /* Pulse line track */
+    .loader-bar {
+      position: relative;
+      width: 280px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(
+        90deg,
+        rgba(15,23,42,0.9),
+        #0f172a,
+        rgba(15,23,42,0.9)
+      );
+      overflow: visible;
+      box-shadow: 0 0 24px rgba(34,197,94,0.55);
+      border: 1px solid rgba(34,197,94,0.45);
+    }
+
+    /* base glow line */
+    .loader-bar-inner {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        90deg,
+        rgba(34,197,94,0),
+        rgba(34,197,94,0.8),
+        rgba(56,189,248,0.9),
+        rgba(34,197,94,0.8),
+        rgba(34,197,94,0)
+      );
+      opacity: 0.8;
+      filter: blur(0.4px);
+    }
+
+    /* moving pulse (ECG-style) */
+    .loader-bar::before {
+      content: "";
+      position: absolute;
+      top: -7px;
+      left: 0;
+      width: 100%;
+      height: 16px;
+      background-image:
+        radial-gradient(circle at 10% 50%, rgba(34,197,94,0) 0, rgba(34,197,94,0) 35%, rgba(45,212,191,0.9) 50%, rgba(34,197,94,0) 70%, rgba(34,197,94,0) 100%);
+      background-size: 180% 100%;
+      animation: pulseSweep 1.4s linear infinite;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    @keyframes pulseSweep {
+      0%   { background-position: -60% 0; opacity: 0; }
+      15%  { opacity: 1; }
+      50%  { opacity: 1; }
+      100% { background-position: 160% 0; opacity: 0; }
+    }
+
     /* Navbar */
     header {
       position: sticky;
       top: 0;
       z-index: 50;
       backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.98),
-        rgba(15, 23, 42, 0.95),
-        rgba(2, 6, 23, 0.9)
-      );
-      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.96), rgba(2,6,23,0.85));
+      border-bottom: 1px solid rgba(15,23,42,0.9);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.9);
     }
 
     .nav {
@@ -133,32 +217,32 @@
 
     .nav-logo {
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
 
     .nav-logo span {
-      width: 10px;
-      height: 10px;
+      width: 11px;
+      height: 11px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a, #166534);
-      box-shadow: 0 0 18px rgba(34, 197, 94, 0.95);
+      background: radial-gradient(circle at 30% 30%, #4ade80, #22c55e, #16a34a);
+      box-shadow: 0 0 20px rgba(34,197,94,0.95);
       animation: pulseDot 1.8s ease-in-out infinite;
     }
 
     @keyframes pulseDot {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.4); opacity: 0.75; }
+      50% { transform: scale(1.45); opacity: 0.8; }
     }
 
     .nav-links {
       display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
+      gap: 1.6rem;
+      font-size: 0.86rem;
     }
 
     .nav-links a {
@@ -179,7 +263,7 @@
       bottom: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(90deg, #22c55e, #a3e635);
+      background: linear-gradient(90deg,#22c55e,#38bdf8);
       transition: width 0.2s ease;
     }
 
@@ -189,18 +273,18 @@
 
     /* Hero */
     #home {
-      padding: 3.5rem 0 3rem;
+      padding: 3.4rem 0 3rem;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
       gap: 2.5rem;
       align-items: center;
     }
 
     .hero-kicker {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: var(--accent);
@@ -208,13 +292,13 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 3vw, 2.8rem);
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
       font-weight: 700;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     .hero h1 span {
-      background: linear-gradient(120deg, #22c55e, #a3e635);
+      background: linear-gradient(120deg,#bbf7d0,#22c55e,#38bdf8);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -244,7 +328,7 @@
     }
 
     .btn {
-      padding: 0.6rem 1.1rem;
+      padding: 0.6rem 1.15rem;
       border-radius: 999px;
       border: 1px solid transparent;
       font-size: 0.9rem;
@@ -255,28 +339,28 @@
       background: transparent;
       color: var(--text);
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
     .btn-primary {
-      background: radial-gradient(circle at 20% 0, #22c55e, #16a34a);
-      box-shadow: 0 0 22px rgba(34, 197, 94, 0.45);
+      background: radial-gradient(circle at 20% 0,#22c55e,#16a34a);
+      box-shadow: 0 0 22px rgba(34,197,94,0.55);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px) scale(1.02);
-      box-shadow: 0 0 28px rgba(34, 197, 94, 0.8);
+      box-shadow: 0 0 28px rgba(34,197,94,0.9);
     }
 
     .btn-ghost {
-      border-color: rgba(148, 163, 184, 0.6);
-      background: rgba(0, 0, 0, 0.9);
+      border-color: rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
     }
 
     .btn-ghost:hover {
       border-color: var(--accent);
       color: var(--accent);
       transform: translateY(-1px);
-      box-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
     }
 
     .hero-summary {
@@ -294,23 +378,21 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.3rem;
+      gap: 1.4rem;
     }
 
     .avatar-circle {
       width: 190px;
       height: 190px;
       border-radius: 999px;
-      border: 1px solid rgba(34, 197, 94, 0.9);
+      border: 1px solid rgba(34,197,94,0.9);
       background:
-        radial-gradient(circle at 30% 10%, #22c55e, transparent 55%),
-        radial-gradient(circle at 50% 100%, #0f172a, #020617 70%);
+        radial-gradient(circle at 20% 5%, #22c55e, transparent 55%),
+        radial-gradient(circle at 80% 100%, #0f172a, #020617 65%);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
-        0 0 40px rgba(34, 197, 94, 0.6),
-        0 0 90px rgba(21, 128, 61, 0.9);
+      box-shadow: 0 0 35px rgba(34,197,94,0.5), 0 0 90px rgba(56,189,248,0.8);
       position: relative;
       overflow: hidden;
       animation: avatarGlow 10s ease-in-out infinite alternate;
@@ -321,31 +403,21 @@
       position: absolute;
       inset: 16%;
       border-radius: inherit;
-      border: 1px dashed rgba(148, 163, 184, 0.6);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      border: 1px dashed rgba(148,163,184,0.6);
+      box-shadow: 0 0 20px rgba(15,23,42,0.9);
       opacity: 0.7;
     }
 
     @keyframes avatarGlow {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        box-shadow:
-          0 0 40px rgba(34, 197, 94, 0.6),
-          0 0 90px rgba(21, 128, 61, 0.9);
-      }
-      100% {
-        transform: translateY(-4px) rotate(1.5deg);
-        box-shadow:
-          0 0 55px rgba(34, 197, 94, 0.9),
-          0 0 110px rgba(21, 128, 61, 1);
-      }
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-4px) rotate(1.5deg); }
     }
 
     .avatar-initials {
       font-size: 2.4rem;
       font-weight: 700;
       letter-spacing: 0.12em;
-      color: #ecfdf5;
+      color: #dcfce7;
     }
 
     .social-row {
@@ -357,19 +429,19 @@
 
     .chip {
       font-size: 0.8rem;
-      padding: 0.35rem 0.7rem;
+      padding: 0.35rem 0.75rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid rgba(148,163,184,0.6);
       color: var(--muted);
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(15,23,42,0.98);
       transition: all 0.15s ease;
     }
 
     .chip:hover {
-      border-color: var(--accent);
-      color: var(--accent);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
       transform: translateY(-1px);
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
+      box-shadow: 0 0 12px rgba(56,189,248,0.7);
     }
 
     /* Sections */
@@ -382,7 +454,7 @@
     }
 
     .section-kicker {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: var(--accent);
@@ -390,8 +462,8 @@
     }
 
     .section-title {
-      font-size: 1.3rem;
-      font-weight: 600;
+      font-size: 1.4rem;
+      font-weight: 700;
     }
 
     .section-sub {
@@ -404,18 +476,18 @@
     .about-card {
       background: radial-gradient(circle at top left, var(--accent-soft), #020617 65%);
       border-radius: 1.1rem;
-      border: 1px solid rgba(22, 163, 74, 0.8);
+      border: 1px solid rgba(22,101,52,0.8);
       padding: 1.4rem 1.4rem 1.5rem;
       font-size: 0.93rem;
       color: #e5e7eb;
-      box-shadow: 0 0 35px rgba(0, 0, 0, 0.95);
+      box-shadow: 0 0 35px rgba(0,0,0,0.85);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
     .about-card:hover {
       transform: translateY(-4px);
       border-color: var(--accent);
-      box-shadow: 0 0 40px rgba(34, 197, 94, 0.35);
+      box-shadow: 0 0 40px rgba(34,197,94,0.35);
     }
 
     .about-card p + p {
@@ -430,22 +502,22 @@
     }
 
     .card {
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), #020617 65%);
+      background: radial-gradient(circle at top, rgba(15,23,42,0.94), #020617 65%);
       border-radius: 1rem;
-      border: 1px solid rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(15,23,42,0.95);
       padding: 1.2rem 1.2rem 1.3rem;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 25px rgba(0,0,0,0.9);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 0 32px rgba(34, 197, 94, 0.35);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 32px rgba(56,189,248,0.35);
     }
 
     .card-title {
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       margin-bottom: 0.6rem;
     }
@@ -460,22 +532,22 @@
       font-size: 0.78rem;
       padding: 0.25rem 0.65rem;
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.95);
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(55,65,81,0.9);
       color: var(--muted);
       transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
     }
 
     .badge-strong {
       border-color: var(--accent);
-      color: #ecfdf5;
-      background: rgba(5, 46, 22, 0.9);
+      color: #dcfce7;
+      background: rgba(5,46,22,0.9);
     }
 
     .badge:hover {
-      background: rgba(22, 163, 74, 0.55);
-      border-color: #22c55e;
-      color: #ecfdf5;
+      background: rgba(56,189,248,0.20);
+      border-color: var(--accent-blue);
+      color: #e0f2fe;
       transform: translateY(-1px);
     }
 
@@ -487,12 +559,12 @@
     }
 
     .project-card {
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), #020617 65%);
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), #020617 65%);
       border-radius: 1rem;
-      border: 1px solid rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(15,23,42,0.95);
       padding: 1rem 1.1rem 1.1rem;
       font-size: 0.9rem;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 25px rgba(0,0,0,0.9);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       position: relative;
       overflow: hidden;
@@ -502,7 +574,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.18), transparent 55%);
+      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.25), transparent 55%);
       opacity: 0;
       transition: opacity 0.2s ease;
       pointer-events: none;
@@ -510,8 +582,8 @@
 
     .project-card:hover {
       transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 0 32px rgba(34, 197, 94, 0.4);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 32px rgba(56,189,248,0.4);
     }
 
     .project-card:hover::before {
@@ -519,7 +591,7 @@
     }
 
     .project-title {
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 0.25rem;
     }
 
@@ -535,7 +607,7 @@
       margin-top: 0.35rem;
     }
 
-    /* Certifications */
+    /* Certifications & Education list */
     .cert-list {
       list-style: none;
       margin-top: 0.7rem;
@@ -555,33 +627,47 @@
       color: var(--muted);
     }
 
+    /* special style for education items */
+    .edu-item {
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .edu-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.35rem;
+      width: 3px;
+      height: 70%;
+      border-radius: 999px;
+      background: linear-gradient(#22c55e,#38bdf8);
+      box-shadow: 0 0 10px rgba(56,189,248,0.6);
+    }
+
     /* Contact */
     .contact-card {
-      background: linear-gradient(135deg, #000000, #020617 40%, #020617 100%);
+      background: radial-gradient(circle at top left, rgba(34,197,94,0.1), #020617 65%);
       border-radius: 1.1rem;
-      border: 1px solid rgba(22, 163, 74, 0.8);
+      border: 1px solid rgba(21,128,61,0.9);
       padding: 1.4rem 1.5rem 1.5rem;
       display: grid;
       gap: 1rem;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       align-items: center;
-      box-shadow: 0 0 35px rgba(0, 0, 0, 0.95);
+      box-shadow: 0 0 35px rgba(0,0,0,0.9);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
     .contact-card:hover {
       transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 0 40px rgba(34, 197, 94, 0.35);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 40px rgba(56,189,248,0.35);
     }
 
     .contact-text {
       font-size: 0.9rem;
       color: var(--muted);
-    }
-
-    .contact-text strong {
-      color: var(--text);
     }
 
     .contact-list {
@@ -598,8 +684,8 @@
       font-size: 0.75rem;
       padding: 0.25rem 0.6rem;
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.9);
-      border: 1px solid rgba(55, 65, 81, 1);
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(55,65,81,1);
       color: var(--muted);
       display: inline-block;
       margin-top: 0.4rem;
@@ -612,7 +698,7 @@
       font-size: 0.95rem;
       font-weight: 500;
       color: #bbf7d0;
-      text-shadow: 0 0 18px rgba(34, 197, 94, 0.7);
+      text-shadow: 0 0 18px rgba(34,197,94,0.7);
       letter-spacing: 0.02em;
     }
 
@@ -657,7 +743,18 @@
     }
   </style>
 </head>
-<body>
+<body class="loading">
+  <!-- animated network background -->
+  <canvas id="networkCanvas"></canvas>
+
+  <!-- LOADING SCREEN -->
+  <div id="loader">
+    <div class="loader-text">L O A D I N G</div>
+    <div class="loader-bar">
+      <div class="loader-bar-inner"></div>
+    </div>
+  </div>
+
   <!-- HEADER / NAVBAR -->
   <header>
     <div class="container">
@@ -670,6 +767,7 @@
           <a href="#home">Home</a>
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
           <a href="#projects">Projects</a>
           <a href="#certs">Certifications</a>
           <a href="#contact">Contact</a>
@@ -678,15 +776,14 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- HERO -->
     <section id="home">
       <div class="container hero">
         <div class="fade-up">
-          <div class="hero-kicker">NETWORKING • CYBERSECURITY • ETHICAL HACKING</div>
           <h1>Hi, I'm <span>Pranjal Panta</span></h1>
           <p class="hero-tagline">
-            Aspiring Networking &amp; Cybersecurity Enthusiast with a growing interest in ethical hacking.
+            Networking  &amp; Cybersecurity Enthusiast
           </p>
           <p class="hero-location">
             Based in <span>Kathmandu, Nepal</span>
@@ -705,17 +802,12 @@
           </div>
 
           <p class="hero-summary">
-            Focused on <span>network engineering</span>, <span>cybersecurity</span> and
-            <span>ethical hacking</span>, building a strong foundation in
-            networking fundamentals, routing &amp; switching, security concepts,
-            and hands-on lab work.
+            Building a solid foundation in <span>network engineering</span>, <span>cybersecurity</span>, and <span>ethical hacking</span> through practical labs, applied projects, and ongoing skill development.
           </p>
         </div>
 
         <div class="hero-right fade-up delay-1">
           <div class="avatar-circle">
-            <!-- Replace with a real image if you want -->
-            <!-- <img src="images/your-photo.jpg" alt="Pranjal Panta" /> -->
             <div class="avatar-initials">PP</div>
           </div>
 
@@ -733,18 +825,18 @@
       <div class="container fade-up delay-1">
         <div class="section-header">
           <div class="section-kicker">About</div>
-          <h2 class="section-title">Who I Am</h2>
+          <h2 class="section-title">About Me</h2>
         </div>
 
         <div class="about-card">
           <p>
-            I’m a passionate and dedicated Networking and Cybersecurity student with a strong interest in how modern networks operate, communicate, and stay secure. My learning journey focuses on designing and managing reliable network infrastructures while gaining a deep understanding of network protocols system security, and performance optimization.
+            I’m a passionate and dedicated Networking and Cybersecurity student with a strong interest in how modern networks operate, communicate, and stay secure. My learning journey focuses on designing and managing reliable network infrastructures while gaining a deep understanding of network protocols, system security, and performance optimization.
           </p>
           <p>
-            I have hands-on experience configuring and troubleshooting LANs, WANs, VLANs, and routing protocols, and I enjoy exploring how networking and security work together to protect digital environments. Alongside my technical learning, I’m always improving my problem-solving skills analyzing testing and refining systems to ensure both efficiency and security.
+            I have hands-on experience configuring and troubleshooting LANs, WANs, VLANs, and routing protocols, and I enjoy exploring how networking and security work together to protect digital environments. Alongside my technical learning, I’m always improving my problem-solving skills, analyzing, testing, and refining systems to ensure both efficiency and security.
           </p>
           <p>
-            I’m highly motivated to grow in the field of Network Engineering and Cybersecurity, with a strong commitment to continuous learning and professional development. My goal is to contribute to building secure, scalable, and high-performance networks that power innovation and connectivity in today’s digital world.
+            I’m highly motivated to grow in the field of Network Engineering, Cybersecurity, and Ethical Hacking, with a strong commitment to continuous learning and professional development. My goal is to contribute to building secure, scalable, and high-performance networks that power innovation and connectivity in today’s digital world.
           </p>
         </div>
       </div>
@@ -757,8 +849,7 @@
           <div class="section-kicker">Skills</div>
           <h2 class="section-title">Core Skills &amp; Tools</h2>
           <p class="section-sub">
-            A focused blend of networking, routing, redundancy, security, and tools built through labs,
-            certifications, and continuous learning.
+            A practical blend of networking, routing, redundancy, security, and tools developed through labs, enterprise-style projects, and ongoing learning.
           </p>
         </div>
 
@@ -829,11 +920,11 @@
             </div>
 
             <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
-              💻 <strong>OS &amp; Security Skills</strong>
+              💻 <strong>Cybersecurity &amp; Ethical Hacking</strong>
             </p>
             <div class="badge-row" style="margin-bottom:0.7rem;">
-              <span class="badge">OS Security</span>
-              <span class="badge">Network Forensics (basics)</span>
+              <span class="badge">Operating Systems</span>
+              <span class="badge">Network Forensics</span>
               <span class="badge">Linux Fundamentals</span>
               <span class="badge">Basic Web Security</span>
             </div>
@@ -857,6 +948,36 @@
       </div>
     </section>
 
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="container fade-up delay-2">
+        <div class="section-header">
+          <div class="section-kicker">Education</div>
+          <h2 class="section-title">Education</h2>
+          <p class="section-sub">
+            Formal education supporting my journey in networking, cybersecurity, and ethical hacking.
+          </p>
+        </div>
+
+        <div class="card">
+          <ul class="cert-list">
+            <li class="edu-item">
+              <div class="cert-title">BSc Hons Cybersecurity and Ethical Hacking  (Coventry University)</div>
+              <div class="cert-meta">
+                Softwarica College of IT &amp; E-Commerce, Kathmandu.
+              </div>
+            </li>
+            <li class="edu-item">
+              <div class="cert-title">+2 (Higher Secondary)</div>
+              <div class="cert-meta">
+                Ace Higher Secondary School, Nepal.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <!-- PROJECTS -->
     <section id="projects">
       <div class="container fade-up delay-2">
@@ -865,7 +986,7 @@
           <h2 class="section-title">Featured Projects</h2>
           <p class="section-sub">
             A mix of networking and security labs that reflect my interests in
-            enterprise networks, firewalls, ethical hacking, and security tooling.
+            enterprise networks, firewalls, and security tooling.
           </p>
         </div>
 
@@ -873,8 +994,8 @@
           <div class="project-card">
             <div class="project-title">🔹 Three-Tier Enterprise Network Design</div>
             <p class="project-tagline">
-              Hands-on project demonstrating a scalable and secure enterprise-style network
-              architecture with proper segmentation and hierarchical design.
+              Scalable and secure enterprise-style network architecture with proper
+              segmentation and hierarchical design.
             </p>
             <div class="project-footer">
               Designed in Cisco Packet Tracer using routing, VLANs and best practices.
@@ -884,7 +1005,7 @@
           <div class="project-card">
             <div class="project-title">🔹 Cisco ASA Firewall Configuration</div>
             <p class="project-tagline">
-              Implemented security policies on Cisco ASA, using ACLs, NAT and VPN concepts
+              Implemented security policies on Cisco ASA using ACLs, NAT and VPN concepts
               to control and protect traffic between internal and external networks.
             </p>
             <div class="project-footer">
@@ -896,7 +1017,7 @@
             <div class="project-title">🔹 Secure File Encryption Tool (Python)</div>
             <p class="project-tagline">
               Python-based tool to encrypt and decrypt files securely, focusing on basic
-              cryptography concepts and following security best practices.
+              cryptography concepts and security best practices.
             </p>
             <div class="project-footer">
               Built to understand confidentiality and secure data handling.
@@ -917,11 +1038,11 @@
           <div class="project-card">
             <div class="project-title">🔹 Enterprise Networking Mini Project (Cisco Packet Tracer)</div>
             <p class="project-tagline">
-              Designed a multi-department enterprise network with VLANs, inter-VLAN routing,
+              Multi-department enterprise network with VLANs, inter-VLAN routing,
               DHCP, and secure wireless using /26 subnetting.
             </p>
             <div class="project-footer">
-              This is one of my key labs – combining addressing, segmentation and services.
+              Combines addressing, segmentation and services in one lab.
             </div>
           </div>
         </div>
@@ -974,11 +1095,11 @@
           <div>
             <p class="contact-text">
               I’m always open to opportunities to learn, work on networking or cybersecurity labs,
-              explore ethical hacking, and connect with people in the tech community.
-              If you’d like to discuss projects, ideas, or collaboration, feel free to reach out.
+              and connect with people in the tech community. If you’d like to discuss projects,
+              ideas, or collaboration, feel free to reach out.
             </p>
             <span class="pill-small">
-              Prefer: networking, security, ethical hacking &amp; learning-focused conversations
+              Prefer: networking, security &amp; learning-focused conversations
             </span>
           </div>
 
@@ -999,17 +1120,116 @@
   <!-- CTA + FOOTER -->
   <div class="container">
     <p class="cta-line">
-      ⚡ Thank you for visiting! Let's connect and build secure, resilient & ethical networks together ⚡
+      ⚡ Thanks for visiting – let’s connect and build secure networks together ⚡
     </p>
   </div>
 
   <footer>
-    © <span id="year"></span> Pranjal Panta · Built with passion for networking, cybersecurity & ethical hacking.
+    © <span id="year"></span> Pranjal Panta.
   </footer>
 
   <script>
     // Set current year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Loader logic: show ONLY loader first, then reveal page
+    window.addEventListener("load", function () {
+      setTimeout(() => {
+        const loader = document.getElementById("loader");
+        loader.style.opacity = "0";
+        loader.style.transition = "opacity 0.6s ease";
+
+        setTimeout(() => {
+          loader.style.display = "none";
+          document.body.classList.remove("loading");
+          document.body.classList.add("page-visible");
+        }, 600);
+      }, 3000); // 3 seconds
+    });
+
+    // ===== NETWORK CANVAS ANIMATION =====
+    const canvas = document.getElementById("networkCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let nodes = [];
+    let nodeCount;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      // number of nodes depends on screen size
+      const area = canvas.width * canvas.height;
+      nodeCount = Math.min(120, Math.max(45, Math.floor(area / 22000)));
+      initNodes();
+    }
+
+    function initNodes() {
+      nodes = [];
+      for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4
+        });
+      }
+    }
+
+    function drawNetwork() {
+      // subtle dark overlay for trails
+      ctx.fillStyle = "rgba(2, 6, 23, 0.22)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // draw connections
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 140) {
+            const alpha = 1 - dist / 140;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = `rgba(56,189,248,${0.18 * alpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // draw nodes
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = "#22c55e";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(56,189,248,0.35)";
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+
+        // move nodes
+        n.x += n.vx;
+        n.y += n.vy;
+
+        // bounce from edges
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+      }
+
+      requestAnimationFrame(drawNetwork);
+    }
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+    drawNetwork();
   </script>
 </body>
 </html>
