@@ -796,7 +796,7 @@
             <a class="btn btn-ghost" href="tel:+9779861490158">
               📞 WhatsApp
             </a>
-            <a class="btn btn-ghost" href="viber://chat?number=%2B9779861490158">
+            <a class="btn btn-ghost" href="#" onclick="openViber(); return false;">
               💬 Viber
             </a>
           </div>
@@ -1152,6 +1152,27 @@
         }, 600);
       }, 3000); // 3 seconds
     });
+
+    // Viber function - tries multiple methods to open Viber
+    function openViber() {
+      const phoneNumber = "9779861490158"; // Your number without +
+      
+      // Method 1: Standard viber:// protocol
+      window.location.href = "viber://chat?number=" + phoneNumber;
+      
+      // Method 2: Alternative viber:// protocol
+      setTimeout(function() {
+        window.location.href = "viber://add?number=" + phoneNumber;
+      }, 200);
+      
+      // Method 3: For desktop web version
+      setTimeout(function() {
+        window.open("https://viber.click/" + phoneNumber, "_blank");
+      }, 400);
+      
+      // Don't return false to allow the first method to work
+      return false;
+    }
 
     // ===== NETWORK CANVAS ANIMATION =====
     const canvas = document.getElementById("networkCanvas");
