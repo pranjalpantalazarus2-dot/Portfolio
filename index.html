@@ -1,1249 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Pranjal Panta | Aspiring Network Engineer | Cybersecurity Enthusiast </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Pranjal Panta - Aspiring Network Engineer | Cybersecurity Enthusiast from Kathmandu, Nepal." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pranjal Panta</title>
+  <meta name="description" content="Portfolio of Pranjal Panta – Networking, Cybersecurity, Certifications & Projects">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --bg: #020617;
-      --card: #020617;
-      --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.14);
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border: #111827;
-      --accent-blue: #38bdf8;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      position: relative;
-      font-family: "Poppins", sans-serif;
-      background: radial-gradient(circle at 0% 0%, rgba(34,197,94,0.12), transparent 55%), #020617;
-      color: var(--text);
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      color: #f1f5f9;
+      line-height: 1.5;
       scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
-    /* CANVAS BACKGROUND */
-    #networkCanvas {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background: radial-gradient(circle at 10% 0%, #020617, #020617 60%);
-    }
-
-    /* soft gradient overlay */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 0 0, rgba(34,197,94,0.10), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(56,189,248,0.22), transparent 60%);
-      mix-blend-mode: screen;
-      opacity: 0.75;
-      z-index: -1;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* fade animation */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fadeUp 0.8s ease forwards;
-    }
-    .delay-1 { animation-delay: 0.15s; }
-    .delay-2 { animation-delay: 0.3s; }
-    .delay-3 { animation-delay: 0.45s; }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ===== LOADER ===== */
-    body.loading {
-      overflow: hidden;
-    }
-
-    body.loading header,
-    body.loading main,
-    body.loading .cta-line,
-    body.loading footer {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    body.page-visible header,
-    body.page-visible main,
-    body.page-visible .cta-line,
-    body.page-visible footer {
-      opacity: 1;
-      transition: opacity 0.6s ease;
-    }
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      background: #020617;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      color: #e5e7eb;
-    }
-
-    /* LOADING text */
-    .loader-text {
-      font-size: 0.8rem;
-      letter-spacing: 0.9em;
-      text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 1.8rem;
-      text-indent: 0.45em;
-    }
-
-    /* Pulse line track */
-    .loader-bar {
+      background: radial-gradient(circle at 30% 20%, #0a1128, #02040a);
       position: relative;
-      width: 280px;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(
-        90deg,
-        rgba(15,23,42,0.9),
-        #0f172a,
-        rgba(15,23,42,0.9)
-      );
-      overflow: visible;
-      box-shadow: 0 0 24px rgba(34,197,94,0.55);
-      border: 1px solid rgba(34,197,94,0.45);
     }
-
-    /* base glow line */
-    .loader-bar-inner {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: linear-gradient(
-        90deg,
-        rgba(34,197,94,0),
-        rgba(34,197,94,0.8),
-        rgba(56,189,248,0.9),
-        rgba(34,197,94,0.8),
-        rgba(34,197,94,0)
-      );
-      opacity: 0.8;
-      filter: blur(0.4px);
-    }
-
-    /* moving pulse (ECG-style) */
-    .loader-bar::before {
-      content: "";
-      position: absolute;
-      top: -7px;
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
       left: 0;
       width: 100%;
-      height: 16px;
-      background-image:
-        radial-gradient(circle at 10% 50%, rgba(34,197,94,0) 0, rgba(34,197,94,0) 35%, rgba(45,212,191,0.9) 50%, rgba(34,197,94,0) 70%, rgba(34,197,94,0) 100%);
-      background-size: 180% 100%;
-      animation: pulseSweep 1.4s linear infinite;
-      mix-blend-mode: screen;
+      height: 100%;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjgiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=');
+      background-repeat: repeat;
+      opacity: 0.25;
       pointer-events: none;
+      z-index: 0;
     }
-
-    @keyframes pulseSweep {
-      0%   { background-position: -60% 0; opacity: 0; }
-      15%  { opacity: 1; }
-      50%  { opacity: 1; }
-      100% { background-position: 160% 0; opacity: 0; }
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
+                  radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+      animation: slowDrift 18s infinite alternate;
+      pointer-events: none;
+      z-index: 0;
     }
-
-    /* Navbar */
-    header {
+    @keyframes slowDrift {
+      0% { transform: scale(1) translate(0%, 0%); opacity: 0.4; }
+      100% { transform: scale(1.05) translate(1%, 1%); opacity: 0.7; }
+    }
+    .container, nav { position: relative; z-index: 2; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(2, 4, 10, 0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.3);
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(2,6,23,0.96), rgba(2,6,23,0.85));
-      border-bottom: 1px solid rgba(15,23,42,0.9);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.9);
+      z-index: 100;
     }
-
-    .nav {
+    .logo-p {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 0;
-    }
-
-    .nav-logo {
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
-    .nav-logo span {
-      width: 11px;
-      height: 11px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #4ade80, #22c55e, #16a34a);
-      box-shadow: 0 0 20px rgba(34,197,94,0.95);
-      animation: pulseDot 1.8s ease-in-out infinite;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.45); opacity: 0.8; }
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.6rem;
-      font-size: 0.86rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border-radius: 16px;
       position: relative;
-      padding-bottom: 0.15rem;
-      transition: color 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5), 0 4px 12px rgba(0,0,0,0.2);
     }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-links a::after {
-      content: "";
+    .logo-p::before {
+      content: '';
       position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg,#22c55e,#38bdf8);
-      transition: width 0.2s ease;
+      inset: -2px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6, #3b82f6);
+      border-radius: 18px;
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: -1;
     }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* Hero */
-    #home {
-      padding: 3.4rem 0 3rem;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .hero-kicker {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.1rem, 3vw, 2.7rem);
-      font-weight: 700;
-      margin-bottom: 0.35rem;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(120deg,#bbf7d0,#22c55e,#38bdf8);
+    .logo-p:hover::before { opacity: 1; }
+    .logo-p span {
+      font-weight: 800;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, #c084fc, #60a5fa);
+      background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      text-shadow: 0 0 6px rgba(96,165,250,0.3);
+      transition: transform 0.2s;
     }
-
-    .hero-tagline {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
+    .logo-p:hover span { transform: scale(1.05); }
+    .logo-p:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.8), 0 8px 20px rgba(0,0,0,0.3);
     }
-
-    .hero-location {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 1.4rem;
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #cbd5e1; transition: 0.2s; font-size: 0.9rem; }
+    .nav-links a:hover { color: #60a5fa; }
+    .hire-btn {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      color: white !important;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(59,130,246,0.4);
     }
-
-    .hero-location span {
-      color: var(--accent);
-      font-weight: 500;
+    .hire-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(59,130,246,0.5);
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
     }
-
-    .hero-actions {
+    .hero { text-align: center; padding: 5rem 1rem 3rem; }
+    .avatar {
+      width: 110px; height: 110px;
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      border-radius: 50%;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 1.5rem;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-weight: 800; font-size: 2.8rem;
+      color: #60a5fa;
+      border: 2px solid rgba(59, 130, 246, 0.5);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
     }
-
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #ffffff, #cbd5e1);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .hero-tagline { font-size: 1.1rem; color: #94a3b8; margin-bottom: 0.5rem; }
+    .hero-location { color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; }
+    .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
     .btn {
-      padding: 0.6rem 1.15rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      cursor: pointer;
-      background: transparent;
-      color: var(--text);
-      transition: all 0.2s ease;
-      white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 1.5rem; border-radius: 40px; font-weight: 600;
+      font-size: 0.85rem; text-decoration: none; transition: all 0.2s;
+      background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(4px);
+      border: 1px solid rgba(59, 130, 246, 0.4); color: #f1f5f9;
     }
-
-    .btn-primary {
-      background: radial-gradient(circle at 20% 0,#22c55e,#16a34a);
-      box-shadow: 0 0 22px rgba(34,197,94,0.55);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px) scale(1.02);
-      box-shadow: 0 0 28px rgba(34,197,94,0.9);
-    }
-
-    .btn-ghost {
-      border-color: rgba(148,163,184,0.6);
-      background: rgba(15,23,42,0.9);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-1px);
-    }
-
-    .hero-summary {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-    }
-
-    .hero-summary span {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.4rem;
-    }
-
-    .avatar-circle {
-      width: 190px;
-      height: 190px;
-      border-radius: 999px;
-      border: 1px solid rgba(34,197,94,0.9);
-      background:
-        radial-gradient(circle at 20% 5%, #22c55e, transparent 55%),
-        radial-gradient(circle at 80% 100%, #0f172a, #020617 65%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 35px rgba(34,197,94,0.5), 0 0 90px rgba(56,189,248,0.8);
-      position: relative;
-      overflow: hidden;
-      animation: avatarGlow 10s ease-in-out infinite alternate;
-    }
-
-    .avatar-circle::before {
-      content: "";
-      position: absolute;
-      inset: 16%;
-      border-radius: inherit;
-      border: 1px dashed rgba(148,163,184,0.6);
-      box-shadow: 0 0 20px rgba(15,23,42,0.9);
-      opacity: 0.7;
-    }
-
-    @keyframes avatarGlow {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-4px) rotate(1.5deg); }
-    }
-
-    .avatar-initials {
-      font-size: 2.4rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: #dcfce7;
-    }
-
-    .social-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      justify-content: center;
-    }
-
-    .chip {
-      font-size: 0.8rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      color: var(--muted);
-      background: rgba(15,23,42,0.98);
-      transition: all 0.15s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .chip:hover {
-      border-color: var(--accent-blue);
-      color: var(--accent-blue);
-      transform: translateY(-1px);
-      box-shadow: 0 0 12px rgba(56,189,248,0.7);
-    }
-
-    /* Sections */
-    section {
-      padding: 2.8rem 0 0;
-    }
-
-    .section-header {
-      margin-bottom: 1.5rem;
-    }
-
-    .section-kicker {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      margin-bottom: 0.3rem;
-    }
-
+    .btn-primary { background: #3b82f6; border: none; color: white; box-shadow: 0 4px 14px rgba(59,130,246,0.3); }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+    .btn-outline:hover { background: rgba(59,130,246,0.2); transform: translateY(-2px); }
+    .social-links-hero { display: flex; justify-content: center; gap: 1.8rem; margin-top: 0.5rem; }
+    .social-links-hero a { color: #94a3b8; font-size: 1.3rem; transition: 0.2s; }
+    .social-links-hero a:hover { color: #60a5fa; transform: translateY(-2px); }
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(59,130,246,0.2); }
     .section-title {
-      font-size: 1.4rem;
-      font-weight: 700;
+      font-size: 2rem; font-weight: 700; margin-bottom: 2rem;
+      background: linear-gradient(135deg, #e2e8f0, #93c5fd);
+      background-clip: text; -webkit-background-clip: text;
+      color: transparent;
     }
-
-    .section-sub {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 540px;
-      margin-top: 0.25rem;
+    .about-text, .skill-card, .edu-card, .cert-grid, .blog-grid, .contact-wrapper, .project-card, .blog-card {
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      padding: 1.5rem;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      transition: all 0.2s;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
-
-    .about-card {
-      background: radial-gradient(circle at top left, var(--accent-soft), #020617 65%);
-      border-radius: 1.1rem;
-      border: 1px solid rgba(22,101,52,0.8);
-      padding: 1.4rem 1.4rem 1.5rem;
-      font-size: 0.93rem;
-      color: #e5e7eb;
-      box-shadow: 0 0 35px rgba(0,0,0,0.85);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .about-card:hover {
+    .project-card:hover, .skill-card:hover, .blog-card:hover {
       transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 0 40px rgba(34,197,94,0.35);
+      background: rgba(30, 41, 59, 0.7);
+      border-color: #60a5fa;
     }
-
-    .about-card p + p {
-      margin-top: 0.7rem;
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .skill-card h3 {
+      font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;
+      color: #60a5fa; display: flex; align-items: center; gap: 0.6rem;
+      border-left: 3px solid #3b82f6; padding-left: 0.8rem;
     }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
-      gap: 1.8rem;
-      align-items: flex-start;
+    .skill-block { margin-bottom: 1.5rem; }
+    .skill-block h4 {
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+      color: #cbd5e1; margin-bottom: 0.6rem; font-weight: 700;
+      display: flex; align-items: center; gap: 0.4rem;
     }
-
-    .card {
-      background: radial-gradient(circle at top, rgba(15,23,42,0.94), #020617 65%);
-      border-radius: 1rem;
-      border: 1px solid rgba(15,23,42,0.95);
-      padding: 1.2rem 1.2rem 1.3rem;
-      box-shadow: 0 0 25px rgba(0,0,0,0.9);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      background: #1e293b; padding: 0.25rem 1rem; border-radius: 40px;
+      font-size: 0.75rem; font-weight: 500; color: #cbd5e1;
+      border: 1px solid #334155;
     }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 32px rgba(56,189,248,0.35);
+    .edu-item { border-left: 3px solid #3b82f6; padding-left: 1rem; margin-bottom: 1.5rem; }
+    .edu-item h4 { font-weight: 700; font-size: 1.1rem; }
+    .edu-item .meta { font-size: 0.8rem; color: #94a3b8; }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .cert-item { background: rgba(15,23,42,0.6); border-radius: 20px; padding: 1.2rem; transition: 0.2s; border: 1px solid rgba(59,130,246,0.2); }
+    .cert-item:hover { transform: translateY(-3px); border-color: #60a5fa; background: rgba(30,41,59,0.7); }
+    .cert-item strong { display: block; font-weight: 800; font-size: 1rem; margin-bottom: 0.3rem; color: #f1f5f9; }
+    .cert-item .issuer { font-size: 0.75rem; color: #93c5fd; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
+    .cert-item .date { font-size: 0.7rem; color: #94a3b8; margin-bottom: 0.8rem; }
+    .cert-link-btn {
+      display: inline-block; background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.5); padding: 0.3rem 1rem;
+      border-radius: 30px; font-size: 0.7rem; font-weight: 600;
+      color: #60a5fa; text-decoration: none; transition: 0.2s;
+      margin-top: 0.2rem; cursor: pointer;
     }
-
-    .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
+    .cert-link-btn:hover { background: #3b82f6; color: white; border-color: #3b82f6; }
+    .modal {
+      display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+      width: 100%; height: 100%; background-color: rgba(0,0,0,0.95);
+      justify-content: center; align-items: center;
     }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
     }
-
-    .badge {
-      font-size: 0.78rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.95);
-      border: 1px solid rgba(55,65,81,0.9);
-      color: var(--muted);
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    .close-modal {
+      position: absolute; top: 20px; right: 35px; color: #f1f5f9; font-size: 40px;
+      font-weight: bold; cursor: pointer; transition: 0.2s;
     }
-
-    .badge-strong {
-      border-color: var(--accent);
-      color: #dcfce7;
-      background: rgba(5,46,22,0.9);
+    .close-modal:hover { color: #60a5fa; }
+    .modal-upload-btn {
+      background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem;
+      border-radius: 30px; font-size: 0.8rem; cursor: pointer; margin-top: 1rem;
     }
-
-    .badge:hover {
-      background: rgba(56,189,248,0.20);
-      border-color: var(--accent-blue);
-      color: #e0f2fe;
-      transform: translateY(-1px);
+    .projects-grid, .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+    .project-title, .blog-title {
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #f1f5f9;
     }
-
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.3rem;
+    .project-desc, .blog-excerpt { color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.8rem; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tech-stack span { background: #1e293b; padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; font-weight: 600; color: #60a5fa; }
+    .blog-image { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; margin-bottom: 1rem; border: 1px solid rgba(59,130,246,0.3); }
+    .blog-meta { font-size: 0.7rem; color: #94a3b8; margin-bottom: 0.5rem; }
+    .blog-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
-
-    .project-card {
-      background: radial-gradient(circle at top, rgba(15,23,42,0.9), #020617 65%);
-      border-radius: 1rem;
-      border: 1px solid rgba(15,23,42,0.95);
-      padding: 1rem 1.1rem 1.1rem;
-      font-size: 0.9rem;
-      box-shadow: 0 0 25px rgba(0,0,0,0.9);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-      position: relative;
-      overflow: hidden;
+    .blog-card .blog-title {
+      text-decoration: none;
+      color: #f1f5f9;
     }
-
-    .project-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.25), transparent 55%);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      pointer-events: none;
+    .blog-card:hover .blog-title {
+      color: #60a5fa;
     }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 32px rgba(56,189,248,0.4);
+    .contact-wrapper { display: flex; flex-wrap: wrap; gap: 2.5rem; padding: 2rem; }
+    .contact-info { flex: 1; min-width: 220px; }
+    .contact-info h3 { font-size: 1.5rem; margin-bottom: 0.8rem; }
+    .contact-info p { color: #cbd5e1; margin-bottom: 1.5rem; }
+    .contact-detail { margin-top: 1.5rem; }
+    .contact-detail div { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; color: #cbd5e1; }
+    .contact-detail i { width: 24px; color: #60a5fa; }
+    .contact-form { flex: 2; }
+    .form-row { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      width: 100%; padding: 0.8rem 1rem; border-radius: 20px;
+      border: 1px solid #334155; background: #0f172a; color: #f1f5f9;
+      font-family: inherit;
     }
-
-    .project-card:hover::before {
-      opacity: 1;
-    }
-
-    .project-title {
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
-    .project-tagline {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 0.45rem;
-    }
-
-    .project-footer {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.35rem;
-    }
-
-    /* Certifications & Education list */
-    .cert-list {
-      list-style: none;
-      margin-top: 0.7rem;
-      font-size: 0.9rem;
-    }
-
-    .cert-list li + li {
-      margin-top: 0.7rem;
-    }
-
-    .cert-title {
-      font-weight: 600;
-    }
-
-    .cert-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* special style for education items */
-    .edu-item {
-      position: relative;
-      padding-left: 1rem;
-    }
-
-    .edu-item::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.35rem;
-      width: 3px;
-      height: 70%;
-      border-radius: 999px;
-      background: linear-gradient(#22c55e,#38bdf8);
-      box-shadow: 0 0 10px rgba(56,189,248,0.6);
-    }
-
-    /* Contact */
-    .contact-card {
-      background: radial-gradient(circle at top left, rgba(34,197,94,0.1), #020617 65%);
-      border-radius: 1.1rem;
-      border: 1px solid rgba(21,128,61,0.9);
-      padding: 1.4rem 1.5rem 1.5rem;
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      align-items: center;
-      box-shadow: 0 0 35px rgba(0,0,0,0.9);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 40px rgba(56,189,248,0.35);
-    }
-
-    .contact-text {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .contact-list {
-      font-size: 0.88rem;
-      list-style: none;
-      margin-top: 0.6rem;
-    }
-
-    .contact-list li + li {
-      margin-top: 0.25rem;
-    }
-
-    .pill-small {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(55,65,81,1);
-      color: var(--muted);
-      display: inline-block;
-      margin-top: 0.4rem;
-    }
-
-    /* Footer */
-    .cta-line {
-      text-align: center;
-      margin-top: 2.4rem;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #bbf7d0;
-      text-shadow: 0 0 18px rgba(34,197,94,0.7);
-      letter-spacing: 0.02em;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-right {
-        order: -1;
-      }
-      .two-col {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .contact-card {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .nav-links {
-        display: none;
-      }
-    }
-
-    @media (max-width: 600px) {
-      #home {
-        padding-top: 2.5rem;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
+    .contact-form button { background: #3b82f6; border: none; padding: 0.7rem 2rem; border-radius: 40px; font-weight: 600; color: white; cursor: pointer; transition: 0.2s; margin-top: 0.5rem; }
+    .contact-form button:hover { background: #2563eb; transform: translateY(-2px); }
+    footer { text-align: center; padding: 2rem; margin-top: 2rem; border-top: 1px solid rgba(59,130,246,0.3); color: #94a3b8; font-size: 0.85rem; background: rgba(2,4,10,0.5); backdrop-filter: blur(4px); }
+    @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 750px) {
+      nav { flex-direction: column; gap: 1rem; padding: 0.8rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+      .hero h1 { font-size: 2rem; }
+      .section-title { font-size: 1.6rem; }
+      .container { padding: 0 1rem; }
     }
   </style>
 </head>
-<body class="loading">
-  <!-- animated network background -->
-  <canvas id="networkCanvas"></canvas>
+<body>
 
-  <!-- LOADING SCREEN -->
-  <div id="loader">
-    <div class="loader-text">L O A D I N G</div>
-    <div class="loader-bar">
-      <div class="loader-bar-inner"></div>
+<nav>
+  <div class="logo-p"><span>P</span></div>
+  <div class="nav-links">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+    <a href="#education">Education</a><a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a><a href="#blogs">Blogs</a><a href="#contact">Contact</a>
+    <a href="#contact" class="hire-btn">Hire me!</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div id="home" class="hero">
+    <div class="avatar">PP</div>
+    <h1>Hi, I'm Pranjal Panta</h1>
+    <div class="hero-tagline">Aspiring Network Engineer & Cybersecurity Enthusiast</div>
+    <div class="hero-location">📍 Based in Kathmandu, Nepal</div>
+    <div class="btn-group">
+      <a href="mailto:pranjalpantalazarus2@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Me</a>
+      <a href="https://wa.me/9779861490159?text=Hello%20Pranjal" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="#" class="btn btn-outline" id="viberBtn"><i class="fas fa-phone-alt"></i> Viber</a>
+    </div>
+    <div class="social-links-hero">
+      <a href="https://github.com/pranjalpanta" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/pranjal-p-49ab59293/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://medium.com/@pranjalpanta2.0" target="_blank"><i class="fab fa-medium"></i></a>
+      <a href="https://www.researchgate.net/profile/Pranjal-Panta" target="_blank"><i class="fas fa-microscope"></i></a>
     </div>
   </div>
 
-  <!-- HEADER / NAVBAR -->
-  <header>
-    <div class="container">
-      <nav class="nav">
-        <div class="nav-logo">
-          <span></span>
-          PRANJAL PANTA
-        </div>
-        <div class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#education">Education</a>
-          <a href="#projects">Projects</a>
-          <a href="#certs">Certifications</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-text">
+      <p>I am a Networking and Cybersecurity student focused on designing, implementing, and securing modern network infrastructures. I have hands-on experience with LANs, WANs, VLANs, and routing protocols such as OSPF, BGP, and EIGRP. I am passionate about building secure, scalable, and high-performance networks, and continuously developing my skills through labs, simulations, and real-world projects.</p>
     </div>
-  </header>
+  </section>
 
-  <main id="main-content">
-    <!-- HERO - WITH TWO ROWS AS REQUESTED -->
-    <section id="home">
-      <div class="container hero">
-        <div class="fade-up">
-          <h1>Hi, I'm <span>Pranjal Panta</span></h1>
-          <p class="hero-tagline">
-            Aspiring Network Engineer & Cybersecurity Enthusiast
-          </p>
-          <p class="hero-location">
-            Based in <span>Kathmandu, Nepal</span>
-          </p>
-
-          <!-- ROW 1: Email Me, WhatsApp, Viber (as buttons) -->
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:pranjalpantalazarus2@gmail.com">
-              📧 Email Me
-            </a>
-            <a class="btn btn-ghost" href="https://wa.me/9779861490158" target="_blank">
-              💬 WhatsApp
-            </a>
-            <a class="btn btn-ghost" href="#" onclick="openViber(); return false;">
-              📞 Viber
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-right fade-up delay-1">
-          <div class="avatar-circle">
-            <div class="avatar-initials">PP</div>
-          </div>
-
-          <!-- ROW 2: GitHub, LinkedIn, Medium, ResearchGate (as chips) -->
-          <div class="social-row">
-            <a class="chip" href="https://github.com/pranjalpanta" target="_blank">🐙 GitHub</a>
-            <a class="chip" href="https://www.linkedin.com/in/pranjal-p-49ab59293/" target="_blank">🔗 LinkedIn</a>
-            <a class="chip" href="https://medium.com/@pranjalpanta2.0" target="_blank">📝 Medium Blogs</a>
-            <a class="chip" href="https://www.researchgate.net/profile/Pranjal-Panta" target="_blank">🔬 ResearchGate</a>
-          </div>
-        </div>
+  <section id="skills">
+    <h2 class="section-title">Core Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3><i class="fas fa-network-wired"></i> Networking</h3>
+        <div class="skill-block"><h4><i class="fas fa-play"></i> Network Fundamentals</h4><div class="skill-tags"><span class="skill-tag">OSI Model</span><span class="skill-tag">TCP/IP</span><span class="skill-tag">Cable Types</span><span class="skill-tag">Network Protocols</span><span class="skill-tag">Subnetting</span><span class="skill-tag">VLSM</span><span class="skill-tag">Supernetting</span></div></div>
+        <div class="skill-block"><h4><i class="fas fa-play"></i> Switching Protocols</h4><div class="skill-tags"><span class="skill-tag">VLANs</span><span class="skill-tag">STP</span><span class="skill-tag">SVI</span><span class="skill-tag">DHCP Snooping</span><span class="skill-tag">Port Security</span><span class="skill-tag">EtherChannel</span><span class="skill-tag">MPLS</span></div></div>
+        <div class="skill-block"><h4><i class="fas fa-play"></i> Routing Protocols</h4><div class="skill-tags"><span class="skill-tag">RIP</span><span class="skill-tag">OSPF</span><span class="skill-tag">EIGRP</span><span class="skill-tag">BGP</span><span class="skill-tag">IS-IS</span></div></div>
+        <div class="skill-block"><h4><i class="fas fa-play"></i> Redundancy Protocols</h4><div class="skill-tags"><span class="skill-tag">HSRP</span><span class="skill-tag">VRRP</span><span class="skill-tag">GLBP</span></div></div>
       </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container fade-up delay-1">
-        <div class="section-header">
-          <div class="section-kicker">About</div>
-          <h2 class="section-title">About Me</h2>
-        </div>
-
-        <div class="about-card">
-          <p>
-           I am a Networking and Cybersecurity student with a strong passion for designing, implementing, and securing modern network infrastructures. I have hands on experience configuring and troubleshooting LANs, WANs, and VLANs, along with a practical and theoretical understanding of routing protocols including RIP, EIGRP, OSPF, and BGP. I am particularly interested in how network architecture and security principles work together to deliver reliable, scalable, and high performance communication systems. I enjoy analyzing complex network environments, diagnosing issues, and applying effective solutions to enhance performance, stability, and security. Committed to continuous learning and professional growth, I am actively developing both my theoretical knowledge and practical skills through labs, simulations, and real-world projects, with the goal of contributing to the design and maintenance of secure and efficient enterprise networks.
-        </div>
+      <div class="skill-card">
+        <h3><i class="fas fa-shield-alt"></i> Security, Firewalls & Tools</h3>
+        <div class="skill-block"><h4><i class="fas fa-play"></i> Security & Firewalls</h4><div class="skill-tags"><span class="skill-tag">Cisco ASA Firewall</span><span class="skill-tag">ACLs</span><span class="skill-tag">VPN Concepts</span><span class="skill-tag">NAT/PAT</span></div></div>
+        <div class="skill-block"><h4><i class="fas fa-play"></i> Cybersecurity & Ethical Hacking</h4><div class="skill-tags"><span class="skill-tag">Operating Systems</span><span class="skill-tag">Network Forensics</span><span class="skill-tag">Linux Fundamentals</span><span class="skill-tag">Basic Web Security</span></div></div>
+        <div class="skill-block"><h4><i class="fas fa-play"></i> Tools & Simulation</h4><div class="skill-tags"><span class="skill-tag">Cisco Packet Tracer</span><span class="skill-tag">GNS3</span><span class="skill-tag">Wireshark</span><span class="skill-tag">PyCharm</span><span class="skill-tag">FTK Imager</span><span class="skill-tag">Autopsy</span><span class="skill-tag">Hack The Box</span><span class="skill-tag">BurpSuite</span><span class="skill-tag">Kali Linux</span><span class="skill-tag">tryhackme</span><span class="skill-tag">pingmynetwork</span></div></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SKILLS -->
-    <section id="skills">
-      <div class="container fade-up delay-1">
-        <div class="section-header">
-          <div class="section-kicker">Skills</div>
-          <h2 class="section-title">Core Skills &amp; Tools</h2>
-          <p class="section-sub">
-            A practical blend of networking, routing, redundancy, security, and tools developed through labs, enterprise-style projects, and ongoing learning.
-          </p>
-        </div>
+  <section id="education">
+    <h2 class="section-title">© My Education</h2>
+    <div class="edu-card">
+      <div class="edu-item"><h4>BSc Hons Cybersecurity and Ethical Hacking (Coventry University)</h4><div class="meta">Softwarica College of IT & E-Commerce, Kathmandu, Nepal</div></div>
+      <div class="edu-item"><h4>+2 (National Examination Board)</h4><div class="meta">Ace Higher Secondary School, Kathmandu, Nepal</div></div>
+    </div>
+  </section>
 
-        <div class="two-col">
-          <!-- Networking & Routing -->
-          <div class="card">
-            <h3 class="card-title">Networking </h3>
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card"><div class="project-title">Three-Tier Enterprise Network Design</div><div class="project-desc">Scalable and secure enterprise-style network architecture with proper segmentation and hierarchical design.<br>Designed in Cisco Packet Tracer using routing, VLANs and best practices.</div><div class="tech-stack"><span>Packet Tracer</span><span>VLANs</span><span>Routing</span></div></div>
+      <div class="project-card"><div class="project-title">Web Enumeration Tool (Python)</div><div class="project-desc">Script that gathers important information about web applications (headers, technologies, endpoints, etc.) to support security testing and reconnaissance.<br>Helps build a structured approach to information gathering.</div><div class="tech-stack"><span>Python</span><span>BurpSuite</span><span>Recon</span></div></div>
+      <div class="project-card"><div class="project-title">Cisco ASA Firewall Configuration</div><div class="project-desc">Implemented security policies on Cisco ASA using ACLs, NAT and VPN concepts to control and protect traffic between internal and external networks.<br>Focused on perimeter security and rule-based access control.</div><div class="tech-stack"><span>Cisco ASA</span><span>ACL</span><span>VPN</span></div></div>
+      <div class="project-card"><div class="project-title">Enterprise Networking Mini Project (Cisco Packet Tracer)</div><div class="project-desc">Multi-department enterprise network with VLANs, inter-VLAN routing, DHCP, and secure wireless using /26 subnetting.<br>Combines addressing, segmentation and services in one lab.</div><div class="tech-stack"><span>Packet Tracer</span><span>DHCP</span><span>VLANs</span></div></div>
+      <div class="project-card"><div class="project-title">Secure File Encryption Tool (Python)</div><div class="project-desc">Python-based tool to encrypt and decrypt files securely, focusing on basic cryptography concepts and security best practices.<br>Built to understand confidentiality and secure data handling.</div><div class="tech-stack"><span>Python</span><span>Cryptography</span></div></div>
+      <div class="project-card"><div class="project-title">Password Manager / Password Vault</div><div class="project-desc">A password manager is a tool that stores all your passwords securely in one place. Instead of remembering many passwords, you remember only one master password.<br>You only need to remember one master password, and the tool remembers the rest for you.</div><div class="tech-stack"><span>Python</span><span>Encryption</span><span>Security</span></div></div>
+    </div>
+  </section>
 
-            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
-              🌐 <strong>Networking Fundamentals</strong>
-            </p>
-            <div class="badge-row" style="margin-bottom:0.7rem;">
-              <span class="badge badge-strong">OSI Model</span>
-              <span class="badge badge-strong">TCP/IP</span>
-              <span class="badge">Cable Types</span>
-              <span class="badge">Network Protocols</span>
-              <span class="badge">Subnetting</span>
-              <span class="badge">VLSM</span>
-              <span class="badge">Supernetting</span>
-            </div>
+  <section id="certifications">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-item"><strong>ISO/IEC27001:2022 Lead Auditor</strong><div class="issuer"><i class="fas fa-certificate"></i> Mastermind</div><div class="date">Issued Nov 23, 2025 · 16 credit hours</div><a href="https://learn.mastermindassurance.com/certificates/aojmcj0jin" target="_blank" class="cert-link-btn">View Credential</a></div>
+      <div class="cert-item"><strong>Cisco Networking Foundations: IP Addressing</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Nov 29, 2025 · 1h 35m</div><button class="cert-link-btn" onclick="openModalImage('cisco_ip_addressing.png', 'Cisco IP Addressing Certificate')">View Credential</button></div>
+      <div class="cert-item"><strong>Fundamentals of Cisco Networking</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Sep 18, 2025 · 2h 3m</div><button class="cert-link-btn" onclick="openModalImage('cisco_fundamentals.png', 'Cisco Fundamentals Certificate')">View Credential</button></div>
+      <div class="cert-item"><strong>Diploma in ICND1 v3 CCNA</strong><div class="issuer"><i class="fas fa-graduation-cap"></i> Alison</div><div class="date">Completed May 10, 2025 · 53h 12m (93% score)</div><a href="https://alison.com/certification/check/d349c0dd32" target="_blank" class="cert-link-btn">View Credential</a></div>
+      <div class="cert-item"><strong>Wireless Networking Essential Training</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Mar 23, 2026 · 1h 19m</div><button class="cert-link-btn" onclick="openModalImage('wireless_networking.png', 'Wireless Networking Certificate')">View Credential</button></div>
+      <div class="cert-item"><strong>Cisco Certified Technician (CCT) Routing and Switching</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Mar 20, 2026 · 6h 34m</div><button class="cert-link-btn" onclick="openModalImage('cct_routing_switching.png', 'CCT Certificate')">View Credential</button></div>
+      <div class="cert-item"><strong>Certified Cybersecurity Educator Professional (CCEP)</strong><div class="issuer"><i class="fas fa-shield-alt"></i> Red Team Leaders</div><div class="date">Issued Dec 29, 2025</div><a href="https://courses.redteamleaders.com/exam-completion/01e584edc365eb2d" target="_blank" class="cert-link-btn">View Credential</a></div>
+      <div class="cert-item"><strong>Certified C++ Practitioner (CCPC)</strong><div class="issuer"><i class="fas fa-code"></i> Red Team Leaders</div><div class="date">Issued Dec 29, 2025</div><a href="https://courses.redteamleaders.com/exam-completion/63d2768ce0a639fc" target="_blank" class="cert-link-btn">View Credential</a></div>
+      <div class="cert-item"><strong>Digital Forensics & Incident Investigation</strong><div class="issuer"><i class="fas fa-microscope"></i> Red Team Leaders</div><div class="date">Issued Apr 20, 2026</div><a href="https://courses.redteamleaders.com/completion/5889dc55ca3b908d" target="_blank" class="cert-link-btn">View Credential</a></div>
+      <div class="cert-item"><strong>Introduction to Critical Infrastructure Protection</strong><div class="issuer"><i class="fas fa-shield-hornet"></i> OPSWAT Academy</div><div class="date">Issued Nov 25, 2024 · Expires Nov 25, 2025</div><a href="https://learn.opswatacademy.com/certificate/hjM7efiJwQ" target="_blank" class="cert-link-btn">View Credential</a></div>
+      <div class="cert-item"><strong>Foundations of Log Analysis for Cyber Defense</strong><div class="issuer"><i class="fas fa-chart-line"></i> Red Team Leaders</div><div class="date">Issued Jan 2026</div><a href="https://courses.redteamleaders.com/completion/6ec659f37ffa4049" target="_blank" class="cert-link-btn">View Credential</a></div>
+    </div>
+  </section>
 
-            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
-              🌐 <strong>Switching Protocols</strong>
-            </p>
-            <div class="badge-row" style="margin-bottom:0.7rem;">
-              <span class="badge badge-strong">VLANs</span>
-              <span class="badge">STP</span>
-              <span class="badge">SVI</span>
-              <span class="badge">DHCP Snooping</span>
-              <span class="badge">Port Security</span>
-              <span class="badge">EtherChannel</span>
-              <span class="badge">MPLS</span>
-            </div>
-
-            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
-              ↔️ <strong>Routing Protocols</strong>
-            </p>
-            <div class="badge-row" style="margin-bottom:0.7rem;">
-              <span class="badge badge-strong">RIP</span>
-              <span class="badge badge-strong">OSPF</span>
-              <span class="badge">EIGRP</span>
-              <span class="badge">BGP</span>
-              <span class="badge">IS-IS</span>
-            </div>
-
-            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
-              🔁 <strong>Redundancy Protocols</strong>
-            </p>
-            <div class="badge-row">
-              <span class="badge">HSRP</span>
-              <span class="badge">VRRP</span>
-              <span class="badge">GLBP</span>
-            </div>
-          </div>
-
-          <!-- Security & Tools -->
-          <div class="card">
-            <h3 class="card-title">Security, Firewalls &amp; Tools</h3>
-
-            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
-              🔐 <strong>Security &amp; Firewalls</strong>
-            </p>
-            <div class="badge-row" style="margin-bottom:0.7rem;">
-              <span class="badge badge-strong">Cisco ASA Firewall</span>
-              <span class="badge">ACLs</span>
-              <span class="badge">VPN Concepts</span>
-              <span class="badge">NAT / PAT</span>
-            </div>
-
-            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
-              💻 <strong>Cybersecurity &amp; Ethical Hacking</strong>
-            </p>
-            <div class="badge-row" style="margin-bottom:0.7rem;">
-              <span class="badge">Operating Systems</span>
-              <span class="badge">Network Forensics</span>
-              <span class="badge">Linux Fundamentals</span>
-              <span class="badge">Basic Web Security</span>
-            </div>
-
-            <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.4rem;">
-              🧰 <strong>Tools &amp; Simulation</strong>
-            </p>
-            <div class="badge-row">
-              <span class="badge badge-strong">Cisco Packet Tracer</span>
-              <span class="badge badge-strong">GNS3</span>
-              <span class="badge">Wireshark</span>
-              <span class="badge">PyCharm</span>
-              <span class="badge">FTK Imager</span>
-              <span class="badge">Autopsy</span>
-              <span class="badge">Hack The Box</span>
-              <span class="badge">BurpSuite</span>
-              <span class="badge">Kali Linux</span>
-              <span class="badge">tryhackme</span> 
-              <span class="badge">pingmynetwork</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education">
-      <div class="container fade-up delay-2">
-        <div class="section-header">
-          <div class="section-kicker">Education</div>
-          <h2 class="section-title">Education</h2>
-          <p class="section-sub">
-            Formal education supporting my journey in Networking, Cybersecurity, and Ethical hacking.
-          </p>
-        </div>
-
-        <div class="card">
-          <ul class="cert-list">
-            <li class="edu-item">
-              <div class="cert-title">BSc Hons Cybersecurity and Ethical Hacking (Coventry University)</div>
-              <div class="cert-meta">
-                Softwarica College of IT &amp; E-Commerce, Kathmandu Nepal.
-              </div>
-            </li>
-            <li class="edu-item">
-              <div class="cert-title">+2 (National Examination Board)</div>
-              <div class="cert-meta">
-                Ace Higher Secondary School, Kathmandu Nepal.
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="container fade-up delay-2">
-        <div class="section-header">
-          <div class="section-kicker">Projects</div>
-          <h2 class="section-title">Featured Projects</h2>
-          <p class="section-sub">
-            A collection of networking and security labs that reflect my interest in enterprise networking, firewall technologies, and security tools.
-          </p>
-        </div>
-
-        <div class="projects-grid">
-          <div class="project-card">
-            <div class="project-title">🔹 Three-Tier Enterprise Network Design</div>
-            <p class="project-tagline">
-              Scalable and secure enterprise-style network architecture with proper
-              segmentation and hierarchical design.
-            </p>
-            <div class="project-footer">
-              Designed in Cisco Packet Tracer using routing, VLANs and best practices.
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-title">🔹 Cisco ASA Firewall Configuration</div>
-            <p class="project-tagline">
-              Implemented security policies on Cisco ASA using ACLs, NAT and VPN concepts
-              to control and protect traffic between internal and external networks.
-            </p>
-            <div class="project-footer">
-              Focused on perimeter security and rule-based access control.
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-title">🔹 Secure File Encryption Tool (Python)</div>
-            <p class="project-tagline">
-              Python-based tool to encrypt and decrypt files securely, focusing on basic
-              cryptography concepts and security best practices.
-            </p>
-            <div class="project-footer">
-              Built to understand confidentiality and secure data handling.
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-title">🔹 Web Enumeration Tool (Python)</div>
-            <p class="project-tagline">
-              Script that gathers important information about web applications (headers,
-              technologies, endpoints, etc.) to support security testing and reconnaissance.
-            </p>
-            <div class="project-footer">
-              Helps build a structured approach to information gathering.
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-title">🔹 Enterprise Networking Mini Project (Cisco Packet Tracer)</div>
-            <p class="project-tagline">
-              Multi-department enterprise network with VLANs, inter-VLAN routing,
-              DHCP, and secure wireless using /26 subnetting.
-            </p>
-            <div class="project-footer">
-              Combines addressing, segmentation and services in one lab.
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-title">🔹 Password Manager / Password Vault</div>
-            <p class="project-tagline">
-              A password manager is a tool that stores all your passwords securely in one place. Instead of remembering many passwords, you remember only one master password.
-            </p>
-            <div class="project-footer">
-              You only need to remember one master password, and the tool remembers the rest for you.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section id="certs">
-      <div class="container fade-up delay-2">
-        <div class="section-header">
-          <div class="section-kicker">Certifications</div>
-          <h2 class="section-title">Learning &amp; Credentials</h2>
-          <p class="section-sub">
-            Formal learning that supports my networking and security journey.
-          </p>
-        </div>
-
-        <div class="card">
-          <ul class="cert-list">
-            <li>
-              <div class="cert-title">ISO/IEC 27001:2022 Lead Auditor – Mastermind</div>
-              <div class="cert-meta">Issued Nov 2025 · Expires Nov 2028</div>
-            </li>
-            <li>
-              <div class="cert-title">Cisco Networking Foundations: IP Addressing – LinkedIn Learning</div>
-              <div class="cert-meta">Issued Nov 2025 · Expires Mar 2028 · Focus: Subnetting, IP Addressing</div>
-            </li>
-            <li>
-              <div class="cert-title">Fundamentals of Cisco Networking – LinkedIn Learning</div>
-              <div class="cert-meta">Issued Sep 2025 · Expires Mar 2029 · Focus: Cables, core networking concepts</div>
-            </li>
-            <li>
-              <div class="cert-title">Diploma in Interconnecting Cisco Networking Devices Part 1 (ICND1) v3 CCNA – Alison</div>
-              <div class="cert-meta">Issued May 2025 · Expires Aug 2029 · Focus: Routing protocols, LAN switching</div>
-            </li>
-            <li>
-              <div class="cert-title">Certified Cybersecurity Educator Professional (CCEP) – Red Team Leaders</div>
-              <div class="cert-meta">Issued Dec 2025 · Focus: Training educators to effectively teach cybersecurity concepts, labs, and best practices</div> 
-            </li> 
-            <li> 
-              <div class="cert-title">Certified C++ Practitioner (CCPP) – Red Team Leaders</div>
-              <div class="cert-meta">Issued Dec 2025 · Focus: Core C++ programming skills, object-oriented concepts, and practical problem-solving using C++</div> 
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="container fade-up delay-3">
-        <div class="section-header">
-          <div class="section-kicker">Contact</div>
-          <h2 class="section-title">Let's Connect</h2>
-        </div>
-
-        <div class="contact-card">
-          <div>
-            <p class="contact-text">
-              I am always open to learning opportunities, networking projects, and connecting with professionals in the tech community. If you would like to discuss ideas, projects, or collaboration, please feel free to reach out.
-            </p>
-            <span class="pill-small">
-              Prefer: networking, security &amp; learning-focused conversations
-            </span>
-          </div>
-
-          <div>
-            <ul class="contact-list">
-              <li><strong>Email:</strong> <a href="mailto:pranjalpantalazarus2@gmail.com">pranjalpantalazarus2@gmail.com</a></li>
-              <li><strong>Mobile:</strong> <a href="tel:+9779861490158">+977 9861490158</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- CTA + FOOTER (Copyright removed) -->
-  <div class="container">
-    <p class="cta-line">
-      ⚡ Thanks for visiting – let's connect and build secure networks together ⚡
-    </p>
+  <div id="certModal" class="modal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage" src="" alt="Certificate">
+    <div id="modalUploadArea" style="text-align: center; margin-top: 20px;"></div>
   </div>
 
-  <script>
-    // Set current year (not used anymore but kept for any future needs)
-    // document.getElementById("year").textContent = new Date().getFullYear();
+  <section id="blogs">
+    <h2 class="section-title">Recent Blogs</h2>
+    <div class="blog-grid">
+      <a href="https://medium.com/@pranjalpanta2.0/understanding-rip-auto-summarization-a-practical-deep-dive-into-classful-vs-classless-routing-2463b7db22d6" target="_blank" class="blog-card">
+        <img src="https://miro.medium.com/max/1400/0*o-IFL4ROiAtBXAWP.jpg" alt="RIP Auto-Summarization" class="blog-image" onerror="this.style.display='none'">
+        <div class="blog-title">Understanding RIP Auto-Summarization</div>
+        <div class="blog-meta">March 28, 2025 · 4 min read</div>
+        <div class="blog-excerpt">A practical deep dive into classful vs classless routing. Why RIP still matters for understanding foundational routing concepts.</div>
+        <div class="tech-stack"><span>RIPv2</span><span>Routing</span><span>CCNA</span></div>
+      </a>
+      <a href="https://medium.com/@pranjalpanta2.0/static-routing-8f63feb76701" target="_blank" class="blog-card">
+        <img src="https://miro.medium.com/max/1400/0*TU-XrEk5UHf7Lcpd" alt="Static Routing" class="blog-image" onerror="this.style.display='none'">
+        <div class="blog-title">Static Routing</div>
+        <div class="blog-meta">January 6, 2026 · 1 min read</div>
+        <div class="blog-excerpt">What is static routing? AD value, diagrams, and practical configuration examples.</div>
+        <div class="tech-stack"><span>Static Routing</span><span>Networking</span></div>
+      </a>
+      <a href="https://medium.com/@pranjalpanta2.0/carries-sense-multiple-access-csma-041229099a79" target="_blank" class="blog-card">
+        <img src="https://miro.medium.com/max/1400/1*An5dbvqlCvUx3ZQIrboktA.png" alt="CSMA" class="blog-image" onerror="this.style.display='none'">
+        <div class="blog-title">Carrier Sense Multiple Access (CSMA)</div>
+        <div class="blog-meta">October 13, 2025 · 3 min read</div>
+        <div class="blog-excerpt">Working principle of CSMA, "Listen before talk", collision detection and avoidance.</div>
+        <div class="tech-stack"><span>CSMA/CD</span><span>Network Protocols</span></div>
+      </a>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="https://medium.com/@pranjalpanta2.0" target="_blank" class="btn btn-outline" style="display: inline-flex;"><i class="fab fa-medium"></i> View all blogs on Medium</a>
+    </div>
+  </section>
 
-    // Loader logic: show ONLY loader first, then reveal page
-    window.addEventListener("load", function () {
-      setTimeout(() => {
-        const loader = document.getElementById("loader");
-        loader.style.opacity = "0";
-        loader.style.transition = "opacity 0.6s ease";
+  <section id="contact">
+    <h2 class="section-title">Let’s work together!</h2>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h3>Let’s work together!</h3>
+        <p>I turn complex security into simple solutions. Passionate about protecting what matters. Ready when you are.</p>
+        <div class="contact-detail">
+          <div><i class="fas fa-phone-alt"></i> +977 9861490159</div>
+          <div><i class="fas fa-envelope"></i> pranjalpantalazarus2@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="form-row"><input type="text" placeholder="First name" required><input type="text" placeholder="Last name" required></div>
+          <input type="email" placeholder="Email address" required style="width:100%; margin-bottom:1rem;">
+          <input type="tel" placeholder="Phone number" style="width:100%; margin-bottom:1rem;">
+          <select required style="width:100%; margin-bottom:1rem;">
+            <option value="" disabled selected>—Please choose an option—</option>
+            <option>Network Engineering</option>
+            <option>Cybersecurity</option>
+            <option>Consulting</option>
+          </select>
+          <textarea rows="3" placeholder="Message" required style="width:100%; margin-bottom:1rem;"></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
 
-        setTimeout(() => {
-          loader.style.display = "none";
-          document.body.classList.remove("loading");
-          document.body.classList.add("page-visible");
-        }, 600);
-      }, 3000); // 3 seconds
-    });
+<footer>
+  <p>© 2025 All Rights Reserved by Pranjal Panta</p>
+</footer>
 
-    // Viber function - tries multiple methods to open Viber
-    function openViber() {
-      const phoneNumber = "9779861490158"; // Your number without +
-      
-      // Method 1: Standard viber:// protocol
-      window.location.href = "viber://chat?number=" + phoneNumber;
-      
-      // Method 2: Alternative viber:// protocol
-      setTimeout(function() {
-        window.location.href = "viber://add?number=" + phoneNumber;
-      }, 200);
-      
-      // Method 3: For desktop web version
-      setTimeout(function() {
-        window.open("https://viber.click/" + phoneNumber, "_blank");
-      }, 400);
-      
-      // Don't return false to allow the first method to work
-      return false;
+<script>
+  let currentImageKey = null;
+
+  function openModalImage(imageName, title) {
+    currentImageKey = imageName;
+    const modal = document.getElementById('certModal');
+    const modalImg = document.getElementById('modalImage');
+    const uploadArea = document.getElementById('modalUploadArea');
+    
+    uploadArea.innerHTML = '';
+    modalImg.style.display = 'block';
+    
+    const savedImage = localStorage.getItem(`img_${imageName}`);
+    if (savedImage) {
+      modalImg.src = savedImage;
+      modal.style.display = 'flex';
+      return;
     }
-
-    // ===== NETWORK CANVAS ANIMATION =====
-    const canvas = document.getElementById("networkCanvas");
-    const ctx = canvas.getContext("2d");
-
-    let nodes = [];
-    let nodeCount;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      // number of nodes depends on screen size
-      const area = canvas.width * canvas.height;
-      nodeCount = Math.min(120, Math.max(45, Math.floor(area / 22000)));
-      initNodes();
-    }
-
-    function initNodes() {
-      nodes = [];
-      for (let i = 0; i < nodeCount; i++) {
-        nodes.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4
-        });
-      }
-    }
-
-    function drawNetwork() {
-      // subtle dark overlay for trails
-      ctx.fillStyle = "rgba(2, 6, 23, 0.22)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // draw connections
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 140) {
-            const alpha = 1 - dist / 140;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(56,189,248,${0.18 * alpha})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
+    
+    modalImg.src = imageName;
+    modalImg.onload = () => {
+      modal.style.display = 'flex';
+    };
+    modalImg.onerror = () => {
+      modalImg.style.display = 'none';
+      uploadArea.innerHTML = `
+        <div style="background: #0f172a; padding: 1rem; border-radius: 20px;">
+          <p style="color: #f87171; margin-bottom: 1rem;">Certificate image not found (${imageName})</p>
+          <input type="file" id="certUpload" accept="image/*" style="display: none;" />
+          <button class="modal-upload-btn" onclick="document.getElementById('certUpload').click()">📸 Upload Certificate Image</button>
+          <p style="font-size: 0.7rem; margin-top: 0.5rem;">(The image will be saved in your browser)</p>
+        </div>
+      `;
+      document.getElementById('certUpload').onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            const imgData = ev.target.result;
+            localStorage.setItem(`img_${imageName}`, imgData);
+            modalImg.src = imgData;
+            modalImg.style.display = 'block';
+            uploadArea.innerHTML = '';
+            modal.style.display = 'flex';
+          };
+          reader.readAsDataURL(file);
         }
-      }
+      };
+      modal.style.display = 'flex';
+    };
+  }
 
-      // draw nodes
-      for (let i = 0; i < nodes.length; i++) {
-        const n = nodes[i];
+  function closeModal() {
+    document.getElementById('certModal').style.display = 'none';
+  }
 
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2);
-        ctx.fillStyle = "#22c55e";
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
-        ctx.strokeStyle = "rgba(56,189,248,0.35)";
-        ctx.lineWidth = 0.6;
-        ctx.stroke();
-
-        // move nodes
-        n.x += n.vx;
-        n.y += n.vy;
-
-        // bounce from edges
-        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
-      }
-
-      requestAnimationFrame(drawNetwork);
-    }
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-    drawNetwork();
-  </script>
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  document.getElementById('certModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeModal(); });
+  document.getElementById('viberBtn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = 'viber://contact?number=%2B9779861490159';
+    setTimeout(() => alert('If Viber does not open, please install Viber or use mobile device.'), 1000);
+  });
+  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you! I will get back to you soon.');
+    this.reset();
+  });
+</script>
 </body>
 </html>
