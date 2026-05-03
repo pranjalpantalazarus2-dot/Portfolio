@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* LOADER - only text, no spinner */
+    /* LOADER - no cursor, faster fade */
     .loader-wrapper {
       position: fixed;
       top: 0;
@@ -20,7 +20,7 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 1.2s ease, visibility 1.2s ease;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
       opacity: 1;
       visibility: visible;
     }
@@ -33,15 +33,23 @@
       color: #60a5fa;
       overflow: hidden;
       white-space: nowrap;
-      border-right: 3px solid #60a5fa;
       width: 0;
-      animation: typing 2.5s steps(11, end) forwards, blinkCursor 0.8s step-end infinite;
+      animation: typing 1.5s steps(11, end) forwards;
     }
-    @keyframes typing { 0% { width: 0; } 100% { width: 11ch; } }
-    @keyframes blinkCursor { 0%, 100% { border-color: #60a5fa; } 50% { border-color: transparent; } }
-    .loader-wrapper.fade-out { opacity: 0; visibility: hidden; }
-    body.light .loader-wrapper { background: radial-gradient(circle at 30% 20%, #f8fafc, #e2e8f0); }
-    body.light .loader-text { color: #2563eb; border-right-color: #2563eb; }
+    @keyframes typing {
+      0% { width: 0; }
+      100% { width: 11ch; }
+    }
+    .loader-wrapper.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+    body.light .loader-wrapper {
+      background: radial-gradient(circle at 30% 20%, #f8fafc, #e2e8f0);
+    }
+    body.light .loader-text {
+      color: #2563eb;
+    }
     
     /* RESET & VARIABLES */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -196,7 +204,7 @@
     }
     .theme-toggle:hover { background: var(--accent); color: white; border-color: var(--accent); }
     
-    /* Hero - improved */
+    /* Hero */
     .hero { text-align: center; padding: 5rem 1rem 3rem; }
     .avatar {
       width: 120px; height: 120px;
@@ -243,7 +251,7 @@
     .social-links-hero a { color: var(--text-muted); font-size: 1.4rem; transition: 0.2s; }
     .social-links-hero a:hover { color: var(--accent); transform: translateY(-3px); }
     
-    /* Section titles - NO underline */
+    /* Section titles */
     .section-title {
       font-size: 2rem;
       font-weight: 700;
@@ -256,7 +264,7 @@
     }
     
     /* Cards */
-    .about-text, .skill-card, .edu-card, .cert-grid > div, .blog-grid, .contact-wrapper, .project-card, .blog-card {
+    .about-text, .skill-card, .edu-card, .cert-grid > div, .blog-grid, .contact-wrapper, .project-card, .blog-card, .terminal-card {
       background: var(--card-bg);
       border-radius: 28px;
       padding: 1.5rem;
@@ -264,7 +272,7 @@
       transition: all 0.3s ease;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     }
-    .project-card:hover, .skill-card:hover, .blog-card:hover {
+    .project-card:hover, .skill-card:hover, .blog-card:hover, .terminal-card:hover {
       transform: translateY(-5px);
       background: var(--card-hover-bg);
       border-color: var(--accent);
@@ -289,7 +297,7 @@
       left: 100%;
     }
     
-    /* Skills grid - improved clarity */
+    /* Skills */
     .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .skill-card h3 {
       font-size: 1.4rem;
@@ -421,7 +429,74 @@
     .blog-card .blog-title { text-decoration: none; color: var(--text-main); }
     .blog-card:hover .blog-title { color: var(--accent); }
     
-    /* CONTACT SECTION - IMPROVED */
+    /* Terminal styles */
+    .terminal-card {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      background: #0a0c10;
+      color: #0f0;
+    }
+    body.light .terminal-card {
+      background: #f0f2f5;
+      color: #000;
+    }
+    .terminal-output {
+      background: rgba(0,0,0,0.3);
+      border-radius: 16px;
+      padding: 1rem;
+      min-height: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      color: #cbd5e1;
+      font-family: monospace;
+    }
+    body.light .terminal-output {
+      background: #e9ecef;
+      color: #1e293b;
+    }
+    .terminal-prompt {
+      color: #0f0;
+      font-weight: bold;
+    }
+    body.light .terminal-prompt {
+      color: #2563eb;
+    }
+    .terminal-input-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      background: rgba(0,0,0,0.2);
+      padding: 0.5rem;
+      border-radius: 12px;
+    }
+    #termInput {
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-family: monospace;
+      font-size: 0.9rem;
+      flex: 1;
+      outline: none;
+    }
+    .terminal-clear-btn {
+      background: var(--btn-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 30px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .terminal-clear-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+    
+    /* Contact */
     .contact-wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -524,7 +599,7 @@
     }
     body.light footer { background: rgba(255,255,255,0.7); }
     
-    /* Visitor counter - hidden by default, shown on double-click */
+    /* Visitor counter */
     .visitor-counter {
       display: none;
       align-items: center;
@@ -552,7 +627,6 @@
       outline-offset: 2px;
     }
     
-    /* Toast */
     .toast-copy {
       position: fixed;
       bottom: 30px;
@@ -573,6 +647,13 @@
       15% { opacity: 1; transform: translateX(-50%) translateY(0); }
       85% { opacity: 1; transform: translateX(-50%) translateY(0); }
       100% { opacity: 0; transform: translateX(-50%) translateY(-20px); visibility: hidden; }
+    }
+    
+    .matrix-effect {
+      color: #0f0;
+      font-family: monospace;
+      white-space: pre;
+      line-height: 1.2;
     }
     
     @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr; } }
@@ -611,6 +692,7 @@
     <a href="#projects">Projects</a>
     <a href="#certifications">Certifications</a>
     <a href="#blogs">Blogs</a>
+    <a href="#terminal">Terminal</a>
     <a href="#contact">Contact</a>
     <a href="#contact" class="hire-btn">Hire me!</a>
     <button id="themeToggle" class="theme-toggle" aria-label="Switch dark/light mode">🌓 Light</button>
@@ -643,7 +725,7 @@
     </div>
   </section>
 
-  <!-- IMPROVED SKILLS SECTION - crystal clear -->
+  <!-- Skills section -->
   <section id="skills">
     <h2 class="section-title">⚙️ Core Skills & Tools</h2>
     <div class="skills-grid">
@@ -740,7 +822,7 @@
     </div>
   </section>
 
-  <!-- PROJECTS SECTION -->
+  <!-- Projects section -->
   <section id="projects">
     <h2 class="section-title">🚀 Featured Projects</h2>
     <div class="projects-grid">
@@ -812,6 +894,7 @@
     </div>
   </section>
 
+  <!-- Blog section -->
   <section id="blogs">
     <h2 class="section-title">✍️ Medium Blogs</h2>
     <div class="blog-grid">
@@ -839,6 +922,22 @@
     </div>
     <div style="text-align: center; margin-top: 2rem;">
       <a href="https://medium.com/@pranjalpanta2.0" target="_blank" class="btn btn-outline"><i class="fab fa-medium"></i> View all blogs on Medium</a>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE TERMINAL SECTION (fixed, removed joke/echo/language) -->
+  <section id="terminal">
+    <h2 class="section-title">💻 Interactive Terminal</h2>
+    <div class="terminal-card">
+      <div class="terminal-output" id="termOutput">
+        > Welcome to Pranjal's terminal.<br>
+        > Type <span style="color:var(--accent);">'help'</span> to see available commands.
+      </div>
+      <div class="terminal-input-line">
+        <span class="terminal-prompt">$&nbsp;</span>
+        <input type="text" id="termInput" placeholder="Type a command...">
+        <button id="termClear" class="terminal-clear-btn">Clear</button>
+      </div>
     </div>
   </section>
 
@@ -876,7 +975,6 @@
 </main>
 
 <footer>
-  <!-- Visitor counter - hidden by default, shown on double-click -->
   <div id="visitorCounterContainer" class="visitor-counter">
     <i class="fas fa-eye"></i> Total visits: <span id="visitor-counter">0</span>
   </div>
@@ -884,22 +982,13 @@
 </footer>
 
 <script>
-  // Loader
+  // Loader: fade out quickly after page loads
   const loaderWrapper = document.getElementById('loaderWrapper');
-  let loaderFaded = false;
-  function fadeOutLoader() {
-    if (loaderFaded) return;
-    loaderFaded = true;
-    loaderWrapper.classList.add('fade-out');
-    setTimeout(() => { loaderWrapper.style.display = 'none'; }, 1200);
-  }
-  const minLoadTime = setTimeout(() => {
-    if (document.readyState === 'complete') fadeOutLoader();
-    else window.addEventListener('load', fadeOutLoader);
-  }, 3000);
   window.addEventListener('load', () => {
-    clearTimeout(minLoadTime);
-    setTimeout(fadeOutLoader, 1000);
+    setTimeout(() => {
+      loaderWrapper.classList.add('fade-out');
+      setTimeout(() => { loaderWrapper.style.display = 'none'; }, 800);
+    }, 500);
   });
   
   // Theme toggle
@@ -917,7 +1006,7 @@
     themeToggle.innerText = '🌓 Light';
   }
   
-  // Email button (copies email to clipboard)
+  // Email copy
   const copyEmailBtn = document.getElementById('copyEmailBtn');
   const emailAddress = 'pranjalpantalazarus2@gmail.com';
   function showToast(message) {
@@ -935,18 +1024,173 @@
     });
   });
   
-  // Viber button
+  // Viber
   const viberBtn = document.getElementById('viberBtn');
-  const phoneNumber = '9779861490159';
   viberBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
-      window.location.href = `viber://contact?number=${phoneNumber}`;
+      window.location.href = 'viber://contact?number=9779861490159';
       setTimeout(() => alert("If Viber doesn't open, please install Viber from your app store."), 2000);
     } else {
       alert("Viber works best on mobile. Please install Viber Desktop or use WhatsApp.");
     }
+  });
+  
+  // ==================== TERMINAL (working commands only) ====================
+  const termOutput = document.getElementById('termOutput');
+  const termInput = document.getElementById('termInput');
+  const termClearBtn = document.getElementById('termClear');
+  
+  let commandHistory = [];
+  let startTime = Date.now();
+  
+  function appendToTerminal(text) {
+    termOutput.innerHTML += '<br>> ' + text;
+    termOutput.scrollTop = termOutput.scrollHeight;
+  }
+  
+  function addToHistory(cmd) {
+    if (cmd.trim() === '') return;
+    commandHistory.unshift(cmd);
+    if (commandHistory.length > 10) commandHistory.pop();
+  }
+  
+  const jokeMessages = [
+    "Why do programmers prefer dark mode? Because light attracts bugs!",
+    "Why did the network admin go broke? Because he used up all his cache!",
+    "What is a network engineer's favorite snack? A cookie! (HTTP cookie)",
+    "Why did the router go to therapy? It had too many packets to deal with!"
+  ];
+  const quoteMessages = [
+    "The only secure system is the one that is powered off. – Unknown",
+    "Security is not a product, it's a process. – Bruce Schneier",
+    "The best way to predict the future is to create it. – Peter Drucker",
+    "Stay curious, keep learning, never stop hacking (ethically)."
+  ];
+  const fortuneMessages = [
+    "You will soon receive a job offer that aligns with your passion.",
+    "A great networking opportunity is around the corner.",
+    "Your hard work will pay off in unexpected ways.",
+    "Today is a good day to learn something new."
+  ];
+  
+  let matrixInterval = null;
+  let originalOutput = '';
+  
+  function startMatrix() {
+    if (matrixInterval) {
+      appendToTerminal("Matrix effect already running. Type 'clear' to stop.");
+      return;
+    }
+    originalOutput = termOutput.innerHTML;
+    appendToTerminal("Entering the Matrix... (type 'clear' to stop)");
+    let count = 0;
+    matrixInterval = setInterval(() => {
+      const randomChars = Array(40).fill().map(() => String.fromCharCode(0x30A0 + Math.random() * 96)).join('');
+      termOutput.innerHTML += '<br>' + randomChars;
+      termOutput.scrollTop = termOutput.scrollHeight;
+      count++;
+      if (count > 15) {
+        clearInterval(matrixInterval);
+        matrixInterval = null;
+        termOutput.innerHTML = originalOutput;
+        appendToTerminal("01001110 01100101 01110100 01110111 01101111 01110010 01101011 00100000 01001001 01110011 00100000 01000110 01110101 01101110");
+      }
+    }, 200);
+  }
+  
+  function stopMatrix() {
+    if (matrixInterval) {
+      clearInterval(matrixInterval);
+      matrixInterval = null;
+      termOutput.innerHTML = originalOutput;
+    }
+  }
+  
+  async function fetchWeather() {
+    appendToTerminal("Fetching weather for Kathmandu...");
+    try {
+      const res = await fetch('https://wttr.in/Kathmandu?format=%t+%C+%w');
+      const data = await res.text();
+      const parts = data.trim().split(' ');
+      let temp = parts[0].replace('+','').replace('°C','');
+      let cond = parts[1];
+      let wind = parts[2] || '0';
+      appendToTerminal(`🌤️  Kathmandu: ${temp}°C, ${cond}, wind ${wind} km/h`);
+    } catch(e) {
+      appendToTerminal("Could not fetch weather. Using mock: 22°C, clear, 3 km/h");
+    }
+  }
+  
+  async function processCommand(rawCmd) {
+    let cmd = rawCmd.trim().toLowerCase();
+    if (cmd === '') return;
+    addToHistory(rawCmd);
+    
+    switch(cmd) {
+      case 'help':
+        let cmds = ['date','weather','quote','matrix','fortune','theme','visitors','uptime','ls','history','clear'];
+        appendToTerminal(`Available commands:\n${cmds.map(c => `  ${c.padEnd(12)}`).join('\n')}`);
+        break;
+      case 'date':
+        appendToTerminal(`Current date and time: ${new Date().toLocaleString()}`);
+        break;
+      case 'weather':
+        await fetchWeather();
+        break;
+      case 'quote':
+        appendToTerminal(quoteMessages[Math.floor(Math.random() * quoteMessages.length)]);
+        break;
+      case 'matrix':
+        startMatrix();
+        break;
+      case 'fortune':
+        appendToTerminal(fortuneMessages[Math.floor(Math.random() * fortuneMessages.length)]);
+        break;
+      case 'theme':
+        document.body.classList.toggle('light');
+        const isLight = document.body.classList.contains('light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        themeToggle.innerText = isLight ? '🌙 Dark' : '🌓 Light';
+        appendToTerminal(`Theme toggled to ${isLight ? 'light' : 'dark'} mode.`);
+        break;
+      case 'visitors':
+        let countSpan = document.getElementById('visitor-counter');
+        let count = countSpan.innerText;
+        appendToTerminal(`Total website visits: ${count}`);
+        break;
+      case 'uptime':
+        let seconds = (Date.now() - startTime) / 1000;
+        appendToTerminal(`Terminal active for ${Math.floor(seconds)} seconds.`);
+        break;
+      case 'ls':
+        let allCmds = ['date','weather','quote','matrix','fortune','theme','visitors','uptime','ls','history','clear','help'];
+        appendToTerminal(`📜 Commands:\n${allCmds.join(', ')}`);
+        break;
+      case 'history':
+        let hist = [...commandHistory];
+        appendToTerminal(hist.length ? `Recent commands:\n${hist.join('\n')}` : "No commands in history.");
+        break;
+      case 'clear':
+        stopMatrix();
+        termOutput.innerHTML = '> Terminal cleared.<br>> Type <span style="color:var(--accent);">\'help\'</span> to see available commands.';
+        break;
+      default:
+        appendToTerminal(`Unknown command: "${rawCmd}". Type "help" for list.`);
+    }
+  }
+  
+  termInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const cmd = termInput.value;
+      processCommand(cmd);
+      termInput.value = '';
+    }
+  });
+  
+  termClearBtn.addEventListener('click', () => {
+    processCommand('clear');
   });
   
   // Contact form
@@ -956,10 +1200,9 @@
     e.target.reset();
   });
 
-  // === VISITOR COUNTER (hidden until double-click on footer) ===
+  // Visitor counter (hidden, double-click footer)
   const counterContainer = document.getElementById('visitorCounterContainer');
   const counterSpan = document.getElementById('visitor-counter');
-  
   const footer = document.querySelector('footer');
   footer.addEventListener('dblclick', () => {
     counterContainer.classList.toggle('visible');
@@ -973,16 +1216,10 @@
             counterSpan.innerText = '?';
           }
         })
-        .catch(err => {
-          console.error('Visitor counter error:', err);
-          counterSpan.innerText = '?';
-        });
+        .catch(() => counterSpan.innerText = '?');
     }
   });
-  
-  // Always increment the counter on page load (even if hidden)
-  fetch('https://api.countapi.xyz/hit/pranjal-portfolio/visitors')
-    .catch(err => console.error('Counter increment error:', err));
+  fetch('https://api.countapi.xyz/hit/pranjal-portfolio/visitors').catch(() => {});
 </script>
 </body>
 </html>
