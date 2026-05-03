@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* LOADER STYLES - appears first (only PP logo) */
+    /* LOADER STYLES */
     .loader-wrapper {
       position: fixed;
       top: 0;
@@ -22,9 +22,7 @@
       z-index: 9999;
       transition: opacity 0.6s ease, visibility 0.6s ease;
     }
-    .loader-content {
-      text-align: center;
-    }
+    .loader-content { text-align: center; }
     .loader-logo {
       width: 80px;
       height: 80px;
@@ -59,32 +57,14 @@
       margin: 1rem auto 0;
       animation: spin 0.8s linear infinite;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .loader-wrapper.fade-out {
-      opacity: 0;
-      visibility: hidden;
-    }
-    /* Light mode loader support */
-    body.light .loader-wrapper {
-      background: radial-gradient(circle at 30% 20%, #f8fafc, #e2e8f0);
-    }
-    body.light .loader-logo {
-      background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-      box-shadow: 0 0 0 2px #2563eb, 0 0 0 4px rgba(37,99,235,0.2);
-    }
-    body.light .loader-logo span {
-      background: linear-gradient(135deg, #8b5cf6, #2563eb);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .loader-wrapper.fade-out { opacity: 0; visibility: hidden; }
+    body.light .loader-wrapper { background: radial-gradient(circle at 30% 20%, #f8fafc, #e2e8f0); }
+    body.light .loader-logo { background: linear-gradient(135deg, #e2e8f0, #cbd5e1); box-shadow: 0 0 0 2px #2563eb, 0 0 0 4px rgba(37,99,235,0.2); }
+    body.light .loader-logo span { background: linear-gradient(135deg, #8b5cf6, #2563eb); background-clip: text; -webkit-background-clip: text; color: transparent; }
     
     /* RESET & VARIABLES */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     :root {
       --bg-start: #0a1128;
       --bg-end: #02040a;
@@ -101,7 +81,6 @@
       --skill-tag-text: #cbd5e1;
       --section-title-gradient: linear-gradient(135deg, #e2e8f0, #93c5fd);
     }
-    
     body.light {
       --bg-start: #f8fafc;
       --bg-end: #e2e8f0;
@@ -118,7 +97,6 @@
       --skill-tag-text: #1e293b;
       --section-title-gradient: linear-gradient(135deg, #1e293b, #2563eb);
     }
-    
     body {
       font-family: 'Inter', sans-serif;
       color: var(--text-main);
@@ -163,13 +141,7 @@
     }
     .container, nav { position: relative; z-index: 2; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    
-    section {
-      scroll-margin-top: 5rem;
-      padding: 5rem 0;
-      border-bottom: 1px solid var(--border-color);
-    }
-    
+    section { scroll-margin-top: 5rem; padding: 5rem 0; border-bottom: 1px solid var(--border-color); }
     nav {
       display: flex;
       justify-content: space-between;
@@ -219,10 +191,7 @@
       transition: transform 0.2s;
     }
     .logo-p:hover span { transform: scale(1.05); }
-    .logo-p:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 0 2px var(--accent);
-    }
+    .logo-p:hover { transform: translateY(-2px); box-shadow: 0 0 0 2px var(--accent); }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a { text-decoration: none; font-weight: 500; color: var(--text-muted); transition: 0.2s; font-size: 0.9rem; }
     .nav-links a:hover { color: var(--accent); }
@@ -234,10 +203,7 @@
       font-weight: 600;
       box-shadow: 0 2px 8px rgba(59,130,246,0.4);
     }
-    .hire-btn:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
-    }
+    .hire-btn:hover { transform: translateY(-2px); background: linear-gradient(135deg, #2563eb, #7c3aed); }
     .theme-toggle {
       background: none;
       border: 1px solid var(--border-color);
@@ -275,25 +241,18 @@
       -webkit-background-clip: text;
       color: transparent;
     }
-    .hero-tagline {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    .hero-location {
-      color: #64748b;
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-      font-weight: 700;
-    }
+    .hero-tagline { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 700; }
+    .hero-location { color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; font-weight: 700; }
     .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
     .btn {
       display: inline-flex; align-items: center; gap: 0.6rem;
       padding: 0.6rem 1.5rem; border-radius: 40px; font-weight: 600;
-      font-size: 0.85rem; text-decoration: none; transition: all 0.2s;
+      font-size: 0.85rem;
       background: var(--btn-bg); backdrop-filter: blur(4px);
       border: 1px solid var(--border-color); color: var(--text-main);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
     }
     .btn-primary { background: #3b82f6; border: none; color: white; box-shadow: 0 4px 14px rgba(59,130,246,0.3); }
     .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
@@ -374,12 +333,7 @@
     }
     .cert-link-btn:hover { background: #3b82f6; color: white; }
     .projects-grid, .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
-    .project-title, .blog-title {
-      font-weight: 800;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-main);
-    }
+    .project-title, .blog-title { font-weight: 800; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-main); }
     .project-desc, .blog-excerpt { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.8rem; }
     .tech-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tech-stack span { background: var(--skill-tag-bg); padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; font-weight: 600; color: var(--accent); }
@@ -409,28 +363,18 @@
     .contact-form button:hover { background: #2563eb; transform: translateY(-2px); }
     footer { text-align: center; padding: 2rem; margin-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); background: rgba(2,4,10,0.5); backdrop-filter: blur(4px); transition: background 0.3s; }
     body.light footer { background: rgba(255,255,255,0.7); }
-    
     a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
     
-    @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 750px) {
-      nav { flex-direction: column; gap: 1rem; padding: 0.8rem; }
-      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
-      .hero h1 { font-size: 2rem; }
-      .section-title { font-size: 1.6rem; }
-      .container { padding: 0 1rem; }
-      section { scroll-margin-top: 7rem; }
-    }
-    /* Toast notification for copy */
+    /* Toast notification */
     .toast-copy {
       position: fixed;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      background: #3b82f6;
+      background: #10b981;
       color: white;
       padding: 12px 24px;
       border-radius: 40px;
@@ -445,6 +389,16 @@
       15% { opacity: 1; transform: translateX(-50%) translateY(0); }
       85% { opacity: 1; transform: translateX(-50%) translateY(0); }
       100% { opacity: 0; transform: translateX(-50%) translateY(-20px); visibility: hidden; }
+    }
+    
+    @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 750px) {
+      nav { flex-direction: column; gap: 1rem; padding: 0.8rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+      .hero h1 { font-size: 2rem; }
+      .section-title { font-size: 1.6rem; }
+      .container { padding: 0 1rem; }
+      section { scroll-margin-top: 7rem; }
     }
   </style>
 </head>
@@ -475,11 +429,9 @@
     <div class="hero-tagline">Aspiring Network Engineer & Cybersecurity Enthusiast</div>
     <div class="hero-location">📍 Based in Kathmandu, Nepal</div>
     <div class="btn-group">
-      <!-- Email button with JavaScript fallback that works even if mailto: fails -->
-      <a href="#" id="emailBtn" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Me</a>
-      <!-- WhatsApp button -->
+      <!-- Email button: copies email to clipboard -->
+      <button id="copyEmailBtn" class="btn btn-primary"><i class="fas fa-envelope"></i> Copy Email</button>
       <a href="https://wa.me/9779861490159?text=Hello%20Pranjal" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <!-- Viber button (fixed earlier) -->
       <a href="#" id="viberBtn" class="btn btn-outline"><i class="fab fa-viber"></i> Viber</a>
     </div>
     <div class="social-links-hero">
@@ -647,37 +599,27 @@
     themeToggle.innerText = '🌓 Light';
   }
   
-  // Email button with fallback copy
-  const emailBtn = document.getElementById('emailBtn');
+  // Copy email to clipboard
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
   const emailAddress = 'pranjalpantalazarus2@gmail.com';
-  
-  emailBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    // Try to open default email client
-    window.location.href = `mailto:${emailAddress}`;
-    // Fallback: if after 1 second the page is still here (mailto didn't work), copy email and show toast
-    setTimeout(() => {
-      // Check if the mailto actually triggered (document lost focus? tricky)
-      // Instead, we'll always copy to clipboard as a courtesy
-      navigator.clipboard.writeText(emailAddress).then(() => {
-        showToast('📧 Email copied to clipboard!');
-      }).catch(() => {
-        alert(`Please email me at ${emailAddress}`);
-      });
-    }, 500);
-  });
   
   function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast-copy';
     toast.innerText = message;
     document.body.appendChild(toast);
-    setTimeout(() => {
-      toast.remove();
-    }, 2500);
+    setTimeout(() => { toast.remove(); }, 2500);
   }
   
-  // Viber button - improved
+  copyEmailBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(emailAddress).then(() => {
+      showToast('📧 Email copied! pranjalpantalazarus2@gmail.com');
+    }).catch(() => {
+      alert('Could not copy email. Please manually copy: ' + emailAddress);
+    });
+  });
+  
+  // Viber button
   const viberBtn = document.getElementById('viberBtn');
   const phoneNumber = '9779861490159';
   viberBtn.addEventListener('click', (e) => {
@@ -685,15 +627,13 @@
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
       window.location.href = `viber://contact?number=${phoneNumber}`;
-      setTimeout(() => {
-        alert("If Viber doesn't open, please install Viber from your app store.");
-      }, 2000);
+      setTimeout(() => { alert("If Viber doesn't open, please install Viber from your app store."); }, 2000);
     } else {
-      alert("Viber works best on mobile. Please scan this QR code from your phone or install Viber Desktop.\n\nAlternatively, you can WhatsApp me at +9779861490159.");
+      alert("Viber works best on mobile. Please install Viber Desktop or use WhatsApp.");
     }
   });
   
-  // Contact form alert
+  // Contact form
   document.getElementById('contactForm')?.addEventListener('submit', (e) => {
     e.preventDefault();
     alert('Thank you! I will get back to you soon.');
