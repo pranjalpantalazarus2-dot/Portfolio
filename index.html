@@ -58,7 +58,7 @@
       --input-bg: #0f172a;
       --input-border: #334155;
       --skill-tag-bg: #1e293b;
-      --skill-tag-text: #cbd5e1;
+      --skill-tag-text: #e2e8f0;
       --section-title-gradient: linear-gradient(135deg, #e2e8f0, #93c5fd);
     }
     body.light {
@@ -289,16 +289,27 @@
       left: 100%;
     }
     
-    /* Skills grid */
+    /* Skills grid - improved clarity */
     .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .skill-card h3 {
-      font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;
-      color: var(--accent); display: flex; align-items: center; gap: 0.6rem;
-      border-left: 3px solid #3b82f6; padding-left: 0.8rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
     }
-    .skill-block { margin-bottom: 1.5rem; }
+    .skill-block {
+      margin-bottom: 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      padding: 0.5rem 0.8rem;
+    }
     .skill-block h4 {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 800;
       color: var(--text-main);
       margin-bottom: 0.6rem;
@@ -306,19 +317,31 @@
       align-items: center;
       gap: 0.5rem;
     }
-    .skill-block h4 i { color: var(--accent); font-size: 0.9rem; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+    .skill-block h4 i {
+      color: var(--accent);
+      font-size: 1rem;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
     .skill-tag {
       background: var(--skill-tag-bg);
-      padding: 0.25rem 1rem;
+      padding: 0.4rem 1.2rem;
       border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 500;
+      font-size: 0.85rem;
+      font-weight: 600;
       color: var(--skill-tag-text);
       border: 1px solid var(--border-color);
       transition: all 0.2s;
     }
-    .skill-tag:hover { background: var(--accent); color: white; transform: scale(1.02); }
+    .skill-tag:hover {
+      background: var(--accent);
+      color: white;
+      transform: scale(1.02);
+    }
     
     /* Education */
     .edu-item { border-left: 3px solid #3b82f6; padding-left: 1rem; margin-bottom: 1.5rem; }
@@ -500,6 +523,30 @@
       transition: background 0.3s;
     }
     body.light footer { background: rgba(255,255,255,0.7); }
+    
+    /* Visitor counter - hidden by default, shown on double-click */
+    .visitor-counter {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      background: rgba(96,165,250,0.1);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .visitor-counter i {
+      color: var(--accent);
+    }
+    .visitor-counter.visible {
+      display: inline-flex;
+    }
+    
     a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
@@ -540,6 +587,8 @@
       .avatar { width: 90px; height: 90px; font-size: 2.2rem; }
       .project-links { flex-direction: column; align-items: flex-start; }
       .contact-info h3 { font-size: 1.6rem; }
+      .skill-block h4 { font-size: 0.9rem; }
+      .skill-tag { font-size: 0.75rem; padding: 0.25rem 0.8rem; }
     }
   </style>
 </head>
@@ -575,7 +624,6 @@
     <div class="hero-tagline">Aspiring Network Engineer & Cybersecurity Enthusiast</div>
     <div class="hero-location">📍 Based in Kathmandu, Nepal</div>
     <div class="btn-group">
-      <!-- Changed button text from "Copy Email" to "Email" -->
       <button id="copyEmailBtn" class="btn btn-primary"><i class="fas fa-envelope"></i> Email</button>
       <a href="https://wa.me/9779861490159?text=Hello%20Pranjal" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       <a href="#" id="viberBtn" class="btn btn-outline"><i class="fab fa-viber"></i> Viber</a>
@@ -595,21 +643,91 @@
     </div>
   </section>
 
+  <!-- IMPROVED SKILLS SECTION - crystal clear -->
   <section id="skills">
     <h2 class="section-title">⚙️ Core Skills & Tools</h2>
     <div class="skills-grid">
       <div class="skill-card">
         <h3><i class="fas fa-network-wired"></i> Networking</h3>
-        <div class="skill-block"><h4><i class="fas fa-microchip"></i> Network Fundamentals</h4><div class="skill-tags"><span class="skill-tag">OSI Model</span><span class="skill-tag">TCP/IP</span><span class="skill-tag">Cable Types</span><span class="skill-tag">Network Protocols</span><span class="skill-tag">Subnetting</span><span class="skill-tag">VLSM</span><span class="skill-tag">Supernetting</span></div></div>
-        <div class="skill-block"><h4><i class="fas fa-exchange-alt"></i> Switching Protocols</h4><div class="skill-tags"><span class="skill-tag">VLANs</span><span class="skill-tag">STP</span><span class="skill-tag">SVI</span><span class="skill-tag">DHCP Snooping</span><span class="skill-tag">Port Security</span><span class="skill-tag">EtherChannel</span><span class="skill-tag">MPLS</span></div></div>
-        <div class="skill-block"><h4><i class="fas fa-route"></i> Routing Protocols</h4><div class="skill-tags"><span class="skill-tag">RIP</span><span class="skill-tag">OSPF</span><span class="skill-tag">EIGRP</span><span class="skill-tag">BGP</span><span class="skill-tag">IS-IS</span></div></div>
-        <div class="skill-block"><h4><i class="fas fa-sync-alt"></i> Redundancy Protocols</h4><div class="skill-tags"><span class="skill-tag">HSRP</span><span class="skill-tag">VRRP</span><span class="skill-tag">GLBP</span></div></div>
+        <div class="skill-block">
+          <h4><i class="fas fa-microchip"></i> Network Fundamentals</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">OSI Model</span>
+            <span class="skill-tag">TCP/IP</span>
+            <span class="skill-tag">Cable Types</span>
+            <span class="skill-tag">Network Protocols</span>
+            <span class="skill-tag">Subnetting</span>
+            <span class="skill-tag">VLSM</span>
+            <span class="skill-tag">Supernetting</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4><i class="fas fa-exchange-alt"></i> Switching Protocols</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">VLANs</span>
+            <span class="skill-tag">STP</span>
+            <span class="skill-tag">SVI</span>
+            <span class="skill-tag">DHCP Snooping</span>
+            <span class="skill-tag">Port Security</span>
+            <span class="skill-tag">EtherChannel</span>
+            <span class="skill-tag">MPLS</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4><i class="fas fa-route"></i> Routing Protocols</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">RIP</span>
+            <span class="skill-tag">OSPF</span>
+            <span class="skill-tag">EIGRP</span>
+            <span class="skill-tag">BGP</span>
+            <span class="skill-tag">IS-IS</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4><i class="fas fa-sync-alt"></i> Redundancy Protocols</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">HSRP</span>
+            <span class="skill-tag">VRRP</span>
+            <span class="skill-tag">GLBP</span>
+          </div>
+        </div>
       </div>
       <div class="skill-card">
         <h3><i class="fas fa-shield-alt"></i> Security, Firewalls & Tools</h3>
-        <div class="skill-block"><h4><i class="fas fa-firewall"></i> Security & Firewalls</h4><div class="skill-tags"><span class="skill-tag">Cisco ASA Firewall</span><span class="skill-tag">ACLs</span><span class="skill-tag">VPN Concepts</span><span class="skill-tag">NAT/PAT</span></div></div>
-        <div class="skill-block"><h4><i class="fas fa-user-secret"></i> Cybersecurity & Ethical Hacking</h4><div class="skill-tags"><span class="skill-tag">Operating Systems</span><span class="skill-tag">Network Forensics</span><span class="skill-tag">Linux Fundamentals</span><span class="skill-tag">Basic Web Security</span></div></div>
-        <div class="skill-block"><h4><i class="fas fa-tools"></i> Tools & Simulation</h4><div class="skill-tags"><span class="skill-tag">Cisco Packet Tracer</span><span class="skill-tag">GNS3</span><span class="skill-tag">Wireshark</span><span class="skill-tag">PyCharm</span><span class="skill-tag">FTK Imager</span><span class="skill-tag">Autopsy</span><span class="skill-tag">Hack The Box</span><span class="skill-tag">BurpSuite</span><span class="skill-tag">Kali Linux</span><span class="skill-tag">tryhackme</span><span class="skill-tag">pingmynetwork</span></div></div>
+        <div class="skill-block">
+          <h4><i class="fas fa-firewall"></i> Security & Firewalls</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Cisco ASA Firewall</span>
+            <span class="skill-tag">ACLs</span>
+            <span class="skill-tag">VPN Concepts</span>
+            <span class="skill-tag">NAT/PAT</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4><i class="fas fa-user-secret"></i> Cybersecurity & Ethical Hacking</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Operating Systems</span>
+            <span class="skill-tag">Network Forensics</span>
+            <span class="skill-tag">Linux Fundamentals</span>
+            <span class="skill-tag">Basic Web Security</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4><i class="fas fa-tools"></i> Tools & Simulation</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Cisco Packet Tracer</span>
+            <span class="skill-tag">GNS3</span>
+            <span class="skill-tag">Wireshark</span>
+            <span class="skill-tag">PyCharm</span>
+            <span class="skill-tag">FTK Imager</span>
+            <span class="skill-tag">Autopsy</span>
+            <span class="skill-tag">Hack The Box</span>
+            <span class="skill-tag">BurpSuite</span>
+            <span class="skill-tag">Kali Linux</span>
+            <span class="skill-tag">tryhackme</span>
+            <span class="skill-tag">pingmynetwork</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -634,8 +752,6 @@
           <a href="https://raw.githubusercontent.com/pranjalpanta/Three-Tier-Network-Architecture-Networking-project/main/230238-Networking%20.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt file</a>
         </div>
       </div>
-
-      <!-- Updated: Web Enumeration Tool with GitHub link -->
       <div class="project-card">
         <div class="project-title"><i class="fas fa-code"></i> Web Enumeration Tool (Python)</div>
         <div class="project-desc">Script that gathers important information about web applications (headers, technologies, endpoints, etc.) to support security testing and reconnaissance.</div>
@@ -644,7 +760,6 @@
           <a href="https://github.com/pranjalpanta/Python" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-title"><i class="fas fa-shield-alt"></i> Cisco ASA Firewall Configuration</div>
         <div class="project-desc">Implemented security policies on Cisco ASA using ACLs, NAT and VPN concepts to control and protect traffic between internal and external networks.</div>
@@ -661,8 +776,6 @@
           <a href="https://raw.githubusercontent.com/pranjalpanta/Networking-Project-/main/Networking-Mini-Project.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt file</a>
         </div>
       </div>
-
-      <!-- Updated: Secure File Encryption Tool with GitHub link -->
       <div class="project-card">
         <div class="project-title"><i class="fas fa-lock"></i> Secure File Encryption Tool (Python)</div>
         <div class="project-desc">Python-based tool to encrypt and decrypt files securely, focusing on basic cryptography concepts and security best practices.</div>
@@ -671,7 +784,6 @@
           <a href="https://github.com/pranjalpanta/secure-file-tool" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-title"><i class="fas fa-key"></i> Password-Manager-Using-Cryptography</div>
         <div class="project-desc">A password manager that stores all your passwords securely using strong encryption. Only one master password to remember.</div>
@@ -764,6 +876,10 @@
 </main>
 
 <footer>
+  <!-- Visitor counter - hidden by default, shown on double-click -->
+  <div id="visitorCounterContainer" class="visitor-counter">
+    <i class="fas fa-eye"></i> Total visits: <span id="visitor-counter">0</span>
+  </div>
   <p>© 2025 All Rights Reserved by Pranjal Panta</p>
 </footer>
 
@@ -839,6 +955,34 @@
     alert('Thank you! I will get back to you soon.');
     e.target.reset();
   });
+
+  // === VISITOR COUNTER (hidden until double-click on footer) ===
+  const counterContainer = document.getElementById('visitorCounterContainer');
+  const counterSpan = document.getElementById('visitor-counter');
+  
+  const footer = document.querySelector('footer');
+  footer.addEventListener('dblclick', () => {
+    counterContainer.classList.toggle('visible');
+    if (counterContainer.classList.contains('visible') && counterSpan.innerText === '0') {
+      fetch('https://api.countapi.xyz/hit/pranjal-portfolio/visitors')
+        .then(response => response.json())
+        .then(data => {
+          if (data && typeof data.value === 'number') {
+            counterSpan.innerText = data.value;
+          } else {
+            counterSpan.innerText = '?';
+          }
+        })
+        .catch(err => {
+          console.error('Visitor counter error:', err);
+          counterSpan.innerText = '?';
+        });
+    }
+  });
+  
+  // Always increment the counter on page load (even if hidden)
+  fetch('https://api.countapi.xyz/hit/pranjal-portfolio/visitors')
+    .catch(err => console.error('Counter increment error:', err));
 </script>
 </body>
 </html>
