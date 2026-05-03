@@ -24,10 +24,7 @@
       opacity: 1;
       visibility: visible;
     }
-    .loader-content {
-      text-align: center;
-    }
-    /* Typewriter text - big, bold, with letter spacing */
+    .loader-content { text-align: center; }
     .loader-text {
       display: inline-block;
       font-size: 48px;
@@ -40,32 +37,14 @@
       width: 0;
       animation: typing 2.5s steps(11, end) forwards, blinkCursor 0.8s step-end infinite;
     }
-    /* Typing animation (11 characters for "Loading...") */
-    @keyframes typing {
-      0% { width: 0; }
-      100% { width: 11ch; }
-    }
-    /* Cursor blink */
-    @keyframes blinkCursor {
-      0%, 100% { border-color: #60a5fa; }
-      50% { border-color: transparent; }
-    }
-    .loader-wrapper.fade-out {
-      opacity: 0;
-      visibility: hidden;
-    }
-    /* Light mode loader support */
-    body.light .loader-wrapper {
-      background: radial-gradient(circle at 30% 20%, #f8fafc, #e2e8f0);
-    }
-    body.light .loader-text {
-      color: #2563eb;
-      border-right-color: #2563eb;
-    }
+    @keyframes typing { 0% { width: 0; } 100% { width: 11ch; } }
+    @keyframes blinkCursor { 0%, 100% { border-color: #60a5fa; } 50% { border-color: transparent; } }
+    .loader-wrapper.fade-out { opacity: 0; visibility: hidden; }
+    body.light .loader-wrapper { background: radial-gradient(circle at 30% 20%, #f8fafc, #e2e8f0); }
+    body.light .loader-text { color: #2563eb; border-right-color: #2563eb; }
     
-    /* RESET & VARIABLES - (rest of your CSS remains unchanged) */
+    /* RESET & VARIABLES */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     :root {
       --bg-start: #0a1128;
       --bg-end: #02040a;
@@ -82,7 +61,6 @@
       --skill-tag-text: #cbd5e1;
       --section-title-gradient: linear-gradient(135deg, #e2e8f0, #93c5fd);
     }
-    
     body.light {
       --bg-start: #f8fafc;
       --bg-end: #e2e8f0;
@@ -99,7 +77,6 @@
       --skill-tag-text: #1e293b;
       --section-title-gradient: linear-gradient(135deg, #1e293b, #2563eb);
     }
-    
     body {
       font-family: 'Inter', sans-serif;
       color: var(--text-main);
@@ -195,7 +172,7 @@
     }
     .logo-p:hover span { transform: scale(1.05); }
     .logo-p:hover { transform: translateY(-2px); box-shadow: 0 0 0 2px var(--accent); }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
     .nav-links a { text-decoration: none; font-weight: 500; color: var(--text-muted); transition: 0.2s; font-size: 0.9rem; }
     .nav-links a:hover { color: var(--accent); }
     .hire-btn {
@@ -219,9 +196,10 @@
     }
     .theme-toggle:hover { background: var(--accent); color: white; border-color: var(--accent); }
     
+    /* Hero - improved */
     .hero { text-align: center; padding: 5rem 1rem 3rem; }
     .avatar {
-      width: 110px; height: 110px;
+      width: 120px; height: 120px;
       background: linear-gradient(145deg, #1e293b, #0f172a);
       border-radius: 50%;
       display: flex;
@@ -229,28 +207,29 @@
       justify-content: center;
       margin: 0 auto 1.5rem;
       font-weight: 800;
-      font-size: 2.8rem;
+      font-size: 3rem;
       color: var(--accent);
-      border: 2px solid var(--border-color);
-      box-shadow: 0 0 20px var(--accent);
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 25px var(--accent);
       transition: all 0.3s;
     }
     body.light .avatar { background: linear-gradient(145deg, #f1f5f9, #e2e8f0); }
     .hero h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 800;
       background: linear-gradient(to right, #ffffff, var(--text-muted));
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      margin-bottom: 0.5rem;
     }
-    .hero-tagline { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 700; }
-    .hero-location { color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; font-weight: 700; }
+    .hero-tagline { font-size: 1.2rem; color: var(--accent); margin-bottom: 0.5rem; font-weight: 600; letter-spacing: 1px; }
+    .hero-location { color: #64748b; font-size: 1rem; margin-bottom: 2rem; font-weight: 500; }
     .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
     .btn {
       display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.6rem 1.5rem; border-radius: 40px; font-weight: 600;
-      font-size: 0.85rem;
+      padding: 0.7rem 1.8rem; border-radius: 40px; font-weight: 600;
+      font-size: 0.9rem;
       background: var(--btn-bg); backdrop-filter: blur(4px);
       border: 1px solid var(--border-color); color: var(--text-main);
       cursor: pointer;
@@ -260,31 +239,57 @@
     .btn-primary { background: #3b82f6; border: none; color: white; box-shadow: 0 4px 14px rgba(59,130,246,0.3); }
     .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
     .btn-outline:hover { background: var(--accent); color: white; transform: translateY(-2px); }
-    .social-links-hero { display: flex; justify-content: center; gap: 1.8rem; margin-top: 0.5rem; }
-    .social-links-hero a { color: var(--text-muted); font-size: 1.3rem; transition: 0.2s; }
-    .social-links-hero a:hover { color: var(--accent); transform: translateY(-2px); }
+    .social-links-hero { display: flex; justify-content: center; gap: 2rem; margin-top: 0.5rem; }
+    .social-links-hero a { color: var(--text-muted); font-size: 1.4rem; transition: 0.2s; }
+    .social-links-hero a:hover { color: var(--accent); transform: translateY(-3px); }
     
+    /* Section titles - NO underline */
     .section-title {
-      font-size: 2rem; font-weight: 700; margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
       background: var(--section-title-gradient);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      display: inline-block;
     }
+    
+    /* Cards */
     .about-text, .skill-card, .edu-card, .cert-grid > div, .blog-grid, .contact-wrapper, .project-card, .blog-card {
       background: var(--card-bg);
       border-radius: 28px;
       padding: 1.5rem;
       border: 1px solid var(--border-color);
-      transition: all 0.2s;
+      transition: all 0.3s ease;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     }
     .project-card:hover, .skill-card:hover, .blog-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
       background: var(--card-hover-bg);
       border-color: var(--accent);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(96,165,250,0.1), transparent);
+      transition: left 0.6s ease;
+      pointer-events: none;
+    }
+    .project-card:hover::before {
+      left: 100%;
+    }
+    
+    /* Skills grid */
     .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .skill-card h3 {
       font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;
@@ -311,11 +316,16 @@
       font-weight: 500;
       color: var(--skill-tag-text);
       border: 1px solid var(--border-color);
-      transition: background 0.3s;
+      transition: all 0.2s;
     }
+    .skill-tag:hover { background: var(--accent); color: white; transform: scale(1.02); }
+    
+    /* Education */
     .edu-item { border-left: 3px solid #3b82f6; padding-left: 1rem; margin-bottom: 1.5rem; }
     .edu-item h4 { font-weight: 700; font-size: 1.1rem; }
     .edu-item .meta { font-size: 0.8rem; color: var(--text-muted); }
+    
+    /* Certifications */
     .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
     .cert-item {
       background: var(--card-bg);
@@ -335,11 +345,50 @@
       color: var(--accent); text-decoration: none; transition: 0.2s;
     }
     .cert-link-btn:hover { background: #3b82f6; color: white; }
+    
+    /* Projects & Blogs */
     .projects-grid, .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
-    .project-title, .blog-title { font-weight: 800; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-main); }
+    .project-title, .blog-title { 
+      font-weight: 800; 
+      font-size: 1.2rem; 
+      margin-bottom: 0.5rem; 
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .project-title i, .blog-title i {
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
     .project-desc, .blog-excerpt { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.8rem; }
-    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
     .tech-stack span { background: var(--skill-tag-bg); padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; font-weight: 600; color: var(--accent); }
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .project-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(59,130,246,0.15);
+      border: 1px solid var(--border-color);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .project-link-btn:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
     .blog-image {
       width: 100%; height: 180px; object-fit: cover; border-radius: 20px; margin-bottom: 1rem; border: 1px solid var(--border-color);
       background: #1e293b;
@@ -348,30 +397,115 @@
     .blog-card { text-decoration: none; color: inherit; display: block; }
     .blog-card .blog-title { text-decoration: none; color: var(--text-main); }
     .blog-card:hover .blog-title { color: var(--accent); }
-    .contact-wrapper { display: flex; flex-wrap: wrap; gap: 2.5rem; padding: 2rem; }
-    .contact-info { flex: 1; min-width: 220px; }
-    .contact-info h3 { font-size: 1.5rem; margin-bottom: 0.8rem; }
-    .contact-info p { color: var(--text-muted); margin-bottom: 1.5rem; }
-    .contact-detail { margin-top: 1.5rem; }
-    .contact-detail div { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; color: var(--text-muted); }
-    .contact-detail i { width: 24px; color: var(--accent); }
-    .contact-form { flex: 2; }
-    .form-row { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
-    .contact-form input, .contact-form select, .contact-form textarea {
-      width: 100%; padding: 0.8rem 1rem; border-radius: 20px;
-      border: 1px solid var(--input-border); background: var(--input-bg); color: var(--text-main);
-      font-family: inherit;
+    
+    /* CONTACT SECTION - IMPROVED */
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      padding: 2rem;
     }
-    .contact-form button { background: #3b82f6; border: none; padding: 0.7rem 2rem; border-radius: 40px; font-weight: 600; color: white; cursor: pointer; transition: 0.2s; margin-top: 0.5rem; }
-    .contact-form button:hover { background: #2563eb; transform: translateY(-2px); }
-    footer { text-align: center; padding: 2rem; margin-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); background: rgba(2,4,10,0.5); backdrop-filter: blur(4px); transition: background 0.3s; }
+    .contact-info {
+      flex: 1;
+      min-width: 250px;
+    }
+    .contact-info h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .contact-detail {
+      margin-top: 1.8rem;
+    }
+    .contact-detail div {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+    .contact-detail i {
+      width: 32px;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+    .contact-form {
+      flex: 2;
+    }
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 20px;
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: border 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(96,165,250,0.2);
+    }
+    .contact-form select option[disabled] {
+      color: #64748b;
+    }
+    .contact-form button {
+      background: #3b82f6;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .contact-form button:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      background: rgba(2,4,10,0.5);
+      backdrop-filter: blur(4px);
+      transition: background 0.3s;
+    }
     body.light footer { background: rgba(255,255,255,0.7); }
     a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
     
-    /* Toast notification */
+    /* Toast */
     .toast-copy {
       position: fixed;
       bottom: 30px;
@@ -397,21 +531,21 @@
     @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr; } }
     @media (max-width: 750px) {
       nav { flex-direction: column; gap: 1rem; padding: 0.8rem; }
-      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+      .nav-links { gap: 1rem; justify-content: center; }
       .hero h1 { font-size: 2rem; }
       .section-title { font-size: 1.6rem; }
       .container { padding: 0 1rem; }
       section { scroll-margin-top: 7rem; }
-      .loader-text {
-        font-size: 32px;
-        letter-spacing: 6px;
-      }
+      .loader-text { font-size: 32px; letter-spacing: 6px; }
+      .avatar { width: 90px; height: 90px; font-size: 2.2rem; }
+      .project-links { flex-direction: column; align-items: flex-start; }
+      .contact-info h3 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- LOADER - only text, no spinner -->
+<!-- LOADER -->
 <div class="loader-wrapper" id="loaderWrapper">
   <div class="loader-content">
     <span class="loader-text">Loading...</span>
@@ -421,9 +555,14 @@
 <nav>
   <div class="logo-p"><span>P</span></div>
   <div class="nav-links">
-    <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
-    <a href="#education">Education</a><a href="#projects">Projects</a>
-    <a href="#certifications">Certifications</a><a href="#blogs">Blogs</a><a href="#contact">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#blogs">Blogs</a>
+    <a href="#contact">Contact</a>
     <a href="#contact" class="hire-btn">Hire me!</a>
     <button id="themeToggle" class="theme-toggle" aria-label="Switch dark/light mode">🌓 Light</button>
   </div>
@@ -436,7 +575,8 @@
     <div class="hero-tagline">Aspiring Network Engineer & Cybersecurity Enthusiast</div>
     <div class="hero-location">📍 Based in Kathmandu, Nepal</div>
     <div class="btn-group">
-      <button id="copyEmailBtn" class="btn btn-primary"><i class="fas fa-envelope"></i> Copy Email</button>
+      <!-- Changed button text from "Copy Email" to "Email" -->
+      <button id="copyEmailBtn" class="btn btn-primary"><i class="fas fa-envelope"></i> Email</button>
       <a href="https://wa.me/9779861490159?text=Hello%20Pranjal" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       <a href="#" id="viberBtn" class="btn btn-outline"><i class="fab fa-viber"></i> Viber</a>
     </div>
@@ -482,15 +622,64 @@
     </div>
   </section>
 
+  <!-- PROJECTS SECTION -->
   <section id="projects">
     <h2 class="section-title">🚀 Featured Projects</h2>
     <div class="projects-grid">
-      <div class="project-card"><div class="project-title">Three-Tier Enterprise Network Design</div><div class="project-desc">Scalable and secure enterprise-style network architecture with proper segmentation and hierarchical design.<br>Designed in Cisco Packet Tracer using routing, VLANs and best practices.</div><div class="tech-stack"><span>Packet Tracer</span><span>VLANs</span><span>Routing</span></div></div>
-      <div class="project-card"><div class="project-title">Web Enumeration Tool (Python)</div><div class="project-desc">Script that gathers important information about web applications (headers, technologies, endpoints, etc.) to support security testing and reconnaissance.<br>Helps build a structured approach to information gathering.</div><div class="tech-stack"><span>Python</span><span>BurpSuite</span><span>Recon</span></div></div>
-      <div class="project-card"><div class="project-title">Cisco ASA Firewall Configuration</div><div class="project-desc">Implemented security policies on Cisco ASA using ACLs, NAT and VPN concepts to control and protect traffic between internal and external networks.<br>Focused on perimeter security and rule-based access control.</div><div class="tech-stack"><span>Cisco ASA</span><span>ACL</span><span>VPN</span></div></div>
-      <div class="project-card"><div class="project-title">Enterprise Networking Mini Project (Cisco Packet Tracer)</div><div class="project-desc">Multi-department enterprise network with VLANs, inter-VLAN routing, DHCP, and secure wireless using /26 subnetting.<br>Combines addressing, segmentation and services in one lab.</div><div class="tech-stack"><span>Packet Tracer</span><span>DHCP</span><span>VLANs</span></div></div>
-      <div class="project-card"><div class="project-title">Secure File Encryption Tool (Python)</div><div class="project-desc">Python-based tool to encrypt and decrypt files securely, focusing on basic cryptography concepts and security best practices.<br>Built to understand confidentiality and secure data handling.</div><div class="tech-stack"><span>Python</span><span>Cryptography</span></div></div>
-      <div class="project-card"><div class="project-title">Password Manager / Password Vault</div><div class="project-desc">A password manager is a tool that stores all your passwords securely in one place. Instead of remembering many passwords, you remember only one master password.<br>You only need to remember one master password, and the tool remembers the rest for you.</div><div class="tech-stack"><span>Python</span><span>Encryption</span><span>Security</span></div></div>
+      <div class="project-card">
+        <div class="project-title"><i class="fas fa-network-wired"></i> Three-Tier Enterprise Network Architecture Design</div>
+        <div class="project-desc">Scalable and secure enterprise-style network architecture with proper segmentation and hierarchical design.<br>Designed in Cisco Packet Tracer using routing, VLANs and best practices.</div>
+        <div class="tech-stack"><span>Packet Tracer</span><span>VLANs</span><span>Routing</span></div>
+        <div class="project-links">
+          <a href="https://raw.githubusercontent.com/pranjalpanta/Three-Tier-Network-Architecture-Networking-project/main/230238-Networking%20.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt file</a>
+        </div>
+      </div>
+
+      <!-- Updated: Web Enumeration Tool with GitHub link -->
+      <div class="project-card">
+        <div class="project-title"><i class="fas fa-code"></i> Web Enumeration Tool (Python)</div>
+        <div class="project-desc">Script that gathers important information about web applications (headers, technologies, endpoints, etc.) to support security testing and reconnaissance.</div>
+        <div class="tech-stack"><span>Python</span><span>BurpSuite</span><span>Recon</span></div>
+        <div class="project-links">
+          <a href="https://github.com/pranjalpanta/Python" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title"><i class="fas fa-shield-alt"></i> Cisco ASA Firewall Configuration</div>
+        <div class="project-desc">Implemented security policies on Cisco ASA using ACLs, NAT and VPN concepts to control and protect traffic between internal and external networks.</div>
+        <div class="tech-stack"><span>Cisco ASA</span><span>ACL</span><span>VPN</span></div>
+        <div class="project-links">
+          <a href="https://raw.githubusercontent.com/pranjalpanta/-Firewall-Configuration-Networking-Project-/main/230238-Firewall.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt file</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-title"><i class="fas fa-building"></i> Enterprise Networking Mini Project (Cisco Packet Tracer)</div>
+        <div class="project-desc">Multi-department enterprise network with VLANs, inter-VLAN routing, DHCP, and secure wireless using /26 subnetting.</div>
+        <div class="tech-stack"><span>Packet Tracer</span><span>DHCP</span><span>VLANs</span></div>
+        <div class="project-links">
+          <a href="https://raw.githubusercontent.com/pranjalpanta/Networking-Project-/main/Networking-Mini-Project.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt file</a>
+        </div>
+      </div>
+
+      <!-- Updated: Secure File Encryption Tool with GitHub link -->
+      <div class="project-card">
+        <div class="project-title"><i class="fas fa-lock"></i> Secure File Encryption Tool (Python)</div>
+        <div class="project-desc">Python-based tool to encrypt and decrypt files securely, focusing on basic cryptography concepts and security best practices.</div>
+        <div class="tech-stack"><span>Python</span><span>Cryptography</span></div>
+        <div class="project-links">
+          <a href="https://github.com/pranjalpanta/secure-file-tool" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title"><i class="fas fa-key"></i> Password-Manager-Using-Cryptography</div>
+        <div class="project-desc">A password manager that stores all your passwords securely using strong encryption. Only one master password to remember.</div>
+        <div class="tech-stack"><span>Python</span><span>Encryption</span><span>Security</span></div>
+        <div class="project-links">
+          <a href="https://github.com/pranjalpanta/Password-Manager-Using-Cryptography" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -541,6 +730,7 @@
     </div>
   </section>
 
+  <!-- CONTACT SECTION -->
   <section id="contact">
     <div class="contact-wrapper">
       <div class="contact-info">
@@ -553,11 +743,14 @@
       </div>
       <div class="contact-form">
         <form id="contactForm">
-          <div class="form-row"><input type="text" name="firstName" placeholder="First name" required><input type="text" name="lastName" placeholder="Last name" required></div>
+          <div class="form-row">
+            <input type="text" name="firstName" placeholder="First name" required>
+            <input type="text" name="lastName" placeholder="Last name" required>
+          </div>
           <input type="email" name="email" placeholder="Email address" required style="width:100%; margin-bottom:1rem;">
           <input type="tel" name="phone" placeholder="Phone number" style="width:100%; margin-bottom:1rem;">
           <select name="service" required style="width:100%; margin-bottom:1rem;">
-            <option disabled selected>—Please choose an option—</option>
+            <option disabled selected value="">— Select a service —</option>
             <option>Network Engineering</option>
             <option>Cybersecurity</option>
             <option>Consulting</option>
@@ -575,28 +768,19 @@
 </footer>
 
 <script>
-  // Loader - fades out after minimum 3 seconds (so typing finishes)
+  // Loader
   const loaderWrapper = document.getElementById('loaderWrapper');
   let loaderFaded = false;
-  
   function fadeOutLoader() {
     if (loaderFaded) return;
     loaderFaded = true;
     loaderWrapper.classList.add('fade-out');
-    setTimeout(() => {
-      loaderWrapper.style.display = 'none';
-    }, 1200);
+    setTimeout(() => { loaderWrapper.style.display = 'none'; }, 1200);
   }
-  
-  // Minimum display time: 3 seconds
   const minLoadTime = setTimeout(() => {
-    if (document.readyState === 'complete') {
-      fadeOutLoader();
-    } else {
-      window.addEventListener('load', fadeOutLoader);
-    }
+    if (document.readyState === 'complete') fadeOutLoader();
+    else window.addEventListener('load', fadeOutLoader);
   }, 3000);
-  
   window.addEventListener('load', () => {
     clearTimeout(minLoadTime);
     setTimeout(fadeOutLoader, 1000);
@@ -617,7 +801,7 @@
     themeToggle.innerText = '🌓 Light';
   }
   
-  // Copy email
+  // Email button (copies email to clipboard)
   const copyEmailBtn = document.getElementById('copyEmailBtn');
   const emailAddress = 'pranjalpantalazarus2@gmail.com';
   function showToast(message) {
@@ -635,7 +819,7 @@
     });
   });
   
-  // Viber
+  // Viber button
   const viberBtn = document.getElementById('viberBtn');
   const phoneNumber = '9779861490159';
   viberBtn.addEventListener('click', (e) => {
