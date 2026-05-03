@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* LOADER STYLES */
+    /* LOADER - will be visible immediately */
     .loader-wrapper {
       position: fixed;
       top: 0;
@@ -20,51 +20,52 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
+      transition: opacity 1.2s ease, visibility 1.2s ease;
+      opacity: 1;
+      visibility: visible;
     }
-    .loader-content { text-align: center; }
-    .loader-logo {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      box-shadow: 0 0 0 2px #60a5fa, 0 0 0 4px rgba(96,165,250,0.3);
-      animation: pulseGlow 1.5s ease infinite;
-    }
-    .loader-logo span {
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #c084fc, #60a5fa);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 0 2px #60a5fa, 0 0 0 4px rgba(96,165,250,0.3); transform: scale(1); }
-      50% { box-shadow: 0 0 0 2px #a78bfa, 0 0 0 12px rgba(167,139,250,0.2); transform: scale(1.02); }
-      100% { box-shadow: 0 0 0 2px #60a5fa, 0 0 0 4px rgba(96,165,250,0.3); transform: scale(1); }
+    .loader-content {
+      text-align: center;
     }
     .loader-spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid rgba(96,165,250,0.2);
-      border-top: 3px solid #60a5fa;
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(96,165,250,0.2);
+      border-top: 5px solid #60a5fa;
       border-radius: 50%;
-      margin: 1rem auto 0;
-      animation: spin 0.8s linear infinite;
+      margin: 0 auto;
+      animation: spin 0.9s linear infinite;
     }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    .loader-wrapper.fade-out { opacity: 0; visibility: hidden; }
-    body.light .loader-wrapper { background: radial-gradient(circle at 30% 20%, #f8fafc, #e2e8f0); }
-    body.light .loader-logo { background: linear-gradient(135deg, #e2e8f0, #cbd5e1); box-shadow: 0 0 0 2px #2563eb, 0 0 0 4px rgba(37,99,235,0.2); }
-    body.light .loader-logo span { background: linear-gradient(135deg, #8b5cf6, #2563eb); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loader-text {
+      margin-top: 20px;
+      color: #60a5fa;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .loader-wrapper.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+    /* Light mode loader support */
+    body.light .loader-wrapper {
+      background: radial-gradient(circle at 30% 20%, #f8fafc, #e2e8f0);
+    }
+    body.light .loader-spinner {
+      border: 5px solid rgba(37,99,235,0.2);
+      border-top: 5px solid #2563eb;
+    }
+    body.light .loader-text {
+      color: #2563eb;
+    }
     
-    /* RESET & VARIABLES */
+    /* RESET & VARIABLES - (rest of your CSS remains the same) */
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     :root {
       --bg-start: #0a1128;
       --bg-end: #02040a;
@@ -81,6 +82,7 @@
       --skill-tag-text: #cbd5e1;
       --section-title-gradient: linear-gradient(135deg, #e2e8f0, #93c5fd);
     }
+    
     body.light {
       --bg-start: #f8fafc;
       --bg-end: #e2e8f0;
@@ -97,6 +99,7 @@
       --skill-tag-text: #1e293b;
       --section-title-gradient: linear-gradient(135deg, #1e293b, #2563eb);
     }
+    
     body {
       font-family: 'Inter', sans-serif;
       color: var(--text-main);
@@ -404,10 +407,11 @@
 </head>
 <body>
 
+<!-- LOADER - always visible at start, fades out after 2 seconds -->
 <div class="loader-wrapper" id="loaderWrapper">
   <div class="loader-content">
-    <div class="loader-logo"><span>PP</span></div>
     <div class="loader-spinner"></div>
+    <div class="loader-text">Loading...</div>
   </div>
 </div>
 
@@ -429,7 +433,6 @@
     <div class="hero-tagline">Aspiring Network Engineer & Cybersecurity Enthusiast</div>
     <div class="hero-location">📍 Based in Kathmandu, Nepal</div>
     <div class="btn-group">
-      <!-- Email button: copies email to clipboard -->
       <button id="copyEmailBtn" class="btn btn-primary"><i class="fas fa-envelope"></i> Copy Email</button>
       <a href="https://wa.me/9779861490159?text=Hello%20Pranjal" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       <a href="#" id="viberBtn" class="btn btn-outline"><i class="fab fa-viber"></i> Viber</a>
@@ -569,20 +572,34 @@
 </footer>
 
 <script>
-  // Loader
-  const loader = document.getElementById('loaderWrapper');
-  let isFading = false;
-  function hideLoader() {
-    if (isFading) return;
-    isFading = true;
-    loader.classList.add('fade-out');
-    setTimeout(() => { loader.style.display = 'none'; }, 600);
+  // Ensure loader is visible and fades out slowly after minimum 2 seconds
+  const loaderWrapper = document.getElementById('loaderWrapper');
+  let loaderFaded = false;
+  
+  function fadeOutLoader() {
+    if (loaderFaded) return;
+    loaderFaded = true;
+    loaderWrapper.classList.add('fade-out');
+    // Remove from DOM after transition
+    setTimeout(() => {
+      loaderWrapper.style.display = 'none';
+    }, 1200); // matches transition duration
   }
+  
+  // Minimum display time: 2 seconds
   const minLoadTime = setTimeout(() => {
-    if (document.readyState === 'complete') hideLoader();
-    else window.addEventListener('load', hideLoader);
-  }, 2500);
-  window.addEventListener('load', () => { clearTimeout(minLoadTime); setTimeout(hideLoader, 500); });
+    if (document.readyState === 'complete') {
+      fadeOutLoader();
+    } else {
+      window.addEventListener('load', fadeOutLoader);
+    }
+  }, 2000);
+  
+  // If page loads faster than 2 seconds, still wait
+  window.addEventListener('load', () => {
+    clearTimeout(minLoadTime);
+    setTimeout(fadeOutLoader, 500); // small extra delay for smoothness
+  });
   
   // Theme toggle
   const themeToggle = document.getElementById('themeToggle');
@@ -599,18 +616,16 @@
     themeToggle.innerText = '🌓 Light';
   }
   
-  // Copy email to clipboard
+  // Copy email
   const copyEmailBtn = document.getElementById('copyEmailBtn');
   const emailAddress = 'pranjalpantalazarus2@gmail.com';
-  
   function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast-copy';
     toast.innerText = message;
     document.body.appendChild(toast);
-    setTimeout(() => { toast.remove(); }, 2500);
+    setTimeout(() => toast.remove(), 2500);
   }
-  
   copyEmailBtn.addEventListener('click', () => {
     navigator.clipboard.writeText(emailAddress).then(() => {
       showToast('📧 Email copied! pranjalpantalazarus2@gmail.com');
@@ -619,7 +634,7 @@
     });
   });
   
-  // Viber button
+  // Viber
   const viberBtn = document.getElementById('viberBtn');
   const phoneNumber = '9779861490159';
   viberBtn.addEventListener('click', (e) => {
@@ -627,7 +642,7 @@
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (isMobile) {
       window.location.href = `viber://contact?number=${phoneNumber}`;
-      setTimeout(() => { alert("If Viber doesn't open, please install Viber from your app store."); }, 2000);
+      setTimeout(() => alert("If Viber doesn't open, please install Viber from your app store."), 2000);
     } else {
       alert("Viber works best on mobile. Please install Viber Desktop or use WhatsApp.");
     }
