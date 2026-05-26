@@ -94,6 +94,7 @@
       position: relative;
       transition: background 0.3s, color 0.3s;
     }
+    /* existing pseudo-elements for noise and glow */
     body::before {
       content: '';
       position: fixed;
@@ -127,6 +128,23 @@
       0% { transform: scale(1) translate(0%, 0%); opacity: 0.4; }
       100% { transform: scale(1.05) translate(1%, 1%); opacity: 0.7; }
     }
+    
+    /* New animated particle canvas background */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+    body.light #bg-canvas {
+      opacity: 0.3;
+    }
+    
     .container, nav { position: relative; z-index: 2; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
     section { scroll-margin-top: 5rem; padding: 5rem 0; border-bottom: 1px solid var(--border-color); }
@@ -665,6 +683,9 @@
 </head>
 <body>
 
+<!-- BACKGROUND ANIMATION CANVAS (particle network) -->
+<canvas id="bg-canvas"></canvas>
+
 <!-- LOADER -->
 <div class="loader-wrapper" id="loaderWrapper">
   <div class="loader-content">
@@ -828,7 +849,7 @@
         <h3>Let’s work together!</h3>
         <p>I turn complex security into simple solutions. Passionate about protecting what matters. Ready when you are.</p>
         <div class="contact-detail">
-          <div><i class="fas fa-phone-alt"></i> +977 9861490159</div>
+          <div><i class="fas fa-phone-alt"></i> +977 9861490158</div>
           <div><i class="fas fa-envelope"></i> pranjalpantalazarus2@gmail.com</div>
         </div>
       </div>
@@ -914,7 +935,101 @@
     }
   });
   
-  // ==================== TERMINAL WITHOUT MATRIX ====================
+  // ==================== BACKGROUND ANIMATION (PARTICLE NETWORK) ====================
+  const canvas = document.getElementById('bg-canvas');
+  let ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  let particleCount = 70;
+  let connectionDistance = 150;
+  let animationId;
+  
+  function initCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+    createParticles();
+    draw();
+  }
+  
+  function createParticles() {
+    particles = [];
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        radius: Math.random() * 2 + 1.2
+      });
+    }
+  }
+  
+  function updateParticles() {
+    for (let p of particles) {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) p.x = width;
+      if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height;
+      if (p.y > height) p.y = 0;
+    }
+  }
+  
+  function draw() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, width, height);
+    
+    // Get current accent color from CSS variable (supports dark/light)
+    const accentColor = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+    const isLight = document.body.classList.contains('light');
+    const baseOpacity = isLight ? 0.2 : 0.35;
+    
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < connectionDistance) {
+          const opacity = (1 - distance / connectionDistance) * baseOpacity;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = accentColor;
+          ctx.globalAlpha = opacity * 0.6;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+    
+    // Draw particles
+    for (let p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = accentColor;
+      ctx.globalAlpha = baseOpacity * 0.8;
+      ctx.fill();
+    }
+    
+    ctx.globalAlpha = 1;
+    updateParticles();
+    animationId = requestAnimationFrame(draw);
+  }
+  
+  window.addEventListener('resize', () => {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+    createParticles();
+  });
+  
+  initCanvas();
+  
+  // ==================== TERMINAL ====================
   const termOutput = document.getElementById('termOutput');
   const termInput = document.getElementById('termInput');
   const termClearBtn = document.getElementById('termClear');
