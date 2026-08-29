@@ -190,6 +190,24 @@
             background: #e0e0e0;
             transform: translateY(-2px);
         }
+        
+        /* ─── NEW BLACK DOWNLOAD CV BUTTON (NO BORDER, SOLID BLACK) ─── */
+        .nav-cv-btn {
+            background: #000000;
+            padding: 0.4rem 1.3rem;
+            border-radius: 40px;
+            color: #ffffff !important;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            border: none !important; /* Absolutely no borders, no brackets! */
+        }
+        .nav-cv-btn:hover {
+            background: #222222;
+            transform: translateY(-2px);
+            color: #ffffff !important;
+        }
+
         .theme-toggle {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--border-color);
@@ -890,6 +908,11 @@
         body.light .logo-p span { color: #1a1a1a; }
         body.light .hire-btn { background: #111111; color: #ffffff !important; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); }
         body.light .hire-btn:hover { background: #333333; }
+        
+        /* Black CV button for Light Mode (NO BORDER) */
+        body.light .nav-cv-btn { background: #000000; color: #ffffff !important; border: none !important; }
+        body.light .nav-cv-btn:hover { background: #333333; }
+        
         body.light .hero h1, body.light .section-title, body.light .skill-card h3,
         body.light .edu-item h4, body.light .cert-item strong, body.light .project-title,
         body.light .blog-title, body.light .contact-info h3 {
@@ -949,6 +972,9 @@
             <a href="#blogs">Blogs</a>
             <a href="#terminal">Terminal</a>
             <a href="#contact">Contact</a>
+            <!-- ✅ Download CV first, NO brackets, NO border -->
+            <a href="Pranjal_Panta_CV.pdf" target="_blank" class="nav-cv-btn">Download CV</a>
+            <!-- ✅ Hire me second -->
             <a href="#contact" class="hire-btn">Hire me</a>
             <button id="themeToggle" class="theme-toggle" aria-label="Switch dark/light mode">☀️ Light</button>
         </div>
@@ -967,6 +993,7 @@
                 <button id="copyEmailBtn" class="btn btn-primary"><i class="fas fa-envelope"></i> Email</button>
                 <a href="https://wa.me/9779861490159?text=Hello%20Pranjal" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="#" id="viberBtn" class="btn btn-outline"><i class="fab fa-viber"></i> Viber</a>
+                <!-- Download CV button REMOVED from here -->
             </div>
             <div class="social-links-hero">
                 <a href="https://github.com/pranjalpanta" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
