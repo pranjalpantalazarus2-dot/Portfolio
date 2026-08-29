@@ -1,1272 +1,1514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Pranjal Panta | Network Engineer & Cybersecurity</title>
-  <meta name="description" content="Portfolio of Pranjal Panta – Networking, Cybersecurity, Certifications & Projects">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* LOADER - no cursor, faster fade */
-    .loader-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 30% 20%, #0a1128, #02040a);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-      opacity: 1;
-      visibility: visible;
-    }
-    .loader-content { text-align: center; }
-    .loader-text {
-      display: inline-block;
-      font-size: 48px;
-      font-weight: 800;
-      letter-spacing: 8px;
-      color: #60a5fa;
-      overflow: hidden;
-      white-space: nowrap;
-      width: 0;
-      animation: typing 1.5s steps(11, end) forwards;
-    }
-    @keyframes typing {
-      0% { width: 0; }
-      100% { width: 11ch; }
-    }
-    .loader-wrapper.fade-out {
-      opacity: 0;
-      visibility: hidden;
-    }
-    body.light .loader-wrapper {
-      background: radial-gradient(circle at 30% 20%, #f8fafc, #e2e8f0);
-    }
-    body.light .loader-text {
-      color: #2563eb;
-    }
-    
-    /* RESET & VARIABLES - PROFESSIONAL THEME */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --bg-start: #0a0f1c;
-      --bg-end: #03060c;
-      --card-bg: rgba(18, 25, 45, 0.65);
-      --card-hover-bg: rgba(25, 35, 60, 0.8);
-      --border-color: rgba(66, 153, 225, 0.25);
-      --text-main: #eef2ff;
-      --text-muted: #b9c7e6;
-      --accent: #3b82f6;
-      --accent-dark: #2563eb;
-      --btn-bg: rgba(30, 41, 59, 0.8);
-      --input-bg: #111827;
-      --input-border: #1f2a44;
-      --skill-tag-bg: #1e2a4a;
-      --skill-tag-text: #e2e8f0;
-      --section-title-gradient: linear-gradient(135deg, #f0f4ff, #7aa9ff);
-      --shadow-sm: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
-    }
-    body.light {
-      --bg-start: #f1f5f9;
-      --bg-end: #e2e8f0;
-      --card-bg: rgba(255, 255, 255, 0.92);
-      --card-hover-bg: #ffffff;
-      --border-color: rgba(0, 0, 0, 0.08);
-      --text-main: #0a2540;
-      --text-muted: #2d3a5e;
-      --accent: #2563eb;
-      --accent-dark: #1d4ed8;
-      --btn-bg: #ffffff;
-      --input-bg: #ffffff;
-      --input-border: #cbd5e1;
-      --skill-tag-bg: #eef2ff;
-      --skill-tag-text: #1e293b;
-      --section-title-gradient: linear-gradient(135deg, #1e293b, #2563eb);
-      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-main);
-      line-height: 1.5;
-      scroll-behavior: smooth;
-      background: radial-gradient(circle at 30% 20%, var(--bg-start), var(--bg-end));
-      position: relative;
-      transition: background 0.3s, color 0.3s;
-    }
-    /* existing pseudo-elements for noise and glow */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjgiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=');
-      background-repeat: repeat;
-      opacity: 0.2;
-      pointer-events: none;
-      z-index: 0;
-      transition: opacity 0.3s;
-    }
-    body.light::before { opacity: 0.03; }
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 20% 40%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
-                  radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
-      animation: slowDrift 18s infinite alternate;
-      pointer-events: none;
-      z-index: 0;
-    }
-    body.light::after { opacity: 0.15; }
-    @keyframes slowDrift {
-      0% { transform: scale(1) translate(0%, 0%); opacity: 0.3; }
-      100% { transform: scale(1.05) translate(1%, 1%); opacity: 0.6; }
-    }
-    
-    /* New animated particle canvas background */
-    #bg-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.4;
-      transition: opacity 0.3s;
-    }
-    body.light #bg-canvas {
-      opacity: 0.2;
-    }
-    
-    .container, nav { position: relative; z-index: 2; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    section { scroll-margin-top: 5rem; padding: 5rem 0; border-bottom: 1px solid var(--border-color); }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(2, 4, 10, 0.75);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    body.light nav { background: rgba(255, 255, 255, 0.85); }
-    .logo-p {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, #1e2a4a, #0f172a);
-      border-radius: 14px;
-      position: relative;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      box-shadow: 0 0 0 1px var(--accent), 0 4px 12px rgba(0,0,0,0.2);
-    }
-    body.light .logo-p { background: linear-gradient(135deg, #e2e8f0, #cbd5e1); }
-    .logo-p::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      background: linear-gradient(135deg, var(--accent), #8b5cf6, var(--accent));
-      border-radius: 16px;
-      opacity: 0;
-      transition: opacity 0.4s;
-      z-index: -1;
-    }
-    .logo-p:hover::before { opacity: 1; }
-    .logo-p span {
-      font-weight: 800;
-      font-size: 1.6rem;
-      background: linear-gradient(135deg, #c084fc, var(--accent));
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 6px rgba(96,165,250,0.3);
-      transition: transform 0.2s;
-    }
-    .logo-p:hover span { transform: scale(1.05); }
-    .logo-p:hover { transform: translateY(-2px); box-shadow: 0 0 0 2px var(--accent); }
-    .nav-links { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
-    .nav-links a { text-decoration: none; font-weight: 500; color: var(--text-muted); transition: 0.2s; font-size: 0.9rem; }
-    .nav-links a:hover { color: var(--accent); }
-    .hire-btn {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      color: white !important;
-      font-weight: 600;
-      box-shadow: 0 2px 8px rgba(59,130,246,0.4);
-    }
-    .hire-btn:hover { transform: translateY(-2px); background: linear-gradient(135deg, var(--accent-dark), #6d28d9); }
-    .theme-toggle {
-      background: var(--btn-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 40px;
-      padding: 0.3rem 0.9rem;
-      cursor: pointer;
-      color: var(--text-main);
-      font-size: 0.8rem;
-      transition: 0.2s;
-      font-weight: 500;
-    }
-    .theme-toggle:hover { background: var(--accent); color: white; border-color: var(--accent); }
-    
-    /* Hero */
-    .hero { text-align: center; padding: 5rem 1rem 3rem; }
-    .avatar {
-      width: 120px; height: 120px;
-      background: linear-gradient(145deg, #1e2a4a, #0f172a);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-      font-weight: 800;
-      font-size: 3rem;
-      color: var(--accent);
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 25px var(--accent);
-      transition: all 0.3s;
-    }
-    body.light .avatar { background: linear-gradient(145deg, #f1f5f9, #e2e8f0); }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(to right, #ffffff, var(--text-muted));
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 0.5rem;
-    }
-    .hero-tagline { font-size: 1.2rem; color: var(--accent); margin-bottom: 0.5rem; font-weight: 600; letter-spacing: 1px; }
-    .hero-location { color: #64748b; font-size: 1rem; margin-bottom: 2rem; font-weight: 500; }
-    .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.7rem 1.8rem; border-radius: 40px; font-weight: 600;
-      font-size: 0.9rem;
-      background: var(--btn-bg); backdrop-filter: blur(4px);
-      border: 1px solid var(--border-color); color: var(--text-main);
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-primary { background: var(--accent); border: none; color: white; box-shadow: 0 4px 14px rgba(59,130,246,0.3); }
-    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
-    .btn-outline:hover { background: var(--accent); color: white; transform: translateY(-2px); }
-    .social-links-hero { display: flex; justify-content: center; gap: 2rem; margin-top: 0.5rem; }
-    .social-links-hero a { color: var(--text-muted); font-size: 1.4rem; transition: 0.2s; }
-    .social-links-hero a:hover { color: var(--accent); transform: translateY(-3px); }
-    
-    /* Section titles */
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-      background: var(--section-title-gradient);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      display: inline-block;
-      letter-spacing: -0.3px;
-    }
-    
-    /* Cards */
-    .about-text, .skill-card, .edu-card, .cert-grid > div, .blog-grid, .contact-wrapper, .project-card, .blog-card, .terminal-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(8px);
-      border-radius: 28px;
-      padding: 1.8rem;
-      border: 1px solid var(--border-color);
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-sm);
-    }
-    .project-card:hover, .skill-card:hover, .blog-card:hover, .terminal-card:hover {
-      transform: translateY(-5px);
-      background: var(--card-hover-bg);
-      border-color: var(--accent);
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
-    }
-    .project-card {
-      position: relative;
-      overflow: hidden;
-    }
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.1), transparent);
-      transition: left 0.6s ease;
-      pointer-events: none;
-    }
-    .project-card:hover::before {
-      left: 100%;
-    }
-    
-    /* Skills */
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .skill-card h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      border-left: 4px solid var(--accent);
-      padding-left: 1rem;
-    }
-    .skill-block {
-      margin-bottom: 1.5rem;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 16px;
-      padding: 0.5rem 0.8rem;
-    }
-    .skill-block h4 {
-      font-size: 1rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .skill-block h4 i { color: var(--accent); font-size: 1rem; }
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 0.5rem;
-    }
-    .skill-tag {
-      background: var(--skill-tag-bg);
-      padding: 0.4rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--skill-tag-text);
-      border: 1px solid var(--border-color);
-      transition: all 0.2s;
-    }
-    .skill-tag:hover {
-      background: var(--accent);
-      color: white;
-      transform: scale(1.02);
-    }
-    
-    /* Education */
-    .edu-item { border-left: 3px solid var(--accent); padding-left: 1rem; margin-bottom: 1.5rem; }
-    .edu-item h4 { font-weight: 700; font-size: 1.1rem; }
-    .edu-item .meta { font-size: 0.8rem; color: var(--text-muted); }
-    
-    /* Certifications */
-    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
-    .cert-item {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 1.2rem;
-      transition: 0.2s;
-      border: 1px solid var(--border-color);
-    }
-    .cert-item:hover { transform: translateY(-3px); border-color: var(--accent); background: var(--card-hover-bg); }
-    .cert-item strong { display: block; font-weight: 800; font-size: 1rem; margin-bottom: 0.3rem; color: var(--text-main); }
-    .cert-item .issuer { font-size: 0.75rem; color: #93c5fd; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
-    .cert-item .date { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.8rem; }
-    .cert-link-btn {
-      display: inline-block; background: rgba(59,130,246,0.15);
-      border: 1px solid var(--border-color); padding: 0.3rem 1rem;
-      border-radius: 30px; font-size: 0.7rem; font-weight: 600;
-      color: var(--accent); text-decoration: none; transition: 0.2s;
-    }
-    .cert-link-btn:hover { background: var(--accent); color: white; }
-    
-    /* Projects & Blogs */
-    .projects-grid, .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
-    .project-title, .blog-title { 
-      font-weight: 800; 
-      font-size: 1.2rem; 
-      margin-bottom: 0.5rem; 
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .project-title i, .blog-title i {
-      color: var(--accent);
-      font-size: 1.2rem;
-    }
-    .project-desc, .blog-excerpt { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.8rem; }
-    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
-    .tech-stack span { background: var(--skill-tag-bg); padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; font-weight: 600; color: var(--accent); }
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 0.5rem;
-    }
-    .project-link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(59,130,246,0.15);
-      border: 1px solid var(--border-color);
-      padding: 0.3rem 1rem;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .project-link-btn:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-2px);
-    }
-    .blog-image {
-      width: 100%; height: 180px; object-fit: cover; border-radius: 20px; margin-bottom: 1rem; border: 1px solid var(--border-color);
-      background: #1e293b;
-    }
-    .blog-meta { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.5rem; }
-    .blog-card { text-decoration: none; color: inherit; display: block; }
-    .blog-card .blog-title { text-decoration: none; color: var(--text-main); }
-    .blog-card:hover .blog-title { color: var(--accent); }
-    
-    /* Terminal styles */
-    .terminal-card {
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      background: #0a0c10;
-      color: #0f0;
-    }
-    body.light .terminal-card {
-      background: #f0f2f5;
-      color: #000;
-    }
-    .terminal-output {
-      background: rgba(0,0,0,0.3);
-      border-radius: 16px;
-      padding: 1rem;
-      min-height: 200px;
-      max-height: 300px;
-      overflow-y: auto;
-      font-size: 0.85rem;
-      white-space: pre-wrap;
-      color: #cbd5e1;
-      font-family: monospace;
-    }
-    body.light .terminal-output {
-      background: #e9ecef;
-      color: #1e293b;
-    }
-    .terminal-prompt {
-      color: #0f0;
-      font-weight: bold;
-    }
-    body.light .terminal-prompt {
-      color: #2563eb;
-    }
-    .terminal-input-line {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      background: rgba(0,0,0,0.2);
-      padding: 0.5rem;
-      border-radius: 12px;
-    }
-    #termInput {
-      background: transparent;
-      border: none;
-      color: var(--text-main);
-      font-family: monospace;
-      font-size: 0.9rem;
-      flex: 1;
-      outline: none;
-    }
-    .terminal-clear-btn {
-      background: var(--btn-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 30px;
-      padding: 0.2rem 0.8rem;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--accent);
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .terminal-clear-btn:hover {
-      background: var(--accent);
-      color: white;
-    }
-    
-    /* Contact */
-    .contact-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3rem;
-      padding: 2rem;
-    }
-    .contact-info {
-      flex: 1;
-      min-width: 250px;
-    }
-    .contact-info h3 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--accent), #a78bfa);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .contact-info p {
-      color: var(--text-muted);
-      margin-bottom: 1.8rem;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-    .contact-detail {
-      margin-top: 1.8rem;
-    }
-    .contact-detail div {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-    .contact-detail i {
-      width: 32px;
-      color: var(--accent);
-      font-size: 1.2rem;
-    }
-    .contact-form {
-      flex: 2;
-    }
-    .form-row {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.9rem 1rem;
-      border-radius: 20px;
-      border: 1px solid var(--input-border);
-      background: var(--input-bg);
-      color: var(--text-main);
-      font-family: inherit;
-      font-size: 0.9rem;
-      transition: border 0.2s;
-    }
-    .contact-form input:focus,
-    .contact-form select:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(96,165,250,0.2);
-    }
-    .contact-form select option[disabled] {
-      color: #64748b;
-    }
-    .contact-form button {
-      background: var(--accent);
-      border: none;
-      padding: 0.8rem 2rem;
-      border-radius: 40px;
-      font-weight: 600;
-      color: white;
-      cursor: pointer;
-      transition: 0.2s;
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-    }
-    .contact-form button:hover {
-      background: var(--accent-dark);
-      transform: translateY(-2px);
-    }
-    
-    footer {
-      text-align: center;
-      padding: 2rem;
-      margin-top: 2rem;
-      border-top: 1px solid var(--border-color);
-      color: var(--text-muted);
-      background: rgba(2,4,10,0.5);
-      backdrop-filter: blur(4px);
-      transition: background 0.3s;
-    }
-    body.light footer { background: rgba(255,255,255,0.7); }
-    
-    /* Visitor counter */
-    .visitor-counter {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      font-size: 0.8rem;
-      background: rgba(96,165,250,0.1);
-      padding: 0.3rem 1rem;
-      border-radius: 40px;
-      backdrop-filter: blur(4px);
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .visitor-counter i {
-      color: var(--accent);
-    }
-    .visitor-counter.visible {
-      display: inline-flex;
-    }
-    
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-    
-    .toast-copy {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #10b981;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 40px;
-      font-size: 14px;
-      font-weight: 600;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      animation: fadeInOut 2.5s ease forwards;
-    }
-    @keyframes fadeInOut {
-      0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-      15% { opacity: 1; transform: translateX(-50%) translateY(0); }
-      85% { opacity: 1; transform: translateX(-50%) translateY(0); }
-      100% { opacity: 0; transform: translateX(-50%) translateY(-20px); visibility: hidden; }
-    }
-    
-    @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 750px) {
-      nav { flex-direction: column; gap: 1rem; padding: 0.8rem; }
-      .nav-links { gap: 1rem; justify-content: center; }
-      .hero h1 { font-size: 2rem; }
-      .section-title { font-size: 1.6rem; }
-      .container { padding: 0 1rem; }
-      section { scroll-margin-top: 7rem; }
-      .loader-text { font-size: 32px; letter-spacing: 6px; }
-      .avatar { width: 90px; height: 90px; font-size: 2.2rem; }
-      .project-links { flex-direction: column; align-items: flex-start; }
-      .contact-info h3 { font-size: 1.6rem; }
-      .skill-block h4 { font-size: 0.9rem; }
-      .skill-tag { font-size: 0.75rem; padding: 0.25rem 0.8rem; }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Pranjal Panta | Network Engineer & Cybersecurity</title>
+    <meta name="description" content="Portfolio of Pranjal Panta – Networking, Cybersecurity, Certifications & Projects" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* ─── RESET & VARIABLES ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.08);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f0f0f0;
+            --text-secondary: #aaaaaa;
+            --text-muted: #777777;
+            --accent: #ffffff;
+            --accent-dim: rgba(255, 255, 255, 0.15);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            --radius: 20px;
+            --transition: 0.25s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjgiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDQiLz48L3N2Zz4=');
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        /* ─── LOADER ─── */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.7s ease, visibility 0.7s ease;
+            opacity: 1;
+            visibility: visible;
+        }
+        .loader-wrapper.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader-text {
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: 6px;
+            color: #ffffff;
+            animation: pulseLoader 1.4s ease-in-out infinite alternate;
+        }
+        @keyframes pulseLoader {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.04);
+            }
+        }
+
+        /* ─── CANVAS (particles) ─── */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+
+        /* ─── LAYOUT ─── */
+        .container,
+        nav {
+            position: relative;
+            z-index: 2;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.8rem;
+        }
+        section {
+            scroll-margin-top: 5rem;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 2rem;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: #1a1a1a;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: var(--transition);
+        }
+        .logo-p span {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+        .logo-p:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.02);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.6rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            transition: var(--transition);
+            letter-spacing: 0.2px;
+        }
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+        .hire-btn {
+            background: #ffffff;
+            padding: 0.4rem 1.3rem;
+            border-radius: 40px;
+            color: #0a0a0a !important;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 12px rgba(255, 255, 255, 0.06);
+        }
+        .hire-btn:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            border-radius: 40px;
+            padding: 0.25rem 1rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem 3.5rem;
+        }
+        .avatar {
+            width: 112px;
+            height: 112px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.4rem;
+            font-weight: 800;
+            font-size: 2.8rem;
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            transition: var(--transition);
+        }
+        .avatar:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.02);
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+        }
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: #bbbbbb;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.4rem;
+        }
+        .hero-location {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        .btn-group {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: #ffffff;
+            border: none;
+            color: #0a0a0a;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.06);
+        }
+        .btn-primary:hover {
+            background: #e6e6e6;
+            transform: translateY(-2px);
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+        .social-links-hero {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .social-links-hero a {
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+        .social-links-hero a:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* ─── SECTION TITLES ─── */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+            display: inline-block;
+            border-left: 3px solid #ffffff;
+            padding-left: 1rem;
+        }
+
+        /* ─── CARDS ─── */
+        .about-text,
+        .skill-card,
+        .edu-card,
+        .cert-grid>div,
+        .project-card,
+        .blog-card,
+        .terminal-card,
+        .contact-wrapper {
+            background: var(--bg-card);
+            backdrop-filter: blur(6px);
+            border-radius: var(--radius);
+            padding: 1.8rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .project-card:hover,
+        .skill-card:hover,
+        .blog-card:hover,
+        .terminal-card:hover {
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* ─── SKILLS ─── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .skill-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.4rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            border-left: 3px solid #ffffff;
+            padding-left: 1rem;
+        }
+        .skill-card h3 i {
+            color: #ffffff;
+            opacity: 0.6;
+        }
+        .skill-block {
+            margin-bottom: 1.2rem;
+        }
+        .skill-block h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .skill-block h4 i {
+            color: #ffffff;
+            opacity: 0.4;
+            font-size: 0.85rem;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            letter-spacing: 0.2px;
+        }
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ─── EDUCATION ─── */
+        .edu-item {
+            border-left: 2px solid rgba(255, 255, 255, 0.2);
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .edu-item:last-child {
+            margin-bottom: 0;
+        }
+        .edu-item h4 {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #ffffff;
+        }
+        .edu-item .meta {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* ─── CERTIFICATIONS ─── */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.2rem;
+        }
+        .cert-item {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .cert-item:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+        }
+        .cert-item strong {
+            display: block;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+        }
+        .cert-item .issuer {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .cert-item .date {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.7rem;
+        }
+        .cert-link-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .cert-link-btn:hover {
+            background: rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+        }
+
+        /* ─── PROJECTS & BLOGS ─── */
+        .projects-grid,
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+        .project-title,
+        .blog-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .project-title i,
+        .blog-title i {
+            color: #ffffff;
+            opacity: 0.5;
+            font-size: 1rem;
+        }
+        .project-desc,
+        .blog-excerpt {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 0.8rem;
+        }
+        .tech-stack span {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.15rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.3rem;
+        }
+        .project-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .project-link-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+        .blog-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .blog-card .blog-title {
+            color: #ffffff;
+        }
+        .blog-card:hover .blog-title {
+            opacity: 0.8;
+        }
+        .blog-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 0.8rem;
+            border: 1px solid var(--border-color);
+            background: #1a1a1a;
+        }
+        .blog-meta {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        /* ─── TERMINAL ─── */
+        .terminal-card {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: #0d0d0d;
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+        .terminal-output {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 14px;
+            padding: 1rem;
+            min-height: 180px;
+            max-height: 260px;
+            overflow-y: auto;
+            font-size: 0.82rem;
+            white-space: pre-wrap;
+            color: #cccccc;
+            font-family: monospace;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .terminal-prompt {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .terminal-input-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 0.8rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        #termInput {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: monospace;
+            font-size: 0.85rem;
+            flex: 1;
+            outline: none;
+        }
+        #termInput::placeholder {
+            color: #555555;
+        }
+        .terminal-clear-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .terminal-clear-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+
+        /* ─── CONTACT ─── */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            padding: 2rem;
+        }
+        .contact-info {
+            flex: 1;
+            min-width: 220px;
+        }
+        .contact-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.6rem;
+        }
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1.6rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .contact-detail div {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .contact-detail i {
+            width: 28px;
+            color: #ffffff;
+            opacity: 0.5;
+            font-size: 1rem;
+        }
+        .contact-form {
+            flex: 2;
+        }
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.04);
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .contact-form select option {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        .contact-form button {
+            background: #ffffff;
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #0a0a0a;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            font-family: inherit;
+        }
+        .contact-form button:hover {
+            background: #e6e6e6;
+            transform: translateY(-2px);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(4px);
+            font-size: 0.85rem;
+        }
+        .visitor-counter {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .visitor-counter.visible {
+            display: inline-flex;
+        }
+        .visitor-counter i {
+            color: #ffffff;
+            opacity: 0.4;
+        }
+
+        /* ─── TOAST ─── */
+        .toast-copy {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #222222;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            animation: fadeInOut 2.6s ease forwards;
+        }
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            15% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            85% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+                visibility: hidden;
+            }
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 750px) {
+            nav {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 0.8rem 1rem;
+            }
+            .nav-links {
+                gap: 0.8rem;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+            section {
+                scroll-margin-top: 6rem;
+            }
+            .avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            .loader-text {
+                font-size: 28px;
+                letter-spacing: 4px;
+            }
+            .contact-wrapper {
+                padding: 1.2rem;
+            }
+            .contact-info h3 {
+                font-size: 1.4rem;
+            }
+            .project-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .btn-group .btn {
+                font-size: 0.75rem;
+                padding: 0.5rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero-tagline {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ─── FOCUS ─── */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 2px;
+        }
+    </style>
 </head>
 <body>
 
-<!-- BACKGROUND ANIMATION CANVAS (particle network) -->
-<canvas id="bg-canvas"></canvas>
+    <!-- ─── CANVAS (particles) ─── -->
+    <canvas id="bg-canvas"></canvas>
 
-<!-- LOADER -->
-<div class="loader-wrapper" id="loaderWrapper">
-  <div class="loader-content">
-    <span class="loader-text">Loading...</span>
-  </div>
-</div>
-
-<nav>
-  <div class="logo-p"><span>P</span></div>
-  <div class="nav-links">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#blogs">Blogs</a>
-    <a href="#terminal">Terminal</a>
-    <a href="#contact">Contact</a>
-    <a href="#contact" class="hire-btn">Hire me!</a>
-    <button id="themeToggle" class="theme-toggle" aria-label="Switch dark/light mode">🌓 Light</button>
-  </div>
-</nav>
-
-<main class="container">
-  <div id="home" class="hero">
-    <div class="avatar" aria-label="Avatar PP">PP</div>
-    <h1>Hi, I'm Pranjal Panta</h1>
-    <div class="hero-tagline">Aspiring Network Engineer & Cybersecurity Enthusiast</div>
-    <div class="hero-location">📍 Based in Kathmandu, Nepal</div>
-    <div class="btn-group">
-      <button id="copyEmailBtn" class="btn btn-primary"><i class="fas fa-envelope"></i> Email</button>
-      <a href="https://wa.me/9779861490159?text=Hello%20Pranjal" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <a href="#" id="viberBtn" class="btn btn-outline"><i class="fab fa-viber"></i> Viber</a>
+    <!-- ─── LOADER ─── -->
+    <div class="loader-wrapper" id="loaderWrapper">
+        <span class="loader-text">Loading</span>
     </div>
-    <div class="social-links-hero">
-      <a href="https://github.com/pranjalpanta" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/pranjal-p-49ab59293/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://medium.com/@pranjalpanta2.0" target="_blank" aria-label="Medium"><i class="fab fa-medium"></i></a>
-      <a href="https://www.researchgate.net/profile/Pranjal-Panta" target="_blank" aria-label="ResearchGate"><i class="fas fa-microscope"></i></a>
-    </div>
-  </div>
 
-  <section id="about">
-    <h2 class="section-title">📖 About Me</h2>
-    <div class="about-text">
-      <p>Networking and Cybersecurity student passionate about designing and securing modern network infrastructures. Experienced in configuring and troubleshooting LANs, WANs, and VLANs, with knowledge of routing protocols including RIP, EIGRP, OSPF, and BGP. I enjoy analyzing complex networks, solving performance and security challenges, and continuously improving my skills through hands-on labs and real-world projects to build reliable and scalable systems.</p>
-    </div>
-  </section>
-
-  <!-- Skills section -->
-  <section id="skills">
-    <h2 class="section-title">⚙️ Core Skills & Tools</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3><i class="fas fa-network-wired"></i> Networking</h3>
-        <div class="skill-block"><h4><i class="fas fa-microchip"></i> Network Fundamentals</h4><div class="skill-tags"><span class="skill-tag">OSI Model</span><span class="skill-tag">TCP/IP</span><span class="skill-tag">Cable Types</span><span class="skill-tag">Network Protocols</span><span class="skill-tag">Subnetting</span><span class="skill-tag">VLSM</span><span class="skill-tag">Supernetting</span></div></div>
-        <div class="skill-block"><h4><i class="fas fa-exchange-alt"></i> Switching Protocols</h4><div class="skill-tags"><span class="skill-tag">VLANs</span><span class="skill-tag">STP</span><span class="skill-tag">SVI</span><span class="skill-tag">DHCP Snooping</span><span class="skill-tag">Port Security</span><span class="skill-tag">EtherChannel</span><span class="skill-tag">MPLS</span></div></div>
-        <div class="skill-block"><h4><i class="fas fa-route"></i> Routing Protocols</h4><div class="skill-tags"><span class="skill-tag">RIP</span><span class="skill-tag">OSPF</span><span class="skill-tag">EIGRP</span><span class="skill-tag">BGP</span><span class="skill-tag">IS-IS</span></div></div>
-        <div class="skill-block"><h4><i class="fas fa-sync-alt"></i> Redundancy Protocols</h4><div class="skill-tags"><span class="skill-tag">HSRP</span><span class="skill-tag">VRRP</span><span class="skill-tag">GLBP</span></div></div>
-      </div>
-      <div class="skill-card">
-        <h3><i class="fas fa-shield-alt"></i> Security, Firewalls & Tools</h3>
-        <div class="skill-block"><h4><i class="fas fa-firewall"></i> Security & Firewalls</h4><div class="skill-tags"><span class="skill-tag">Cisco ASA Firewall</span><span class="skill-tag">ACLs</span><span class="skill-tag">VPN Concepts</span><span class="skill-tag">NAT/PAT</span></div></div>
-        <div class="skill-block"><h4><i class="fas fa-user-secret"></i> Cybersecurity & Ethical Hacking</h4><div class="skill-tags"><span class="skill-tag">Operating Systems</span><span class="skill-tag">Network Forensics</span><span class="skill-tag">Linux Fundamentals</span><span class="skill-tag">Basic Web Security</span></div></div>
-        <div class="skill-block"><h4><i class="fas fa-tools"></i> Tools & Simulation</h4><div class="skill-tags"><span class="skill-tag">Cisco Packet Tracer</span><span class="skill-tag">GNS3</span><span class="skill-tag">Wireshark</span><span class="skill-tag">PyCharm</span><span class="skill-tag">FTK Imager</span><span class="skill-tag">Autopsy</span><span class="skill-tag">Hack The Box</span><span class="skill-tag">BurpSuite</span><span class="skill-tag">Kali Linux</span><span class="skill-tag">tryhackme</span><span class="skill-tag">pingmynetwork</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2 class="section-title">🎓 My Education</h2>
-    <div class="edu-card">
-      <div class="edu-item"><h4>BSc Hons Cybersecurity and Ethical Hacking (Coventry University)</h4><div class="meta">Softwarica College of IT & E-Commerce, Kathmandu, Nepal</div></div>
-      <div class="edu-item"><h4>+2 (National Examination Board)</h4><div class="meta">Ace Higher Secondary School, Kathmandu, Nepal</div></div>
-    </div>
-  </section>
-
-  <!-- Projects section -->
-  <section id="projects">
-    <h2 class="section-title">🚀 Featured Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card"><div class="project-title"><i class="fas fa-network-wired"></i> Three-Tier Enterprise Network Architecture Design</div><div class="project-desc">Scalable and secure enterprise-style network architecture with proper segmentation and hierarchical design.<br>Designed in Cisco Packet Tracer using routing, VLANs and best practices.</div><div class="tech-stack"><span>Packet Tracer</span><span>VLANs</span><span>Routing</span></div><div class="project-links"><a href="https://raw.githubusercontent.com/pranjalpanta/Three-Tier-Network-Architecture-Networking-project/main/230238-Networking%20.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt file</a></div></div>
-      <div class="project-card"><div class="project-title"><i class="fas fa-code"></i> Web Enumeration Tool (Python)</div><div class="project-desc">Script that gathers important information about web applications (headers, technologies, endpoints, etc.) to support security testing and reconnaissance.</div><div class="tech-stack"><span>Python</span><span>BurpSuite</span><span>Recon</span></div><div class="project-links"><a href="https://github.com/pranjalpanta/Python" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a></div></div>
-      <div class="project-card"><div class="project-title"><i class="fas fa-shield-alt"></i> Cisco ASA Firewall Configuration</div><div class="project-desc">Implemented security policies on Cisco ASA using ACLs, NAT and VPN concepts to control and protect traffic between internal and external networks.</div><div class="tech-stack"><span>Cisco ASA</span><span>ACL</span><span>VPN</span></div><div class="project-links"><a href="https://raw.githubusercontent.com/pranjalpanta/-Firewall-Configuration-Networking-Project-/main/230238-Firewall.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt file</a></div></div>
-      <div class="project-card"><div class="project-title"><i class="fas fa-building"></i> Enterprise Networking Mini Project (Cisco Packet Tracer)</div><div class="project-desc">Multi-department enterprise network with VLANs, inter-VLAN routing, DHCP, and secure wireless using /26 subnetting.</div><div class="tech-stack"><span>Packet Tracer</span><span>DHCP</span><span>VLANs</span></div><div class="project-links"><a href="https://raw.githubusercontent.com/pranjalpanta/Networking-Project-/main/Networking-Mini-Project.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt file</a></div></div>
-      <div class="project-card"><div class="project-title"><i class="fas fa-lock"></i> Secure File Encryption Tool (Python)</div><div class="project-desc">Python-based tool to encrypt and decrypt files securely, focusing on basic cryptography concepts and security best practices.</div><div class="tech-stack"><span>Python</span><span>Cryptography</span></div><div class="project-links"><a href="https://github.com/pranjalpanta/secure-file-tool" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a></div></div>
-      <div class="project-card"><div class="project-title"><i class="fas fa-key"></i> Password-Manager-Using-Cryptography</div><div class="project-desc">A password manager that stores all your passwords securely using strong encryption. Only one master password to remember.</div><div class="tech-stack"><span>Python</span><span>Encryption</span><span>Security</span></div><div class="project-links"><a href="https://github.com/pranjalpanta/Password-Manager-Using-Cryptography" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a></div></div>
-    </div>
-  </section>
-
-  <section id="certifications">
-    <h2 class="section-title">🏅 Certifications</h2>
-    <div class="cert-grid">
-      <div class="cert-item"><strong>ISO/IEC27001:2022 Lead Auditor</strong><div class="issuer"><i class="fas fa-certificate"></i> Mastermind</div><div class="date">Issued Nov 23, 2025 · 16 credit hours</div><a href="https://learn.mastermindassurance.com/certificates/aojmcj0jin" target="_blank" class="cert-link-btn">View Credential</a></div>
-      <div class="cert-item"><strong>Cisco Networking Foundations: IP Addressing</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Nov 29, 2025 · 1h 35m</div><a href="https://drive.google.com/file/d/11j_UBY2XTcTFSGib2LdPmJAxEU_vPfxn/view?usp=sharing" target="_blank" class="cert-link-btn">View Credential</a></div>
-      <div class="cert-item"><strong>Fundamentals of Cisco Networking</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Sep 18, 2025 · 2h 3m</div><a href="https://drive.google.com/file/d/1ywDB_rSJu3MMy4kH3LWPb52f_EEZxe74/view?usp=sharing" target="_blank" class="cert-link-btn">View Credential</a></div>
-      <div class="cert-item"><strong>Diploma in ICND1 v3 CCNA</strong><div class="issuer"><i class="fas fa-graduation-cap"></i> Alison</div><div class="date">Completed May 10, 2025 · 53h 12m (93% score)</div><a href="https://alison.com/certification/check/d349c0dd32" target="_blank" class="cert-link-btn">View Credential</a></div>
-      <div class="cert-item"><strong>Wireless Networking Essential Training</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Mar 23, 2026 · 1h 19m</div><a href="https://drive.google.com/file/d/1NusPSdqFvN3G0aDl8uvrfTDDM74sBFpX/view?usp=sharing" target="_blank" class="cert-link-btn">View Credential</a></div>
-      <div class="cert-item"><strong>Cisco Certified Technician (CCT) Routing and Switching</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Mar 20, 2026 · 6h 34m</div><a href="https://drive.google.com/file/d/13pA6iOyCqG6IjbYBnFoLwBQN6eHPKi7V/view" target="_blank" class="cert-link-btn">View Credential</a></div>
-      <div class="cert-item"><strong>Certified Cybersecurity Educator Professional (CCEP)</strong><div class="issuer"><i class="fas fa-shield-alt"></i> Red Team Leaders</div><div class="date">Issued Dec 29, 2025</div><a href="https://courses.redteamleaders.com/exam-completion/01e584edc365eb2d" target="_blank" class="cert-link-btn">View Credential</a></div>
-      <div class="cert-item"><strong>Certified C++ Practitioner (CCPC)</strong><div class="issuer"><i class="fas fa-code"></i> Red Team Leaders</div><div class="date">Issued Dec 29, 2025</div><a href="https://courses.redteamleaders.com/exam-completion/63d2768ce0a639fc" target="_blank" class="cert-link-btn">View Credential</a></div>
-      <div class="cert-item"><strong>Digital Forensics & Incident Investigation</strong><div class="issuer"><i class="fas fa-microscope"></i> Red Team Leaders</div><div class="date">Issued Apr 20, 2026</div><a href="https://courses.redteamleaders.com/completion/5889dc55ca3b908d" target="_blank" class="cert-link-btn">View Credential</a></div>
-      <div class="cert-item"><strong>Introduction to Critical Infrastructure Protection</strong><div class="issuer"><i class="fas fa-shield-hornet"></i> OPSWAT Academy</div><div class="date">Issued Nov 25, 2024 · Expires Nov 25, 2025</div><a href="https://learn.opswatacademy.com/certificate/hjM7efiJwQ" target="_blank" class="cert-link-btn">View Credential</a></div>
-      <div class="cert-item"><strong>Foundations of Log Analysis for Cyber Defense</strong><div class="issuer"><i class="fas fa-chart-line"></i> Red Team Leaders</div><div class="date">Issued Jan 2026</div><a href="https://courses.redteamleaders.com/completion/6ec659f37ffa4049" target="_blank" class="cert-link-btn">View Credential</a></div>
-    </div>
-  </section>
-
-  <!-- Blog section -->
-  <section id="blogs">
-    <h2 class="section-title">✍️ Medium Blogs</h2>
-    <div class="blog-grid">
-      <a href="https://medium.com/@pranjalpanta2.0/understanding-rip-auto-summarization-a-practical-deep-dive-into-classful-vs-classless-routing-2463b7db22d6" target="_blank" class="blog-card">
-        <img src="https://miro.medium.com/max/1400/0*o-IFL4ROiAtBXAWP.jpg" class="blog-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\' viewBox=\'0 0 600 400\'%3E%3Crect width=\'600\' height=\'400\' fill=\'%231e293b\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' font-size=\'20\' fill=\'%2394a3b8\' text-anchor=\'middle\' dy=\'.3em\'%3E Blog Image %3C/text%3E%3C/svg%3E'">
-        <div class="blog-title">Understanding RIP Auto-Summarization</div>
-        <div class="blog-meta">March 28, 2025 · 4 min read</div>
-        <div class="blog-excerpt">A practical deep dive into classful vs classless routing.</div>
-        <div class="tech-stack"><span>RIPv2</span><span>Routing</span><span>CCNA</span></div>
-      </a>
-      <a href="https://medium.com/@pranjalpanta2.0/static-routing-8f63feb76701" target="_blank" class="blog-card">
-        <img src="https://miro.medium.com/max/1400/0*TU-XrEk5UHf7Lcpd" class="blog-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\' viewBox=\'0 0 600 400\'%3E%3Crect width=\'600\' height=\'400\' fill=\'%231e293b\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' font-size=\'20\' fill=\'%2394a3b8\' text-anchor=\'middle\' dy=\'.3em\'%3E Blog Image %3C/text%3E%3C/svg%3E'">
-        <div class="blog-title">Static Routing</div>
-        <div class="blog-meta">January 6, 2026 · 1 min read</div>
-        <div class="blog-excerpt">AD value, diagrams, configuration examples.</div>
-        <div class="tech-stack"><span>Static Routing</span><span>Networking</span></div>
-      </a>
-      <a href="https://medium.com/@pranjalpanta2.0/carries-sense-multiple-access-csma-041229099a79" target="_blank" class="blog-card">
-        <img src="https://miro.medium.com/max/1400/1*An5dbvqlCvUx3ZQIrboktA.png" class="blog-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\' viewBox=\'0 0 600 400\'%3E%3Crect width=\'600\' height=\'400\' fill=\'%231e293b\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' font-size=\'20\' fill=\'%2394a3b8\' text-anchor=\'middle\' dy=\'.3em\'%3E Blog Image %3C/text%3E%3C/svg%3E'">
-        <div class="blog-title">Carrier Sense Multiple Access (CSMA)</div>
-        <div class="blog-meta">October 13, 2025 · 3 min read</div>
-        <div class="blog-excerpt">CSMA/CD, collision detection and avoidance.</div>
-        <div class="tech-stack"><span>CSMA/CD</span><span>Network Protocols</span></div>
-      </a>
-    </div>
-    <div style="text-align: center; margin-top: 2rem;">
-      <a href="https://medium.com/@pranjalpanta2.0" target="_blank" class="btn btn-outline"><i class="fab fa-medium"></i> View all blogs on Medium</a>
-    </div>
-  </section>
-
-  <!-- INTERACTIVE TERMINAL SECTION (matrix removed) -->
-  <section id="terminal">
-    <h2 class="section-title">💻 Interactive Terminal</h2>
-    <div class="terminal-card">
-      <div class="terminal-output" id="termOutput">
-        > Welcome to Pranjal's terminal.<br>
-        > Type <span style="color:var(--accent);">'help'</span> to see available commands.<br>
-        > Type <span style="color:var(--accent);">'quiz'</span> to start the Cisco Command Quiz.
-      </div>
-      <div class="terminal-input-line">
-        <span class="terminal-prompt">$&nbsp;</span>
-        <input type="text" id="termInput" placeholder="Type a command...">
-        <button id="termClear" class="terminal-clear-btn">Clear</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact">
-    <div class="contact-wrapper">
-      <div class="contact-info">
-        <h3>Let’s work together!</h3>
-        <p>I turn complex security into simple solutions. Passionate about protecting what matters. Ready when you are.</p>
-        <div class="contact-detail">
-          <div><i class="fas fa-phone-alt"></i> +977 9861490158</div>
-          <div><i class="fas fa-envelope"></i> pranjalpantalazarus2@gmail.com</div>
+    <!-- ─── NAV ─── -->
+    <nav>
+        <div class="logo-p"><span>P</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#blogs">Blogs</a>
+            <a href="#terminal">Terminal</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="hire-btn">Hire me</a>
+            <button id="themeToggle" class="theme-toggle" aria-label="Switch dark/light mode">☀️ Light</button>
         </div>
-      </div>
-      <div class="contact-form">
-        <form id="contactForm">
-          <div class="form-row"><input type="text" name="firstName" placeholder="First name" required><input type="text" name="lastName" placeholder="Last name" required></div>
-          <input type="email" name="email" placeholder="Email address" required style="width:100%; margin-bottom:1rem;">
-          <input type="tel" name="phone" placeholder="Phone number" style="width:100%; margin-bottom:1rem;">
-          <select name="service" required style="width:100%; margin-bottom:1rem;">
-            <option disabled selected value="">— Select a service —</option>
-            <option>Network Engineering</option>
-            <option>Cybersecurity</option>
-            <option>Consulting</option>
-          </select>
-          <textarea name="message" rows="3" placeholder="Message" required style="width:100%; margin-bottom:1rem;"></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
-</main>
+    </nav>
 
-<footer>
-  <div id="visitorCounterContainer" class="visitor-counter">
-    <i class="fas fa-eye"></i> Total visits: <span id="visitor-counter">0</span>
-  </div>
-  <p>© 2025 All Rights Reserved by Pranjal Panta</p>
-</footer>
+    <!-- ─── MAIN ─── -->
+    <main class="container">
 
-<script>
-  // Loader
-  const loaderWrapper = document.getElementById('loaderWrapper');
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      loaderWrapper.classList.add('fade-out');
-      setTimeout(() => { loaderWrapper.style.display = 'none'; }, 800);
-    }, 500);
-  });
-  
-  // Theme toggle
-  const themeToggle = document.getElementById('themeToggle');
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light');
-    const isLight = document.body.classList.contains('light');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    themeToggle.innerText = isLight ? '🌙 Dark' : '🌓 Light';
-  });
-  if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light');
-    themeToggle.innerText = '🌙 Dark';
-  } else {
-    themeToggle.innerText = '🌓 Light';
-  }
-  
-  // Email copy
-  const copyEmailBtn = document.getElementById('copyEmailBtn');
-  const emailAddress = 'pranjalpantalazarus2@gmail.com';
-  function showToast(message) {
-    const toast = document.createElement('div');
-    toast.className = 'toast-copy';
-    toast.innerText = message;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 2500);
-  }
-  copyEmailBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(emailAddress).then(() => {
-      showToast('📧 Email copied! pranjalpantalazarus2@gmail.com');
-    }).catch(() => {
-      alert('Could not copy email. Please manually copy: ' + emailAddress);
-    });
-  });
-  
-  // Viber
-  const viberBtn = document.getElementById('viberBtn');
-  viberBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (isMobile) {
-      window.location.href = 'viber://contact?number=9779861490159';
-      setTimeout(() => alert("If Viber doesn't open, please install Viber from your app store."), 2000);
-    } else {
-      alert("Viber works best on mobile. Please install Viber Desktop or use WhatsApp.");
-    }
-  });
-  
-  // ==================== BACKGROUND ANIMATION (PARTICLE NETWORK) ====================
-  const canvas = document.getElementById('bg-canvas');
-  let ctx = canvas.getContext('2d');
-  let width, height;
-  let particles = [];
-  let particleCount = 70;
-  let connectionDistance = 150;
-  let animationId;
-  
-  function initCanvas() {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-    createParticles();
-    draw();
-  }
-  
-  function createParticles() {
-    particles = [];
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        radius: Math.random() * 2 + 1.2
-      });
-    }
-  }
-  
-  function updateParticles() {
-    for (let p of particles) {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0) p.x = width;
-      if (p.x > width) p.x = 0;
-      if (p.y < 0) p.y = height;
-      if (p.y > height) p.y = 0;
-    }
-  }
-  
-  function draw() {
-    if (!ctx) return;
-    ctx.clearRect(0, 0, width, height);
-    
-    // Get current accent color from CSS variable (supports dark/light)
-    const accentColor = getComputedStyle(document.body).getPropertyValue('--accent').trim();
-    const isLight = document.body.classList.contains('light');
-    const baseOpacity = isLight ? 0.2 : 0.35;
-    
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < connectionDistance) {
-          const opacity = (1 - distance / connectionDistance) * baseOpacity;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = accentColor;
-          ctx.globalAlpha = opacity * 0.6;
-          ctx.lineWidth = 0.8;
-          ctx.stroke();
-        }
-      }
-    }
-    
-    // Draw particles
-    for (let p of particles) {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = accentColor;
-      ctx.globalAlpha = baseOpacity * 0.8;
-      ctx.fill();
-    }
-    
-    ctx.globalAlpha = 1;
-    updateParticles();
-    animationId = requestAnimationFrame(draw);
-  }
-  
-  window.addEventListener('resize', () => {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-    createParticles();
-  });
-  
-  initCanvas();
-  
-  // ==================== TERMINAL ====================
-  const termOutput = document.getElementById('termOutput');
-  const termInput = document.getElementById('termInput');
-  const termClearBtn = document.getElementById('termClear');
-  
-  let commandHistory = [];
-  let startTime = Date.now();
-  
-  // Quiz state
-  let quizMode = false;
-  let quizQuestions = [];
-  let quizCurrent = 0;
-  let quizScore = 0;
-  let quizTotal = 0;
-  
-  function appendToTerminal(text) {
-    termOutput.innerHTML += '<br>> ' + text;
-    termOutput.scrollTop = termOutput.scrollHeight;
-  }
-  
-  function addToHistory(cmd) {
-    if (cmd.trim() === '') return;
-    commandHistory.unshift(cmd);
-    if (commandHistory.length > 10) commandHistory.pop();
-  }
-  
-  const quoteMessages = [
-    "The only secure system is the one that is powered off. – Unknown",
-    "Security is not a product, it's a process. – Bruce Schneier",
-    "The best way to predict the future is to create it. – Peter Drucker",
-    "Stay curious, keep learning, never stop hacking (ethically)."
-  ];
-  const fortuneMessages = [
-    "You will soon receive a job offer that aligns with your passion.",
-    "A great networking opportunity is around the corner.",
-    "Your hard work will pay off in unexpected ways.",
-    "Today is a good day to learn something new."
-  ];
-  
-  async function fetchWeather() {
-    appendToTerminal("Fetching weather for Kathmandu...");
-    try {
-      const res = await fetch('https://wttr.in/Kathmandu?format=%t+%C+%w');
-      const data = await res.text();
-      const parts = data.trim().split(' ');
-      let temp = parts[0].replace('+','').replace('°C','');
-      let cond = parts[1];
-      let wind = parts[2] || '0';
-      appendToTerminal(`🌤️  Kathmandu: ${temp}°C, ${cond}, wind ${wind} km/h`);
-    } catch(e) {
-      appendToTerminal("Could not fetch weather. Using mock: 22°C, clear, 3 km/h");
-    }
-  }
-  
-  // Quiz data
-  const quizData = [
-    { question: "Which command displays the routing table on a Cisco router?", options: ["show ip route", "show route", "display ip route", "ip route show"], correct: 0 },
-    { question: "How do you enter OSPF configuration mode?", options: ["router ospf 1", "ospf enable", "configure ospf", "ip ospf"], correct: 0 },
-    { question: "Which command sets a switch port as a trunk?", options: ["switchport mode trunk", "trunk enable", "set port trunk", "interface trunk"], correct: 0 },
-    { question: "What command creates an access‑list that denies traffic from 192.168.1.0/24?", options: ["access-list 10 deny 192.168.1.0 0.0.0.255", "deny 192.168.1.0/24", "ip access-list deny 192.168.1.0", "access-list deny 192.168.1.0"], correct: 0 },
-    { question: "Which command tests basic IP connectivity?", options: ["ping", "traceroute", "show ip interface", "debug ip packet"], correct: 0 }
-  ];
-  
-  function startQuiz() {
-    quizMode = true;
-    quizQuestions = [...quizData];
-    quizCurrent = 0;
-    quizScore = 0;
-    quizTotal = quizQuestions.length;
-    appendToTerminal("=== Cisco Command Quiz ===");
-    appendToTerminal(`You will be asked ${quizTotal} questions. Type the number of your answer (1-4).`);
-    askNextQuestion();
-  }
-  
-  function askNextQuestion() {
-    if (quizCurrent >= quizTotal) {
-      endQuiz();
-      return;
-    }
-    const q = quizQuestions[quizCurrent];
-    appendToTerminal(`\nQuestion ${quizCurrent+1}/${quizTotal}: ${q.question}`);
-    q.options.forEach((opt, idx) => {
-      appendToTerminal(`  ${idx+1}. ${opt}`);
-    });
-    appendToTerminal("Your answer (1-4): ");
-  }
-  
-  function processQuizAnswer(answer) {
-    const ansNum = parseInt(answer);
-    if (isNaN(ansNum) || ansNum < 1 || ansNum > 4) {
-      appendToTerminal("Invalid answer. Please enter a number between 1 and 4.");
-      appendToTerminal("Your answer (1-4): ");
-      return;
-    }
-    const q = quizQuestions[quizCurrent];
-    const selectedIdx = ansNum - 1;
-    if (selectedIdx === q.correct) {
-      quizScore++;
-      appendToTerminal("✓ Correct!");
-    } else {
-      appendToTerminal(`✗ Wrong. The correct answer was: ${q.options[q.correct]}`);
-    }
-    quizCurrent++;
-    if (quizCurrent < quizTotal) {
-      askNextQuestion();
-    } else {
-      endQuiz();
-    }
-  }
-  
-  function endQuiz() {
-    appendToTerminal(`\n=== Quiz Completed ===`);
-    appendToTerminal(`Your score: ${quizScore} out of ${quizTotal}`);
-    if (quizScore === quizTotal) {
-      appendToTerminal("🎉 Perfect! You're a Cisco CLI master!");
-    } else if (quizScore >= quizTotal/2) {
-      appendToTerminal("👍 Good job! Keep practicing.");
-    } else {
-      appendToTerminal("📚 Review the Cisco commands and try again.");
-    }
-    quizMode = false;
-    appendToTerminal("\nType 'help' for available commands.");
-  }
-  
-  async function processCommand(rawCmd) {
-    let cmd = rawCmd.trim().toLowerCase();
-    if (cmd === '') return;
-    
-    // If in quiz mode, treat input as answer
-    if (quizMode) {
-      addToHistory(rawCmd);
-      processQuizAnswer(rawCmd);
-      return;
-    }
-    
-    addToHistory(rawCmd);
-    
-    switch(cmd) {
-      case 'help':
-        appendToTerminal("Available commands: date, weather, quote, fortune, theme, visitors, uptime, ls, history, clear, quiz");
-        break;
-      case 'date':
-        appendToTerminal(`Current date and time: ${new Date().toLocaleString()}`);
-        break;
-      case 'weather':
-        await fetchWeather();
-        break;
-      case 'quote':
-        appendToTerminal(quoteMessages[Math.floor(Math.random() * quoteMessages.length)]);
-        break;
-      case 'fortune':
-        appendToTerminal(fortuneMessages[Math.floor(Math.random() * fortuneMessages.length)]);
-        break;
-      case 'theme':
-        document.body.classList.toggle('light');
-        const isLight = document.body.classList.contains('light');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        themeToggle.innerText = isLight ? '🌙 Dark' : '🌓 Light';
-        appendToTerminal(`Theme toggled to ${isLight ? 'light' : 'dark'} mode.`);
-        break;
-      case 'visitors':
-        let countSpan = document.getElementById('visitor-counter');
-        let count = countSpan.innerText;
-        appendToTerminal(`Total website visits: ${count}`);
-        break;
-      case 'uptime':
-        let seconds = (Date.now() - startTime) / 1000;
-        appendToTerminal(`Terminal active for ${Math.floor(seconds)} seconds.`);
-        break;
-      case 'ls':
-        let allCmds = ['date','weather','quote','fortune','theme','visitors','uptime','ls','history','clear','quiz'];
-        appendToTerminal(`📜 Commands:\n${allCmds.join(', ')}`);
-        break;
-      case 'history':
-        let hist = [...commandHistory];
-        appendToTerminal(hist.length ? `Recent commands:\n${hist.join('\n')}` : "No commands in history.");
-        break;
-      case 'clear':
-        termOutput.innerHTML = '> Terminal cleared.<br>> Type <span style="color:var(--accent);">\'help\'</span> to see available commands.<br>> Type <span style="color:var(--accent);">\'quiz\'</span> to start the Cisco quiz.';
-        break;
-      case 'quiz':
-        if (quizMode) {
-          appendToTerminal("A quiz is already in progress. Finish it first.");
-        } else {
-          startQuiz();
-        }
-        break;
-      default:
-        appendToTerminal(`Unknown command: "${rawCmd}". Type "help" for list.`);
-    }
-  }
-  
-  termInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      const cmd = termInput.value;
-      processCommand(cmd);
-      termInput.value = '';
-    }
-  });
-  
-  termClearBtn.addEventListener('click', () => {
-    processCommand('clear');
-  });
-  
-  // Contact form
-  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you! I will get back to you soon.');
-    e.target.reset();
-  });
-  
-  // Visitor counter (hidden, double-click footer)
-  const counterContainer = document.getElementById('visitorCounterContainer');
-  const counterSpan = document.getElementById('visitor-counter');
-  const footer = document.querySelector('footer');
-  footer.addEventListener('dblclick', () => {
-    counterContainer.classList.toggle('visible');
-    if (counterContainer.classList.contains('visible') && counterSpan.innerText === '0') {
-      fetch('https://api.countapi.xyz/hit/pranjal-portfolio/visitors')
-        .then(response => response.json())
-        .then(data => {
-          if (data && typeof data.value === 'number') {
-            counterSpan.innerText = data.value;
-          } else {
-            counterSpan.innerText = '?';
-          }
-        })
-        .catch(() => counterSpan.innerText = '?');
-    }
-  });
-  fetch('https://api.countapi.xyz/hit/pranjal-portfolio/visitors').catch(() => {});
-</script>
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <div class="avatar" aria-label="Avatar PP">PP</div>
+            <h1>Hi, I'm Pranjal Panta</h1>
+            <div class="hero-tagline">Network Engineer &amp; Cybersecurity Enthusiast</div>
+            <div class="hero-location">📍 Kathmandu, Nepal</div>
+            <div class="btn-group">
+                <button id="copyEmailBtn" class="btn btn-primary"><i class="fas fa-envelope"></i> Email</button>
+                <a href="https://wa.me/9779861490159?text=Hello%20Pranjal" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" id="viberBtn" class="btn btn-outline"><i class="fab fa-viber"></i> Viber</a>
+            </div>
+            <div class="social-links-hero">
+                <a href="https://github.com/pranjalpanta" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/pranjal-p-49ab59293/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://medium.com/@pranjalpanta2.0" target="_blank" aria-label="Medium"><i class="fab fa-medium"></i></a>
+                <a href="https://www.researchgate.net/profile/Pranjal-Panta" target="_blank" aria-label="ResearchGate"><i class="fas fa-microscope"></i></a>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-text">
+                <p>Networking and Cybersecurity student passionate about designing and securing modern network infrastructures. Experienced in configuring and troubleshooting LANs, WANs, and VLANs, with knowledge of routing protocols including RIP, EIGRP, OSPF, and BGP. I enjoy analyzing complex networks, solving performance and security challenges, and continuously improving my skills through hands-on labs and real-world projects to build reliable and scalable systems.</p>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <h2 class="section-title">Core Skills &amp; Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fas fa-network-wired"></i> Networking</h3>
+                    <div class="skill-block"><h4><i class="fas fa-microchip"></i> Network Fundamentals</h4><div class="skill-tags"><span class="skill-tag">OSI Model</span><span class="skill-tag">TCP/IP</span><span class="skill-tag">Cable Types</span><span class="skill-tag">Network Protocols</span><span class="skill-tag">Subnetting</span><span class="skill-tag">VLSM</span><span class="skill-tag">Supernetting</span></div></div>
+                    <div class="skill-block"><h4><i class="fas fa-exchange-alt"></i> Switching Protocols</h4><div class="skill-tags"><span class="skill-tag">VLANs</span><span class="skill-tag">STP</span><span class="skill-tag">SVI</span><span class="skill-tag">DHCP Snooping</span><span class="skill-tag">Port Security</span><span class="skill-tag">EtherChannel</span><span class="skill-tag">MPLS</span></div></div>
+                    <div class="skill-block"><h4><i class="fas fa-route"></i> Routing Protocols</h4><div class="skill-tags"><span class="skill-tag">RIP</span><span class="skill-tag">OSPF</span><span class="skill-tag">EIGRP</span><span class="skill-tag">BGP</span><span class="skill-tag">IS-IS</span></div></div>
+                    <div class="skill-block"><h4><i class="fas fa-sync-alt"></i> Redundancy Protocols</h4><div class="skill-tags"><span class="skill-tag">HSRP</span><span class="skill-tag">VRRP</span><span class="skill-tag">GLBP</span></div></div>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-shield-alt"></i> Security, Firewalls &amp; Tools</h3>
+                    <div class="skill-block"><h4><i class="fas fa-firewall"></i> Security &amp; Firewalls</h4><div class="skill-tags"><span class="skill-tag">Cisco ASA Firewall</span><span class="skill-tag">ACLs</span><span class="skill-tag">VPN Concepts</span><span class="skill-tag">NAT/PAT</span></div></div>
+                    <div class="skill-block"><h4><i class="fas fa-user-secret"></i> Cybersecurity &amp; Ethical Hacking</h4><div class="skill-tags"><span class="skill-tag">Operating Systems</span><span class="skill-tag">Network Forensics</span><span class="skill-tag">Linux Fundamentals</span><span class="skill-tag">Basic Web Security</span></div></div>
+                    <div class="skill-block"><h4><i class="fas fa-tools"></i> Tools &amp; Simulation</h4><div class="skill-tags"><span class="skill-tag">Cisco Packet Tracer</span><span class="skill-tag">GNS3</span><span class="skill-tag">Wireshark</span><span class="skill-tag">PyCharm</span><span class="skill-tag">FTK Imager</span><span class="skill-tag">Autopsy</span><span class="skill-tag">Hack The Box</span><span class="skill-tag">BurpSuite</span><span class="skill-tag">Kali Linux</span><span class="skill-tag">tryhackme</span><span class="skill-tag">pingmynetwork</span></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-card">
+                <div class="edu-item"><h4>BSc Hons Cybersecurity and Ethical Hacking (Coventry University)</h4><div class="meta">Softwarica College of IT &amp; E-Commerce, Kathmandu, Nepal</div></div>
+                <div class="edu-item"><h4>+2 (National Examination Board)</h4><div class="meta">Ace Higher Secondary School, Kathmandu, Nepal</div></div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card"><div class="project-title"><i class="fas fa-network-wired"></i> Three-Tier Enterprise Network Architecture</div><div class="project-desc">Scalable and secure enterprise-style network architecture with proper segmentation and hierarchical design. Designed in Cisco Packet Tracer using routing, VLANs and best practices.</div><div class="tech-stack"><span>Packet Tracer</span><span>VLANs</span><span>Routing</span></div><div class="project-links"><a href="https://raw.githubusercontent.com/pranjalpanta/Three-Tier-Network-Architecture-Networking-project/main/230238-Networking%20.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt</a></div></div>
+                <div class="project-card"><div class="project-title"><i class="fas fa-code"></i> Web Enumeration Tool (Python)</div><div class="project-desc">Script that gathers important information about web applications (headers, technologies, endpoints, etc.) to support security testing and reconnaissance.</div><div class="tech-stack"><span>Python</span><span>BurpSuite</span><span>Recon</span></div><div class="project-links"><a href="https://github.com/pranjalpanta/Python" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a></div></div>
+                <div class="project-card"><div class="project-title"><i class="fas fa-shield-alt"></i> Cisco ASA Firewall Configuration</div><div class="project-desc">Implemented security policies on Cisco ASA using ACLs, NAT and VPN concepts to control and protect traffic between internal and external networks.</div><div class="tech-stack"><span>Cisco ASA</span><span>ACL</span><span>VPN</span></div><div class="project-links"><a href="https://raw.githubusercontent.com/pranjalpanta/-Firewall-Configuration-Networking-Project-/main/230238-Firewall.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt</a></div></div>
+                <div class="project-card"><div class="project-title"><i class="fas fa-building"></i> Enterprise Networking Mini Project</div><div class="project-desc">Multi-department enterprise network with VLANs, inter-VLAN routing, DHCP, and secure wireless using /26 subnetting.</div><div class="tech-stack"><span>Packet Tracer</span><span>DHCP</span><span>VLANs</span></div><div class="project-links"><a href="https://raw.githubusercontent.com/pranjalpanta/Networking-Project-/main/Networking-Mini-Project.pkt" download class="project-link-btn"><i class="fas fa-download"></i> Download .pkt</a></div></div>
+                <div class="project-card"><div class="project-title"><i class="fas fa-lock"></i> Secure File Encryption Tool (Python)</div><div class="project-desc">Python-based tool to encrypt and decrypt files securely, focusing on basic cryptography concepts and security best practices.</div><div class="tech-stack"><span>Python</span><span>Cryptography</span></div><div class="project-links"><a href="https://github.com/pranjalpanta/secure-file-tool" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a></div></div>
+                <div class="project-card"><div class="project-title"><i class="fas fa-key"></i> Password Manager Using Cryptography</div><div class="project-desc">A password manager that stores all your passwords securely using strong encryption. Only one master password to remember.</div><div class="tech-stack"><span>Python</span><span>Encryption</span><span>Security</span></div><div class="project-links"><a href="https://github.com/pranjalpanta/Password-Manager-Using-Cryptography" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View on GitHub</a></div></div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section id="certifications">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-item"><strong>ISO/IEC27001:2022 Lead Auditor</strong><div class="issuer"><i class="fas fa-certificate"></i> Mastermind</div><div class="date">Issued Nov 23, 2025 · 16 credit hours</div><a href="https://learn.mastermindassurance.com/certificates/aojmcj0jin" target="_blank" class="cert-link-btn">View Credential</a></div>
+                <div class="cert-item"><strong>Cisco Networking Foundations: IP Addressing</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Nov 29, 2025 · 1h 35m</div><a href="https://drive.google.com/file/d/11j_UBY2XTcTFSGib2LdPmJAxEU_vPfxn/view?usp=sharing" target="_blank" class="cert-link-btn">View Credential</a></div>
+                <div class="cert-item"><strong>Fundamentals of Cisco Networking</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Sep 18, 2025 · 2h 3m</div><a href="https://drive.google.com/file/d/1ywDB_rSJu3MMy4kH3LWPb52f_EEZxe74/view?usp=sharing" target="_blank" class="cert-link-btn">View Credential</a></div>
+                <div class="cert-item"><strong>Diploma in ICND1 v3 CCNA</strong><div class="issuer"><i class="fas fa-graduation-cap"></i> Alison</div><div class="date">Completed May 10, 2025 · 53h 12m (93% score)</div><a href="https://alison.com/certification/check/d349c0dd32" target="_blank" class="cert-link-btn">View Credential</a></div>
+                <div class="cert-item"><strong>Wireless Networking Essential Training</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Mar 23, 2026 · 1h 19m</div><a href="https://drive.google.com/file/d/1NusPSdqFvN3G0aDl8uvrfTDDM74sBFpX/view?usp=sharing" target="_blank" class="cert-link-btn">View Credential</a></div>
+                <div class="cert-item"><strong>Cisco Certified Technician (CCT) Routing and Switching</strong><div class="issuer"><i class="fab fa-linkedin"></i> LinkedIn Learning</div><div class="date">Completed Mar 20, 2026 · 6h 34m</div><a href="https://drive.google.com/file/d/13pA6iOyCqG6IjbYBnFoLwBQN6eHPKi7V/view?usp=sharing" target="_blank" class="cert-link-btn">View Credential</a></div>
+                <div class="cert-item"><strong>Certified Cybersecurity Educator Professional (CCEP)</strong><div class="issuer"><i class="fas fa-shield-alt"></i> Red Team Leaders</div><div class="date">Issued Dec 29, 2025</div><a href="https://courses.redteamleaders.com/exam-completion/01e584edc365eb2d" target="_blank" class="cert-link-btn">View Credential</a></div>
+                <div class="cert-item"><strong>Certified C++ Practitioner (CCPC)</strong><div class="issuer"><i class="fas fa-code"></i> Red Team Leaders</div><div class="date">Issued Dec 29, 2025</div><a href="https://courses.redteamleaders.com/exam-completion/63d2768ce0a639fc" target="_blank" class="cert-link-btn">View Credential</a></div>
+                <div class="cert-item"><strong>Digital Forensics &amp; Incident Investigation</strong><div class="issuer"><i class="fas fa-microscope"></i> Red Team Leaders</div><div class="date">Issued Apr 20, 2026</div><a href="https://courses.redteamleaders.com/completion/5889dc55ca3b908d" target="_blank" class="cert-link-btn">View Credential</a></div>
+                <div class="cert-item"><strong>Introduction to Critical Infrastructure Protection</strong><div class="issuer"><i class="fas fa-shield-hornet"></i> OPSWAT Academy</div><div class="date">Issued Nov 25, 2024 · Expires Nov 25, 2025</div><a href="https://learn.opswatacademy.com/certificate/hjM7efiJwQ" target="_blank" class="cert-link-btn">View Credential</a></div>
+                <div class="cert-item"><strong>Foundations of Log Analysis for Cyber Defense</strong><div class="issuer"><i class="fas fa-chart-line"></i> Red Team Leaders</div><div class="date">Issued Jan 2026</div><a href="https://courses.redteamleaders.com/completion/6ec659f37ffa4049" target="_blank" class="cert-link-btn">View Credential</a></div>
+            </div>
+        </section>
+
+        <!-- BLOGS -->
+        <section id="blogs">
+            <h2 class="section-title">Medium Blogs</h2>
+            <div class="blog-grid">
+                <a href="https://medium.com/@pranjalpanta2.0/understanding-rip-auto-summarization-a-practical-deep-dive-into-classful-vs-classless-routing-2463b7db22d6" target="_blank" class="blog-card">
+                    <img src="https://miro.medium.com/max/1400/0*o-IFL4ROiAtBXAWP.jpg" class="blog-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\' viewBox=\'0 0 600 400\'%3E%3Crect width=\'600\' height=\'400\' fill=\'%231a1a1a\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' font-size=\'20\' fill=\'%23666\' text-anchor=\'middle\' dy=\'.3em\'%3E Blog Image %3C/text%3E%3C/svg%3E'">
+                    <div class="blog-title">Understanding RIP Auto-Summarization</div>
+                    <div class="blog-meta">March 28, 2025 · 4 min read</div>
+                    <div class="blog-excerpt">A practical deep dive into classful vs classless routing.</div>
+                    <div class="tech-stack"><span>RIPv2</span><span>Routing</span><span>CCNA</span></div>
+                </a>
+                <a href="https://medium.com/@pranjalpanta2.0/static-routing-8f63feb76701" target="_blank" class="blog-card">
+                    <img src="https://miro.medium.com/max/1400/0*TU-XrEk5UHf7Lcpd" class="blog-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\' viewBox=\'0 0 600 400\'%3E%3Crect width=\'600\' height=\'400\' fill=\'%231a1a1a\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' font-size=\'20\' fill=\'%23666\' text-anchor=\'middle\' dy=\'.3em\'%3E Blog Image %3C/text%3E%3C/svg%3E'">
+                    <div class="blog-title">Static Routing</div>
+                    <div class="blog-meta">January 6, 2026 · 1 min read</div>
+                    <div class="blog-excerpt">AD value, diagrams, configuration examples.</div>
+                    <div class="tech-stack"><span>Static Routing</span><span>Networking</span></div>
+                </a>
+                <a href="https://medium.com/@pranjalpanta2.0/carries-sense-multiple-access-csma-041229099a79" target="_blank" class="blog-card">
+                    <img src="https://miro.medium.com/max/1400/1*An5dbvqlCvUx3ZQIrboktA.png" class="blog-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\' viewBox=\'0 0 600 400\'%3E%3Crect width=\'600\' height=\'400\' fill=\'%231a1a1a\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' font-size=\'20\' fill=\'%23666\' text-anchor=\'middle\' dy=\'.3em\'%3E Blog Image %3C/text%3E%3C/svg%3E'">
+                    <div class="blog-title">Carrier Sense Multiple Access (CSMA)</div>
+                    <div class="blog-meta">October 13, 2025 · 3 min read</div>
+                    <div class="blog-excerpt">CSMA/CD, collision detection and avoidance.</div>
+                    <div class="tech-stack"><span>CSMA/CD</span><span>Network Protocols</span></div>
+                </a>
+            </div>
+            <div style="text-align:center; margin-top:2rem;">
+                <a href="https://medium.com/@pranjalpanta2.0" target="_blank" class="btn btn-outline"><i class="fab fa-medium"></i> View all blogs on Medium</a>
+            </div>
+        </section>
+
+        <!-- TERMINAL -->
+        <section id="terminal">
+            <h2 class="section-title">Interactive Terminal</h2>
+            <div class="terminal-card">
+                <div class="terminal-output" id="termOutput">
+                    > Welcome to Pranjal's terminal.<br>
+                    > Type <span style="color:#ffffff;">'help'</span> to see available commands.<br>
+                    > Type <span style="color:#ffffff;">'quiz'</span> to start the Cisco Command Quiz.
+                </div>
+                <div class="terminal-input-line">
+                    <span class="terminal-prompt">$&nbsp;</span>
+                    <input type="text" id="termInput" placeholder="Type a command…" autofocus />
+                    <button id="termClear" class="terminal-clear-btn">Clear</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Let's work together</h3>
+                    <p>I turn complex security into simple solutions. Passionate about protecting what matters. Ready when you are.</p>
+                    <div class="contact-detail">
+                        <div><i class="fas fa-phone-alt"></i> +977 9861490158</div>
+                        <div><i class="fas fa-envelope"></i> pranjalpantalazarus2@gmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-row"><input type="text" name="firstName" placeholder="First name" required /><input type="text" name="lastName" placeholder="Last name" required /></div>
+                        <input type="email" name="email" placeholder="Email address" required style="width:100%; margin-bottom:1rem;" />
+                        <input type="tel" name="phone" placeholder="Phone number" style="width:100%; margin-bottom:1rem;" />
+                        <select name="service" required style="width:100%; margin-bottom:1rem;">
+                            <option disabled selected value="">— Select a service —</option>
+                            <option>Network Engineering</option>
+                            <option>Cybersecurity</option>
+                            <option>Consulting</option>
+                        </select>
+                        <textarea name="message" rows="3" placeholder="Message" required style="width:100%; margin-bottom:1rem;"></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div id="visitorCounterContainer" class="visitor-counter">
+            <i class="fas fa-eye"></i> Total visits: <span id="visitor-counter">0</span>
+        </div>
+        <p>© 2025 All Rights Reserved by Pranjal Panta</p>
+    </footer>
+
+    <script>
+        (function() {
+            "use strict";
+
+            // ─── LOADER ───
+            var loaderWrapper = document.getElementById('loaderWrapper');
+            if (loaderWrapper) {
+                window.addEventListener('load', function() {
+                    setTimeout(function() {
+                        loaderWrapper.classList.add('fade-out');
+                        setTimeout(function() { loaderWrapper.style.display = 'none'; }, 700);
+                    }, 500);
+                });
+            }
+
+            // ─── THEME TOGGLE ───
+            var themeToggle = document.getElementById('themeToggle');
+
+            function setTheme(isLight) {
+                if (isLight) {
+                    document.body.classList.add('light');
+                    if (themeToggle) themeToggle.innerText = '🌙 Dark';
+                } else {
+                    document.body.classList.remove('light');
+                    if (themeToggle) themeToggle.innerText = '☀️ Light';
+                }
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            }
+            // load saved
+            if (localStorage.getItem('theme') === 'light') {
+                setTheme(true);
+            } else {
+                setTheme(false);
+            }
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    var isLight = !document.body.classList.contains('light');
+                    setTheme(isLight);
+                });
+            }
+
+            // ─── EMAIL COPY ───
+            var copyEmailBtn = document.getElementById('copyEmailBtn');
+            var emailAddress = 'pranjalpantalazarus2@gmail.com';
+
+            function showToast(msg) {
+                var toast = document.createElement('div');
+                toast.className = 'toast-copy';
+                toast.innerText = msg;
+                document.body.appendChild(toast);
+                setTimeout(function() { toast.remove(); }, 2600);
+            }
+            if (copyEmailBtn) {
+                copyEmailBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navigator.clipboard.writeText(emailAddress).then(function() {
+                        showToast('📧 Email copied! pranjalpantalazarus2@gmail.com');
+                    }).catch(function() {
+                        alert('Could not copy email. Please manually copy: ' + emailAddress);
+                    });
+                });
+            }
+
+            // ─── VIBER ───
+            var viberBtn = document.getElementById('viberBtn');
+            if (viberBtn) {
+                viberBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
+                        .userAgent);
+                    if (isMobile) {
+                        window.location.href = 'viber://contact?number=9779861490159';
+                        setTimeout(function() {
+                            alert("If Viber doesn't open, please install Viber from your app store.");
+                        }, 2000);
+                    } else {
+                        alert("Viber works best on mobile. Please install Viber Desktop or use WhatsApp.");
+                    }
+                });
+            }
+
+            // ─── CONTACT FORM ───
+            var contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you! I will get back to you soon.');
+                    e.target.reset();
+                });
+            }
+
+            // ─── VISITOR COUNTER (double-click footer) ───
+            var counterContainer = document.getElementById('visitorCounterContainer');
+            var counterSpan = document.getElementById('visitor-counter');
+            var footer = document.querySelector('footer');
+            if (footer && counterContainer && counterSpan) {
+                footer.addEventListener('dblclick', function() {
+                    counterContainer.classList.toggle('visible');
+                    if (counterContainer.classList.contains('visible') && counterSpan.innerText === '0') {
+                        fetch('https://api.countapi.xyz/hit/pranjal-portfolio/visitors')
+                            .then(function(response) { return response.json(); })
+                            .then(function(data) {
+                                if (data && typeof data.value === 'number') {
+                                    counterSpan.innerText = data.value;
+                                } else {
+                                    counterSpan.innerText = '?';
+                                }
+                            })
+                            .catch(function() { counterSpan.innerText = '?'; });
+                    }
+                });
+                // silent prefetch
+                fetch('https://api.countapi.xyz/hit/pranjal-portfolio/visitors').catch(function() {});
+            }
+
+            // ─── PARTICLES (canvas) ───
+            var canvas = document.getElementById('bg-canvas');
+            if (canvas) {
+                var ctx = canvas.getContext('2d');
+                var width, height;
+                var particles = [];
+                var particleCount = 60;
+                var connectionDistance = 150;
+                var animationId;
+
+                function initCanvas() {
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                    canvas.width = width;
+                    canvas.height = height;
+                    createParticles();
+                    draw();
+                }
+
+                function createParticles() {
+                    particles = [];
+                    for (var i = 0; i < particleCount; i++) {
+                        particles.push({
+                            x: Math.random() * width,
+                            y: Math.random() * height,
+                            vx: (Math.random() - 0.5) * 0.25,
+                            vy: (Math.random() - 0.5) * 0.25,
+                            radius: Math.random() * 1.6 + 0.8
+                        });
+                    }
+                }
+
+                function updateParticles() {
+                    for (var i = 0; i < particles.length; i++) {
+                        var p = particles[i];
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        if (p.x < 0) p.x = width;
+                        if (p.x > width) p.x = 0;
+                        if (p.y < 0) p.y = height;
+                        if (p.y > height) p.y = 0;
+                    }
+                }
+
+                function draw() {
+                    if (!ctx) return;
+                    ctx.clearRect(0, 0, width, height);
+
+                    var accent = '#ffffff';
+                    var baseOpacity = 0.25;
+
+                    // connections
+                    for (var i = 0; i < particles.length; i++) {
+                        for (var j = i + 1; j < particles.length; j++) {
+                            var dx = particles[i].x - particles[j].x;
+                            var dy = particles[i].y - particles[j].y;
+                            var distance = Math.sqrt(dx * dx + dy * dy);
+                            if (distance < connectionDistance) {
+                                var opacity = (1 - distance / connectionDistance) * baseOpacity;
+                                ctx.beginPath();
+                                ctx.moveTo(particles[i].x, particles[i].y);
+                                ctx.lineTo(particles[j].x, particles[j].y);
+                                ctx.strokeStyle = accent;
+                                ctx.globalAlpha = opacity * 0.5;
+                                ctx.lineWidth = 0.6;
+                                ctx.stroke();
+                            }
+                        }
+                    }
+
+                    // particles
+                    for (var i = 0; i < particles.length; i++) {
+                        var p = particles[i];
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                        ctx.fillStyle = accent;
+                        ctx.globalAlpha = baseOpacity * 0.7;
+                        ctx.fill();
+                    }
+                    ctx.globalAlpha = 1;
+                    updateParticles();
+                    animationId = requestAnimationFrame(draw);
+                }
+
+                window.addEventListener('resize', function() {
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                    canvas.width = width;
+                    canvas.height = height;
+                    createParticles();
+                });
+
+                initCanvas();
+            }
+
+            // ─── TERMINAL ───
+            var termOutput = document.getElementById('termOutput');
+            var termInput = document.getElementById('termInput');
+            var termClearBtn = document.getElementById('termClear');
+
+            if (termOutput && termInput && termClearBtn) {
+                var commandHistory = [];
+                var startTime = Date.now();
+
+                var quizMode = false;
+                var quizQuestions = [];
+                var quizCurrent = 0;
+                var quizScore = 0;
+                var quizTotal = 0;
+
+                function appendToTerminal(text) {
+                    termOutput.innerHTML += '<br>> ' + text;
+                    termOutput.scrollTop = termOutput.scrollHeight;
+                }
+
+                function addToHistory(cmd) {
+                    if (cmd.trim() === '') return;
+                    commandHistory.unshift(cmd);
+                    if (commandHistory.length > 10) commandHistory.pop();
+                }
+
+                var quoteMessages = [
+                    "The only secure system is the one that is powered off. – Unknown",
+                    "Security is not a product, it's a process. – Bruce Schneier",
+                    "The best way to predict the future is to create it. – Peter Drucker",
+                    "Stay curious, keep learning, never stop hacking (ethically)."
+                ];
+                var fortuneMessages = [
+                    "You will soon receive a job offer that aligns with your passion.",
+                    "A great networking opportunity is around the corner.",
+                    "Your hard work will pay off in unexpected ways.",
+                    "Today is a good day to learn something new."
+                ];
+
+                async function fetchWeather() {
+                    appendToTerminal("Fetching weather for Kathmandu…");
+                    try {
+                        var res = await fetch('https://wttr.in/Kathmandu?format=%t+%C+%w');
+                        var data = await res.text();
+                        var parts = data.trim().split(' ');
+                        var temp = parts[0].replace('+', '').replace('°C', '');
+                        var cond = parts[1] || 'clear';
+                        var wind = parts[2] || '0';
+                        appendToTerminal('🌤️  Kathmandu: ' + temp + '°C, ' + cond + ', wind ' + wind + ' km/h');
+                    } catch (e) {
+                        appendToTerminal("Could not fetch weather. Using mock: 22°C, clear, 3 km/h");
+                    }
+                }
+
+                var quizData = [
+                    { question: "Which command displays the routing table on a Cisco router?", options: [
+                            "show ip route", "show route", "display ip route", "ip route show"
+                        ], correct: 0 },
+                    { question: "How do you enter OSPF configuration mode?", options: ["router ospf 1",
+                            "ospf enable", "configure ospf", "ip ospf"
+                        ], correct: 0 },
+                    { question: "Which command sets a switch port as a trunk?", options: ["switchport mode trunk",
+                            "trunk enable", "set port trunk", "interface trunk"
+                        ], correct: 0 },
+                    { question: "What command creates an access‑list that denies traffic from 192.168.1.0/24?",
+                        options: [
+                            "access-list 10 deny 192.168.1.0 0.0.0.255", "deny 192.168.1.0/24",
+                            "ip access-list deny 192.168.1.0", "access-list deny 192.168.1.0"
+                        ], correct: 0 },
+                    { question: "Which command tests basic IP connectivity?", options: ["ping", "traceroute",
+                            "show ip interface", "debug ip packet"
+                        ], correct: 0 }
+                ];
+
+                function startQuiz() {
+                    quizMode = true;
+                    quizQuestions = quizData.slice();
+                    quizCurrent = 0;
+                    quizScore = 0;
+                    quizTotal = quizQuestions.length;
+                    appendToTerminal("=== Cisco Command Quiz ===");
+                    appendToTerminal('You will be asked ' + quizTotal +
+                        ' questions. Type the number of your answer (1-4).');
+                    askNextQuestion();
+                }
+
+                function askNextQuestion() {
+                    if (quizCurrent >= quizTotal) {
+                        endQuiz();
+                        return;
+                    }
+                    var q = quizQuestions[quizCurrent];
+                    appendToTerminal('\nQuestion ' + (quizCurrent + 1) + '/' + quizTotal + ': ' + q.question);
+                    q.options.forEach(function(opt, idx) {
+                        appendToTerminal('  ' + (idx + 1) + '. ' + opt);
+                    });
+                    appendToTerminal("Your answer (1-4): ");
+                }
+
+                function processQuizAnswer(answer) {
+                    var ansNum = parseInt(answer);
+                    if (isNaN(ansNum) || ansNum < 1 || ansNum > 4) {
+                        appendToTerminal("Invalid answer. Please enter a number between 1 and 4.");
+                        appendToTerminal("Your answer (1-4): ");
+                        return;
+                    }
+                    var q = quizQuestions[quizCurrent];
+                    var selectedIdx = ansNum - 1;
+                    if (selectedIdx === q.correct) {
+                        quizScore++;
+                        appendToTerminal("✓ Correct!");
+                    } else {
+                        appendToTerminal('✗ Wrong. The correct answer was: ' + q.options[q.correct]);
+                    }
+                    quizCurrent++;
+                    if (quizCurrent < quizTotal) {
+                        askNextQuestion();
+                    } else {
+                        endQuiz();
+                    }
+                }
+
+                function endQuiz() {
+                    appendToTerminal('\n=== Quiz Completed ===');
+                    appendToTerminal('Your score: ' + quizScore + ' out of ' + quizTotal);
+                    if (quizScore === quizTotal) {
+                        appendToTerminal("🎉 Perfect! You're a Cisco CLI master!");
+                    } else if (quizScore >= quizTotal / 2) {
+                        appendToTerminal("👍 Good job! Keep practicing.");
+                    } else {
+                        appendToTerminal("📚 Review the Cisco commands and try again.");
+                    }
+                    quizMode = false;
+                    appendToTerminal("\nType 'help' for available commands.");
+                }
+
+                async function processCommand(rawCmd) {
+                    var cmd = rawCmd.trim().toLowerCase();
+                    if (cmd === '') return;
+
+                    if (quizMode) {
+                        addToHistory(rawCmd);
+                        processQuizAnswer(rawCmd);
+                        return;
+                    }
+
+                    addToHistory(rawCmd);
+
+                    switch (cmd) {
+                        case 'help':
+                            appendToTerminal(
+                                "Available commands: date, weather, quote, fortune, theme, visitors, uptime, ls, history, clear, quiz"
+                                );
+                            break;
+                        case 'date':
+                            appendToTerminal('Current date and time: ' + new Date().toLocaleString());
+                            break;
+                        case 'weather':
+                            await fetchWeather();
+                            break;
+                        case 'quote':
+                            appendToTerminal(quoteMessages[Math.floor(Math.random() * quoteMessages.length)]);
+                            break;
+                        case 'fortune':
+                            appendToTerminal(fortuneMessages[Math.floor(Math.random() * fortuneMessages.length)]);
+                            break;
+                        case 'theme':
+                            document.body.classList.toggle('light');
+                            var isLight = document.body.classList.contains('light');
+                            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+                            if (themeToggle) themeToggle.innerText = isLight ? '🌙 Dark' : '☀️ Light';
+                            appendToTerminal('Theme toggled to ' + (isLight ? 'light' : 'dark') + ' mode.');
+                            break;
+                        case 'visitors':
+                            var countSpan = document.getElementById('visitor-counter');
+                            var count = countSpan ? countSpan.innerText : '0';
+                            appendToTerminal('Total website visits: ' + count);
+                            break;
+                        case 'uptime':
+                            var seconds = (Date.now() - startTime) / 1000;
+                            appendToTerminal('Terminal active for ' + Math.floor(seconds) + ' seconds.');
+                            break;
+                        case 'ls':
+                            var allCmds = ['date', 'weather', 'quote', 'fortune', 'theme', 'visitors', 'uptime', 'ls',
+                                'history', 'clear', 'quiz'
+                            ];
+                            appendToTerminal('📜 Commands:\n' + allCmds.join(', '));
+                            break;
+                        case 'history':
+                            var hist = commandHistory.slice();
+                            appendToTerminal(hist.length ? 'Recent commands:\n' + hist.join('\n') :
+                                "No commands in history.");
+                            break;
+                        case 'clear':
+                            termOutput.innerHTML =
+                                '> Terminal cleared.<br>> Type <span style="color:#ffffff;">\'help\'</span> to see available commands.<br>> Type <span style="color:#ffffff;">\'quiz\'</span> to start the Cisco quiz.';
+                            break;
+                        case 'quiz':
+                            if (quizMode) {
+                                appendToTerminal("A quiz is already in progress. Finish it first.");
+                            } else {
+                                startQuiz();
+                            }
+                            break;
+                        default:
+                            appendToTerminal('Unknown command: "' + rawCmd + '". Type "help" for list.');
+                    }
+                }
+
+                termInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        var cmd = termInput.value;
+                        processCommand(cmd);
+                        termInput.value = '';
+                    }
+                });
+
+                termClearBtn.addEventListener('click', function() {
+                    processCommand('clear');
+                });
+
+                // Ensure input gets focus
+                termInput.focus();
+                // click on terminal area focuses input
+                document.querySelector('.terminal-card').addEventListener('click', function() {
+                    termInput.focus();
+                });
+            }
+
+        })();
+    </script>
 </body>
 </html>
