@@ -387,7 +387,7 @@
     <div id="preloader">
         <style>
             #preloader{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#0d1117;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.3s ease}
-            #preloader.hide{opacity:0}
+            #preloader.hide{opacity:0;pointer-events:none;visibility:hidden}
             #preloaderCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
             .radar-wrap{display:flex;flex-direction:column;align-items:center;gap:1.8rem;position:relative;z-index:1}
             .radar-bars{display:flex;gap:8px;align-items:flex-end;height:120px}
